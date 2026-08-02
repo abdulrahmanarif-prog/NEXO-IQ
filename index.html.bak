@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXO | Next-Generation Engineering eXcellence Organization</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================
+           LUXURY MATTE CHARCOAL, SILVER & GOLD PALETTE
+           ========================================== */
+        :root {
+            --bg-obsidian: #090B0E;
+            --bg-card: #121620;
+            --bg-card-hover: #1A202C;
+            --border-subtle: #242B3A;
+            --border-gold: rgba(212, 175, 55, 0.35);
+            --gold-primary: #D4AF37;
+            --gold-light: #F3E5AB;
+            --gold-dark: #9E7D3B;
+            --gold-gradient: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #9E7D3B 100%);
+            --silver-gradient: linear-gradient(135deg, #FFFFFF 0%, #CBD5E1 50%, #94A3B8 100%);
+            --silver-primary: #E2E8F0;
+            --text-muted: #94A3B8;
+            --gold-glow: rgba(212, 175, 55, 0.18);
+            --shadow-lux: 0 20px 40px rgba(0, 0, 0, 0.8);
+            --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-obsidian);
+            color: var(--silver-primary);
+            line-height: 1.65;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 85% 65%, rgba(212, 175, 55, 0.03) 0%, transparent 40%);
+        }
+
+        h1, h2, h3, .brand-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.75rem;
+        }
+
+        .section-padding {
+            padding: 7rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            background: var(--silver-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.85rem;
+            letter-spacing: -0.03em;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 680px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        .badge-gold {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(212, 175, 55, 0.08);
+            color: var(--gold-primary);
+            border: 1px solid var(--border-gold);
+            padding: 0.45rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.825rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        /* ==========================================
+           HEADER / NAVIGATION
+           ========================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(9, 11, 14, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-subtle);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .brand-logo img {
+            height: 52px;
+            width: auto;
+            border-radius: 6px;
+            border: 1px solid var(--border-gold);
+            box-shadow: 0 0 12px var(--gold-glow);
+            transition: var(--transition);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.925rem;
+            font-weight: 600;
+            color: var(--silver-primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-primary);
+        }
+
+        .btn-nav-gold {
+            background: var(--gold-gradient);
+            color: #080A0D !important;
+            padding: 0.7rem 1.6rem;
+            border-radius: 6px;
+            font-weight: 800 !important;
+            transition: var(--transition);
+            box-shadow: 0 4px 18px var(--gold-glow);
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            color: var(--gold-primary);
+            cursor: pointer;
+        }
+
+        /* ==========================================
+           HERO SECTION
+           ========================================== */
+        .hero {
+            padding-top: 170px;
+            padding-bottom: 110px;
+            position: relative;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 3.5rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.35rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            color: #FFFFFF;
+        }
+
+        .hero-text h1 span {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.25rem;
+            align-items: center;
+        }
+
+        .btn-gold {
+            background: var(--gold-gradient);
+            color: #080A0D;
+            padding: 0.95rem 2.25rem;
+            border-radius: 6px;
+            font-weight: 800;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 20px var(--gold-glow);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.08);
+        }
+
+        .btn-outline-silver {
+            background: rgba(255, 255, 255, 0.03);
+            color: #FFFFFF;
+            padding: 0.95rem 2.25rem;
+            border-radius: 6px;
+            font-weight: 700;
+            border: 1px solid var(--border-subtle);
+            transition: var(--transition);
+        }
+
+        .hero-image-frame {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border-gold);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85), 0 0 30px var(--gold-glow);
+            background: var(--bg-card);
+            min-height: 300px;
+        }
+
+        .hero-image-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ==========================================
+           ABOUT SECTION
+           ========================================== */
+        .about-section {
+            background: linear-gradient(180deg, rgba(14, 18, 25, 0.6) 0%, rgba(9, 11, 14, 0.9) 100%);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4.5rem;
+            align-items: center;
+        }
+
+        .acronym-frame {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            padding: 0.5rem;
+        }
+
+        .acronym-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+        }
+
+        .about-content h3 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 1.25rem;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.075rem;
+        }
+
+        .vm-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+
+        .vm-card {
+            background-color: var(--bg-card);
+            border-left: 4px solid var(--gold-primary);
+            border-top: 1px solid var(--border-subtle);
+            border-right: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 1.5rem;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .vm-card h4 {
+            color: #FFFFFF;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        /* ==========================================
+           SERVICES / DIVISIONS SECTION
+           ========================================== */
+        .operational-collage-frame {
+            margin-bottom: 4rem;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-gold);
+            background: var(--bg-card);
+        }
+
+        .operational-collage-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.2rem;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 14px;
+            border: 1px solid var(--border-subtle);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-gold);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.7), 0 0 25px var(--gold-glow);
+            background: var(--bg-card-hover);
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 10px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--border-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold-primary);
+        }
+
+        .service-card h3 {
+            font-size: 1.35rem;
+            color: #FFFFFF;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.975rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .service-card ul {
+            margin-top: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card ul li {
+            color: var(--silver-primary);
+            font-size: 0.925rem;
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-left: 1.4rem;
+        }
+
+        .service-card ul li::before {
+            content: "◆";
+            color: var(--gold-primary);
+            position: absolute;
+            left: 0;
+            font-size: 0.65rem;
+            top: 2px;
+        }
+
+        /* ==========================================
+           CLIENTS & PARTNERS SECTION
+           ========================================== */
+        .trust-section {
+            background: linear-gradient(180deg, #090B0E 0%, #10141C 100%);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .trust-group {
+            margin-bottom: 4rem;
+        }
+
+        .trust-group-title {
+            font-size: 1.25rem;
+            color: var(--gold-primary);
+            margin-bottom: 1.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .trust-group-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--border-gold) 0%, transparent 100%);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .trust-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trust-card:hover {
+            border-color: var(--border-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8), 0 0 20px var(--gold-glow);
+            background-color: var(--bg-card-hover);
+        }
+
+        .trust-card-logo {
+            width: 100%;
+            height: 90px;
+            background: #FFFFFF;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem;
+            margin-bottom: 1.25rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .trust-card-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-fallback-badge {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #0F172A;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .trust-card-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 0.35rem;
+        }
+
+        .trust-card-category {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .trust-card-action {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: auto;
+            transition: var(--transition);
+        }
+
+        .trust-card:hover .trust-card-action {
+            color: #FFFFFF;
+            transform: translateX(3px);
+        }
+
+        /* ==========================================
+           TRAINING ACADEMY CTA BANNER
+           ========================================== */
+        .academy-banner {
+            background: linear-gradient(135deg, #161B26 0%, #0C0F15 100%);
+            border: 1px solid var(--border-gold);
+            border-radius: 18px;
+            padding: 4.5rem 2.5rem;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--gold-glow);
+        }
+
+        .academy-banner h3 {
+            font-size: 2.4rem;
+            color: #FFFFFF;
+            margin-bottom: 1.2rem;
+            font-weight: 800;
+        }
+
+        .academy-banner p {
+            color: var(--text-muted);
+            max-width: 780px;
+            margin: 0 auto 2.5rem auto;
+            font-size: 1.125rem;
+        }
+
+        /* ==========================================
+           CONTACT & FOOTER
+           ========================================== */
+        .contact-section {
+            background-color: var(--bg-obsidian);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4.5rem;
+        }
+
+        .contact-info h3 {
+            font-size: 2.2rem;
+            color: #FFFFFF;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--silver-primary);
+            font-weight: 600;
+            background: var(--bg-card);
+            padding: 1rem 1.25rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 1.1rem 1.25rem;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            outline: none;
+            font-size: 0.975rem;
+            color: #FFFFFF;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        footer {
+            background-color: #060709;
+            color: var(--text-muted);
+            padding: 4rem 0 2.5rem 0;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .footer-logo img {
+            height: 46px;
+            width: auto;
+            border-radius: 6px;
+            border: 1px solid var(--border-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 992px) {
+            .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+            .hero-text h1 { font-size: 2.75rem; }
+            .hero { padding-top: 150px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 90px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(9, 11, 14, 0.98);
+                flex-direction: column;
+                padding: 3rem 0;
+                clip-path: circle(0% at 100% 0);
+                transition: clip-path 0.4s ease-in-out;
+            }
+
+            .nav-links.active { clip-path: circle(140% at 100% 0); }
+            .mobile-toggle { display: block; }
+            .hero-cta { flex-direction: column; }
+            .btn-gold, .btn-outline-silver { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER / NAVIGATION -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="brand-logo">
+                <img src="./assets/images/nexo-logo.png" alt="NEXO Engineering & Contracting - شركة نكسو للهندسة والمقاولات" onerror="this.onerror=null; this.src='https://placehold.co/180x50/121620/D4AF37?text=NEXO+LOGO';">
+            </a>
+            <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation">☰</button>
+            <nav class="nav-links" id="navLinks">
+                <a href="#about">About NEXO</a>
+                <a href="#services">Divisions</a>
+                <a href="#portfolio">Clients & Partners</a>
+                <a href="#academy">Academy</a>
+                <a href="#contact" class="btn-nav-gold">Get In Touch</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <span class="badge-gold">
+                        <span>📍</span> Baghdad, Iraq
+                    </span>
+                    <h1>Connecting Vision with <span>Structural Excellence</span></h1>
+                    <p>NEXO Engineering & Contracting Co. is a premier engineering entity in Iraq—delivering state-of-the-art architectural design, heavy civil contracting, and specialized capacity-building technical training.</p>
+                    <div class="hero-cta">
+                        <a href="#services" class="btn-gold">Explore Our Divisions <span>→</span></a>
+                        <a href="#contact" class="btn-outline-silver">Request Consultation</a>
+                    </div>
+                </div>
+                <!-- Hero Building Image -->
+                <div class="hero-image-frame">
+                    <img src="./assets/images/hero-facade.png" alt="NEXO Headquarters Facade" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80';">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION WITH ACRONYM SHOWCASE -->
+    <section class="section-padding about-section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="acronym-frame">
+                    <img src="./assets/images/about.png" alt="NEXO - Next-Generation Engineering eXcellence Organization" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80';">
+                </div>
+                <div class="about-content">
+                    <span class="badge-gold">Who We Are</span>
+                    <h3>Next-Generation Engineering eXcellence Organization</h3>
+                    <p>Rooted in Baghdad, NEXO is engineered to bridge modern BIM technical modeling with rigorous site execution. We unify engineering precision, advanced construction chemicals, and local workforce development.</p>
+                    
+                    <div class="vm-grid">
+                        <div class="vm-card">
+                            <h4><span></span> Our Vision</h4>
+                            <p>To be Iraq’s leading multidisciplinary engineering powerhouse—setting new benchmarks in architectural modeling, structural durability, and technical education.</p>
+                        </div>
+                        <div class="vm-card">
+                            <h4><span></span> Our Mission</h4>
+                            <p>Delivering turnkey civil contracting, architectural precision, and practical software workshops by pairing international engineering standards with strategic industrial partnerships.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIVISIONS & SERVICES SECTION -->
+    <section class="section-padding divisions-section" id="services">
+        <div class="container">
+            <div class="section-title">
+                <span class="badge-gold">Our Capabilities</span>
+                <h2>Core Operational Divisions</h2>
+                <p>Comprehensive engineering services spanning BIM design modeling, major civil contracting, and hands-on academy training. Click any division below to view detailed works.</p>
+            </div>
+
+            <!-- OPERATIONAL DIVISIONS COLLAGE -->
+            <div class="operational-collage-frame">
+                <img src="./assets/images/operations-collage.png" alt="NEXO Operations" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=1200&q=80';">
+            </div>
+
+            <div class="services-grid">
+                <!-- Division 1 -->
+                <a href="architectural-design.html" target="_blank" class="service-card">
+                    <div class="service-icon">📐</div>
+                    <h3>Architectural & Structural Design</h3>
+                    <p>Conceptual and detailed engineering calculations built to strict international codes.</p>
+                    <ul>
+                        <li>Architectural Spatial Planning & 3D Visualizations</li>
+                        <li>Structural Calculations & BIM Modeling</li>
+                        <li>Civil Layout Optimization</li>
+                        <li>Exterior Facade & Interior Engineering</li>
+                    </ul>
+                    <span class="btn-gold" style="width: 100%; text-align: center;">View Projects & Details ↗</span>
+                </a>
+
+                <!-- Division 2 -->
+                <a href="general-contracting.html" target="_blank" class="service-card">
+                    <div class="service-icon">🏗️</div>
+                    <h3>General Contracting & Construction</h3>
+                    <p>Turnkey execution for commercial, petroleum, hospitality, and urban developments.</p>
+                    <ul>
+                        <li>High-Rise Structural Construction</li>
+                        <li>Petroleum & Industrial Infrastructure</li>
+                        <li>MEP Systems Integration</li>
+                        <li>Structural Rehabilitation & Retrofitting</li>
+                    </ul>
+                    <span class="btn-gold" style="width: 100%; text-align: center;">View Projects & Details ↗</span>
+                </a>
+
+                <!-- Division 3 -->
+                <a href="training-academy.html" target="_blank" class="service-card">
+                    <div class="service-icon">🎓</div>
+                    <h3>Training & Capacity Academy</h3>
+                    <p>Empowering engineers across Iraq with industry-standard software and site expertise.</p>
+                    <ul>
+                        <li>BIM (Revit, ETABS, AutoCAD, Primavera P6)</li>
+                        <li>Site Supervision & HSE Standards</li>
+                        <li>Concrete Testing & Chemical Application</li>
+                        <li>Technical Masterclasses & Certification</li>
+                    </ul>
+                    <span class="btn-gold" style="width: 100%; text-align: center;">View Workshops & Details ↗</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENTS & PARTNERS SECTION -->
+    <section class="section-padding trust-section" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <span class="badge-gold">Strategic Network</span>
+                <h2>Clients & Industry Partners</h2>
+                <p>Collaborating with top-tier developers, energy leaders, and global construction chemical pioneers.</p>
+            </div>
+
+            <!-- Key Clients -->
+            <div class="trust-group">
+                <div class="trust-group-title">Valued Clients</div>
+                <div class="cards-grid">
+                    
+                    <a href="https://rixosbaghdadresidences.com/" target="_blank" rel="noopener noreferrer" class="trust-card">
+                        <div class="trust-card-logo">
+                            <img src="./assets/images/rixos.png" alt="Rixos Baghdad Hotel & Residences - فندق وشقق ريكسوس بغداد" 
+                                 onerror="this.onerror=null; this.src='https://logo.clearbit.com/rixos.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">RIXOS BAGHDAD</span>'; }">
+                        </div>
+                        <div>
+                            <div class="trust-card-name">Rixos Baghdad</div>
+                            <div class="trust-card-category">Luxury Hospitality & Residences</div>
+                        </div>
+                        <div class="trust-card-action">Visit Web Page ↗</div>
+                    </a>
+
+                    <a href="https://www.ebspetroleum.com/" target="_blank" rel="noopener noreferrer" class="trust-card">
+                        <div class="trust-card-logo">
+                            <img src="./assets/images/ebs-petroleum.png" alt="EBS Petroleum Company Limited" 
+                                 onerror="this.onerror=null; this.src='https://logo.clearbit.com/ebspetroleum.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">EBS PETROLEUM</span>'; }">
+                        </div>
+                        <div>
+                            <div class="trust-card-name">EBS Petroleum</div>
+                            <div class="trust-card-category">Energy & Industrial Sector</div>
+                        </div>
+                        <div class="trust-card-action">Visit Web Page ↗</div>
+                    </a>
+
+                    <a href="https://ramlah.co/millennium" target="_blank" rel="noopener noreferrer" class="trust-card">
+                        <div class="trust-card-logo">
+                            <img src="./assets/images/millennium-towers.png" alt="TOWERS MILLENNIUM by RAMLAH - ابراج ميلينيوم من رملة" 
+                                 onerror="this.onerror=null; this.src='https://logo.clearbit.com/ramlah.co'; this.onerror=function(){ this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">MILLENNIUM TOWER</span>'; }">
+                        </div>
+                        <div>
+                            <div class="trust-card-name">Millennium Tower</div>
+                            <div class="trust-card-category">Ramlah Urban Developments</div>
+                        </div>
+                        <div class="trust-card-action">Visit Web Page ↗</div>
+                    </a>
+
+                    <a href="https://modoniq.com/ar/future-city/" target="_blank" rel="noopener noreferrer" class="trust-card">
+                        <div class="trust-card-logo">
+                            <img src="./assets/images/future-city.png" alt="Modon Future City - مدن" 
+                                 onerror="this.onerror=null; this.src='https://logo.clearbit.com/modoniq.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">FUTURE CITY</span>'; }">
+                        </div>
+                        <div>
+                            <div class="trust-card-name">Future City</div>
+                            <div class="trust-card-category">Modon Developments</div>
+                        </div>
+                        <div class="trust-card-action">Visit Web Page ↗</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Strategic Partners & Suppliers -->
+            <div class="trust-group">
+                <div class="trust-group-title">Strategic Partners & Chemical Suppliers</div>
+                <div class="cards-grid">
+
+                    <div class="trust-card">
+                        <div class="trust-card-logo">
+                            <img src="./assets/images/sika.png" alt="Sika - Building Trust" 
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">SIKA</span>';">
+                        </div>
+                        <div>
+                            <div class="trust-card-name">Sika</div>
+                            <div class="trust-card-category">Construction Chemicals & Solutions</div>
+                        </div>
+                        <div class="trust-card-action">Building Trust</div>
+                    </div>
+
+                    <div class="trust-card">
+                        <div class="trust-card-logo">
+                            <img src="./assets/images/fosroc.png" alt="Fosroc Saint-Gobain" 
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">FOSROC</span>';">
+                        </div>
+                        <div>
+                            <div class="trust-card-name">Fosroc</div>
+                            <div class="trust-card-category">Constructive Solutions</div>
+                        </div>
+                        <div class="trust-card-action">Saint-Gobain</div>
+                    </div>
+
+                    <div class="trust-card">
+                        <div class="trust-card-logo">
+                            <img src="./assets/images/dcp.png" alt="DCP - Don Construction Products" 
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">DCP</span>';">
+                        </div>
+                        <div>
+                            <div class="trust-card-name">DCP</div>
+                            <div class="trust-card-category">Don Construction Products</div>
+                        </div>
+                        <div class="trust-card-action">Specialty Chemicals</div>
+                    </div>
+
+                    <div class="trust-card">
+                        <div class="trust-card-logo">
+                            <img src="./assets/images/zamzam-land.png" alt="Zamzam Land" 
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">ZAMZAM LAND</span>';">
+                        </div>
+                        <div>
+                            <div class="trust-card-name">Zamzam Land</div>
+                            <div class="trust-card-category">Development Partner</div>
+                        </div>
+                        <div class="trust-card-action">Partner Project</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRAINING ACADEMY CTA BANNER -->
+    <section class="section-padding" id="academy">
+        <div class="container">
+            <div class="academy-banner">
+                <span class="badge-gold">NEXO Academy</span>
+                <h3>Empower Your Engineering Career</h3>
+                <p>Join our specialized workshops in BIM, structural engineering, and construction management. Hands-on technical training designed for professional growth in Iraq.</p>
+                <a href="#contact" class="btn-gold">Enroll or Inquire Today <span>→</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="section-padding contact-section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="badge-gold">Get In Touch</span>
+                    <h3>Let's Build Something Exceptional Together</h3>
+                    <p>Have a project proposal, engineering inquiry, or academy training question? Contact our headquarters in Baghdad.</p>
+                    <div class="contact-details">
+                        <div class="contact-detail-item">
+                            <span>📍</span>
+                            <div>
+                                <strong>Headquarters:</strong> Baghdad, Iraq
+                            </div>
+                        </div>
+                        <div class="contact-detail-item">
+                            <span>✉️</span>
+                            <div>
+                                <strong>Email:</strong> info@nexo-engineering.com
+                            </div>
+                        </div>
+                        <div class="contact-detail-item">
+                            <span>📞</span>
+                            <div>
+                                <strong>Phone:</strong> +964 7XX XXX XXXX
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you for reaching out! The NEXO team will contact you shortly.');">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Subject / Inquiry Type">
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="5" placeholder="Your Message..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-gold">Send Message <span>→</span></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <img src="./assets/images/nexo-logo.png" alt="NEXO Engineering & Contracting - شركة نكسو للهندسة والمقاولات" onerror="this.onerror=null; this.src='https://placehold.co/180x50/121620/D4AF37?text=NEXO+LOGO';">
+                </div>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#services">Divisions</a>
+                    <a href="#portfolio">Partners</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 NEXO Engineering & Contracting Co. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MOBILE MENU JAVASCRIPT -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+    </script>
+</body>
+</html>

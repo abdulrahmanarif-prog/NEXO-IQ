@@ -4,945 +4,1026 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEXO | Next-Generation Engineering eXcellence Organization</title>
-    <!-- Google Fonts -->
+    <meta name="description" content="NEXO Engineering & Contracting Co. — architectural and structural design, general contracting, and technical training. Baghdad, Iraq.">
+    <!-- Google Fonts: Archivo (display) · Plus Jakarta Sans (body) · IBM Plex Mono (utility) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         /* ==========================================
-           LUXURY MATTE CHARCOAL, SILVER & GOLD PALETTE
+           TOKENS — charcoal drawing sheet
            ========================================== */
         :root {
-            --bg-obsidian: #090B0E;
-            --bg-card: #121620;
-            --bg-card-hover: #1A202C;
-            --border-subtle: #242B3A;
-            --border-gold: rgba(212, 175, 55, 0.35);
-            --gold-primary: #D4AF37;
+            --ink: #0A0C10;
+            --ink-raised: #10131A;
+            --rule: #232833;
+            --rule-gold: rgba(212, 175, 55, 0.32);
+            --gold: #D4AF37;
             --gold-light: #F3E5AB;
-            --gold-dark: #9E7D3B;
-            --gold-gradient: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #9E7D3B 100%);
-            --silver-gradient: linear-gradient(135deg, #FFFFFF 0%, #CBD5E1 50%, #94A3B8 100%);
-            --silver-primary: #E2E8F0;
-            --text-muted: #94A3B8;
-            --gold-glow: rgba(212, 175, 55, 0.18);
-            --shadow-lux: 0 20px 40px rgba(0, 0, 0, 0.8);
-            --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            --gold-deep: #8A6F2E;
+            --silver: #E3E7EE;
+            --mute: #8A93A3;
+            --plate: #F7F8FA;
+
+            --font-display: 'Archivo', system-ui, sans-serif;
+            --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+            --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --gutter: clamp(1.25rem, 4vw, 2.5rem);
+            --section-y: clamp(5rem, 9vw, 8.5rem);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            scroll-behavior: smooth;
-        }
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            background-color: var(--bg-obsidian);
-            color: var(--silver-primary);
+            margin: 0;
+            background-color: var(--ink);
+            color: var(--silver);
+            font-family: var(--font-body);
+            font-size: 1rem;
             line-height: 1.65;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 15% 15%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 85% 65%, rgba(212, 175, 55, 0.03) 0%, transparent 40%);
+            -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, .brand-title {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            letter-spacing: -0.02em;
+        /* Drafting grid — the sheet the whole page is drawn on */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(226, 232, 240, 0.028) 0 1px, transparent 1px 80px),
+                repeating-linear-gradient(0deg, rgba(226, 232, 240, 0.028) 0 1px, transparent 1px 80px);
+            mask-image: radial-gradient(ellipse 90% 70% at 50% 22%, #000 0%, transparent 78%);
+            -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 22%, #000 0%, transparent 78%);
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
+        main, header, footer { position: relative; z-index: 1; }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            margin: 0;
+            color: #FFFFFF;
+            letter-spacing: -0.03em;
+            line-height: 1.08;
         }
 
-        ul {
-            list-style: none;
+        p { margin: 0; }
+        ul { list-style: none; margin: 0; padding: 0; }
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+
+        :focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px;
+            border-radius: 2px;
         }
 
         .container {
             width: 100%;
-            max-width: 1280px;
+            max-width: 1240px;
             margin: 0 auto;
-            padding: 0 1.75rem;
+            padding-inline: var(--gutter);
         }
 
-        .section-padding {
-            padding: 7rem 0;
+        .section { padding-block: var(--section-y); scroll-margin-top: 92px; }
+        .section--ruled { border-top: 1px solid var(--rule); }
+
+        /* Mono utility voice — eyebrows, codes, captions, labels */
+        .mono {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--gold);
         }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
-        }
-
-        .section-title h2 {
-            font-size: 2.6rem;
-            font-weight: 800;
-            background: var(--silver-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.85rem;
-            letter-spacing: -0.03em;
-        }
-
-        .section-title p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 680px;
-            margin: 0 auto;
-            font-weight: 400;
-        }
-
-        .badge-gold {
+        .eyebrow {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            background: rgba(212, 175, 55, 0.08);
-            color: var(--gold-primary);
-            border: 1px solid var(--border-gold);
-            padding: 0.45rem 1.25rem;
-            border-radius: 50px;
-            font-size: 0.825rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1.2rem;
-            box-shadow: 0 0 15px var(--gold-glow);
+            gap: 0.7rem;
+            margin-bottom: 1.4rem;
         }
 
+        .eyebrow::before {
+            content: "";
+            width: 28px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .section-head { max-width: 720px; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+        .section-head h2 { font-size: clamp(2rem, 3.7vw, 2.9rem); font-weight: 700; }
+        .section-head p { color: var(--mute); font-size: 1.05rem; margin-top: 1rem; }
+
+        /* ========== Buttons ========== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.65rem;
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            padding: 0.95rem 1.75rem;
+            border: 1px solid var(--rule);
+            background: none;
+            color: var(--silver);
+            cursor: pointer;
+            transition: background-color 0.3s var(--ease), color 0.3s var(--ease),
+                        border-color 0.3s var(--ease), transform 0.3s var(--ease);
+        }
+
+        .btn:hover { border-color: var(--rule-gold); color: #FFFFFF; background: rgba(212, 175, 55, 0.06); }
+
+        .btn--gold {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #0A0C10;
+        }
+
+        .btn--gold:hover { background: var(--gold-light); border-color: var(--gold-light); color: #0A0C10; transform: translateY(-2px); }
+
+        .btn .arw { transition: transform 0.3s var(--ease); }
+        .btn:hover .arw { transform: translateX(4px); }
+
         /* ==========================================
-           HEADER / NAVIGATION
+           HEADER
            ========================================== */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(9, 11, 14, 0.88);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-subtle);
-            z-index: 1000;
-            transition: var(--transition);
+            z-index: 100;
+            background: rgba(10, 12, 16, 0.72);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid transparent;
+            transition: background-color 0.4s var(--ease), border-color 0.4s var(--ease);
         }
 
-        .nav-container {
+        header.is-scrolled {
+            background: rgba(10, 12, 16, 0.94);
+            border-bottom-color: var(--rule);
+        }
+
+        .nav-bar {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            height: 90px;
+            height: 84px;
         }
 
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-        }
+        .brand img { height: 44px; width: auto; }
 
-        .brand-logo img {
-            height: 52px;
-            width: auto;
-            border-radius: 6px;
-            border: 1px solid var(--border-gold);
-            box-shadow: 0 0 12px var(--gold-glow);
-            transition: var(--transition);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.2rem;
-            align-items: center;
-        }
+        .nav-links { display: flex; align-items: center; gap: 2.1rem; }
 
         .nav-links a {
-            font-size: 0.925rem;
-            font-weight: 600;
-            color: var(--silver-primary);
-            transition: var(--transition);
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--mute);
+            padding-block: 0.4rem;
+            border-bottom: 1px solid transparent;
+            transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
         }
 
-        .nav-links a:hover {
-            color: var(--gold-primary);
-        }
+        .nav-links a:hover { color: #FFFFFF; border-bottom-color: var(--gold); }
+        .nav-links .btn { border-bottom-width: 1px; }
+        .nav-links .btn:hover { color: #0A0C10; }
 
-        .btn-nav-gold {
-            background: var(--gold-gradient);
-            color: #080A0D !important;
-            padding: 0.7rem 1.6rem;
-            border-radius: 6px;
-            font-weight: 800 !important;
-            transition: var(--transition);
-            box-shadow: 0 4px 18px var(--gold-glow);
-        }
-
-        .mobile-toggle {
+        .nav-toggle {
             display: none;
-            font-size: 1.8rem;
+            width: 44px;
+            height: 44px;
+            align-items: center;
+            justify-content: center;
             background: none;
-            border: none;
-            color: var(--gold-primary);
+            border: 1px solid var(--rule);
+            color: var(--gold);
             cursor: pointer;
         }
 
-        /* ==========================================
-           HERO SECTION
-           ========================================== */
-        .hero {
-            padding-top: 170px;
-            padding-bottom: 110px;
-            position: relative;
+        .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after {
+            content: "";
+            display: block;
+            width: 18px;
+            height: 1.5px;
+            background: currentColor;
+            transition: transform 0.35s var(--ease), opacity 0.2s linear;
         }
+        .nav-toggle span::before { transform: translateY(-6px); }
+        .nav-toggle span::after { transform: translateY(4.5px); }
+        .nav-toggle[aria-expanded="true"] span { background: transparent; }
+        .nav-toggle[aria-expanded="true"] span::before { transform: rotate(45deg); }
+        .nav-toggle[aria-expanded="true"] span::after { transform: rotate(-45deg) translateY(0); }
+
+        /* ==========================================
+           HERO — the axis
+           ========================================== */
+        .hero { padding-top: clamp(8rem, 15vw, 11rem); padding-bottom: var(--section-y); }
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.05fr 0.95fr;
-            gap: 3.5rem;
+            grid-template-columns: 1.02fr 0.98fr;
+            gap: clamp(2.5rem, 5vw, 4.5rem);
             align-items: center;
         }
 
-        .hero-text h1 {
-            font-size: 3.35rem;
+        .hero h1 {
+            font-size: clamp(2.6rem, 6.1vw, 4.5rem);
             font-weight: 800;
-            line-height: 1.15;
-            margin-bottom: 1.5rem;
-            color: #FFFFFF;
+            letter-spacing: -0.042em;
+            line-height: 0.98;
         }
 
-        .hero-text h1 span {
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .hero h1 em { font-style: normal; color: var(--gold); }
+
+        .line-mask { display: block; overflow: hidden; }
+        .line-mask > span { display: block; }
+
+        .hero-lede {
+            color: var(--mute);
+            font-size: 1.075rem;
+            max-width: 46ch;
+            margin-top: 1.75rem;
         }
 
-        .hero-text p {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            line-height: 1.7;
-        }
+        .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.25rem; }
 
-        .hero-cta {
+        /* Capability strip — introduces the discipline codes */
+        .code-strip {
             display: flex;
-            gap: 1.25rem;
-            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 3.25rem;
+            border-top: 1px solid var(--rule);
         }
 
-        .btn-gold {
-            background: var(--gold-gradient);
-            color: #080A0D;
-            padding: 0.95rem 2.25rem;
-            border-radius: 6px;
-            font-weight: 800;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 6px 20px var(--gold-glow);
+        .code-strip li {
+            flex: 1 1 140px;
+            padding: 1rem 1.1rem 0 0;
         }
 
-        .btn-gold:hover {
-            transform: translateY(-3px);
-            filter: brightness(1.08);
-        }
-
-        .btn-outline-silver {
-            background: rgba(255, 255, 255, 0.03);
-            color: #FFFFFF;
-            padding: 0.95rem 2.25rem;
-            border-radius: 6px;
-            font-weight: 700;
-            border: 1px solid var(--border-subtle);
-            transition: var(--transition);
-        }
-
-        .hero-image-frame {
-            position: relative;
-            border-radius: 14px;
-            overflow: hidden;
-            border: 1px solid var(--border-gold);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85), 0 0 30px var(--gold-glow);
-            background: var(--bg-card);
-            min-height: 300px;
-        }
-
-        .hero-image-frame img {
-            width: 100%;
-            height: auto;
+        .code-strip b {
             display: block;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+        }
+
+        .code-strip span {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--mute);
+            margin-top: 0.2rem;
+        }
+
+        /* The X figure */
+        .axis-figure { position: relative; }
+        .axis-figure svg { width: 100%; height: auto; overflow: visible; }
+        .axis-label { font-family: var(--font-mono); font-size: 14px; letter-spacing: 3px; fill: var(--mute); }
+        .axis-hair { stroke: var(--rule); stroke-width: 1; fill: none; }
+
+        .axis-stroke {
+            stroke: #fff;
+            stroke-width: 88;
+            fill: none;
+            stroke-dasharray: 545;
+            stroke-dashoffset: 545;
+        }
+
+        .js-ready .axis-stroke { animation: draw 1.35s var(--ease) forwards; }
+        .js-ready .axis-stroke:nth-child(2) { animation-delay: 0.18s; }
+        @keyframes draw { to { stroke-dashoffset: 0; } }
+
+        .fig-caption {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--mute);
+            margin-top: 1rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--rule);
         }
 
         /* ==========================================
-           ABOUT SECTION
+           ABOUT
            ========================================== */
-        .about-section {
-            background: linear-gradient(180deg, rgba(14, 18, 25, 0.6) 0%, rgba(9, 11, 14, 0.9) 100%);
-            border-top: 1px solid var(--border-subtle);
-            border-bottom: 1px solid var(--border-subtle);
-        }
-
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4.5rem;
-            align-items: center;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: clamp(2.5rem, 5vw, 4.5rem);
+            align-items: start;
         }
 
-        .acronym-frame {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            background: var(--bg-card);
-            border: 1px solid var(--border-gold);
-            padding: 0.5rem;
-        }
+        .frame { border: 1px solid var(--rule); padding: 0.5rem; background: var(--ink-raised); }
+        .frame img { width: 100%; height: auto; }
 
-        .acronym-frame img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 12px;
-        }
+        .about-copy h2 { font-size: clamp(1.75rem, 3vw, 2.4rem); font-weight: 700; }
+        .about-copy > p { color: var(--mute); margin-top: 1.15rem; font-size: 1.05rem; }
 
-        .about-content h3 {
-            font-size: 2.3rem;
-            font-weight: 800;
-            color: #FFFFFF;
-            margin-bottom: 1.25rem;
-        }
+        /* Vision / mission as a spec table, not cards */
+        .spec-list { margin-top: 2.5rem; border-top: 1px solid var(--rule); }
 
-        .about-content p {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            font-size: 1.075rem;
-        }
-
-        .vm-grid {
+        .spec-row {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.25rem;
+            grid-template-columns: 148px 1fr;
+            gap: 1.5rem;
+            padding-block: 1.5rem;
+            border-bottom: 1px solid var(--rule);
         }
 
-        .vm-card {
-            background-color: var(--bg-card);
-            border-left: 4px solid var(--gold-primary);
-            border-top: 1px solid var(--border-subtle);
-            border-right: 1px solid var(--border-subtle);
-            border-bottom: 1px solid var(--border-subtle);
-            padding: 1.5rem;
-            border-radius: 0 10px 10px 0;
-        }
-
-        .vm-card h4 {
-            color: #FFFFFF;
-            font-size: 1.15rem;
-            font-weight: 700;
-            margin-bottom: 0.4rem;
-        }
-
-        /* ==========================================
-           SERVICES / DIVISIONS SECTION
-           ========================================== */
-        .operational-collage-frame {
-            margin-bottom: 4rem;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--border-gold);
-            background: var(--bg-card);
-        }
-
-        .operational-collage-frame img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.2rem;
-        }
-
-        .service-card {
-            background: var(--bg-card);
-            padding: 2.5rem;
-            border-radius: 14px;
-            border: 1px solid var(--border-subtle);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--border-gold);
-            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.7), 0 0 25px var(--gold-glow);
-            background: var(--bg-card-hover);
-        }
-
-        .service-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 10px;
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid var(--border-gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            margin-bottom: 1.5rem;
-            color: var(--gold-primary);
-        }
-
-        .service-card h3 {
-            font-size: 1.35rem;
-            color: #FFFFFF;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .service-card p {
-            color: var(--text-muted);
-            font-size: 0.975rem;
-            margin-bottom: 1.75rem;
-        }
-
-        .service-card ul {
-            margin-top: auto;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-card ul li {
-            color: var(--silver-primary);
-            font-size: 0.925rem;
-            margin-bottom: 0.75rem;
-            position: relative;
-            padding-left: 1.4rem;
-        }
-
-        .service-card ul li::before {
-            content: "◆";
-            color: var(--gold-primary);
-            position: absolute;
-            left: 0;
-            font-size: 0.65rem;
-            top: 2px;
-        }
-
-        /* ==========================================
-           CLIENTS & PARTNERS SECTION
-           ========================================== */
-        .trust-section {
-            background: linear-gradient(180deg, #090B0E 0%, #10141C 100%);
-            border-top: 1px solid var(--border-subtle);
-            border-bottom: 1px solid var(--border-subtle);
-        }
-
-        .trust-group {
-            margin-bottom: 4rem;
-        }
-
-        .trust-group-title {
-            font-size: 1.25rem;
-            color: var(--gold-primary);
-            margin-bottom: 1.75rem;
+        .spec-row dt {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+            color: var(--gold);
+            padding-top: 0.2rem;
         }
 
-        .trust-group-title::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, var(--border-gold) 0%, transparent 100%);
-        }
+        .spec-row dd { margin: 0; color: var(--silver); font-size: 0.98rem; }
 
-        .cards-grid {
+        /* ==========================================
+           DIVISIONS
+           ========================================== */
+        .divisions { display: grid; gap: 1px; background: var(--rule); border-block: 1px solid var(--rule); }
+
+        .dv { background: var(--ink); transition: background-color 0.4s var(--ease); }
+        .dv:hover { background: var(--ink-raised); }
+
+        .dv-head {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: 96px 56px 1fr auto;
+            align-items: center;
+            gap: 1.5rem;
+            width: 100%;
+            padding: clamp(1.75rem, 3vw, 2.4rem) clamp(1.25rem, 3vw, 2.25rem);
+            background: none;
+            border: none;
+            color: inherit;
+            font: inherit;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .dv-code {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            color: var(--gold);
+        }
+
+        .dv-icon { color: var(--gold); opacity: 0.85; transition: opacity 0.3s var(--ease); }
+        .dv:hover .dv-icon { opacity: 1; }
+
+        .dv-title { display: block; font-family: var(--font-display); font-size: clamp(1.15rem, 2vw, 1.5rem); font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em; line-height: 1.15; }
+        .dv-sub { display: block; color: var(--mute); font-size: 0.92rem; line-height: 1.5; margin-top: 0.4rem; max-width: 52ch; }
+
+        .dv-sign {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--rule);
+            display: grid;
+            place-items: center;
+            color: var(--gold);
+            flex: none;
+            transition: border-color 0.3s var(--ease);
+        }
+
+        .dv-head:hover .dv-sign { border-color: var(--rule-gold); }
+
+        .dv-sign::before {
+            content: "+";
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            line-height: 1;
+            transition: transform 0.4s var(--ease);
+        }
+
+        .dv-head[aria-expanded="true"] .dv-sign { border-color: var(--rule-gold); }
+        .dv-head[aria-expanded="true"] .dv-sign::before { transform: rotate(45deg); }
+
+        .dv-panel {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.5s var(--ease);
+        }
+
+        .dv-head[aria-expanded="true"] + .dv-panel { grid-template-rows: 1fr; }
+        .dv-panel > div { overflow: hidden; }
+
+        .dv-panel-inner {
+            padding: 0 clamp(1.25rem, 3vw, 2.25rem) clamp(1.75rem, 3vw, 2.4rem);
+            display: grid;
+            grid-template-columns: 152px 1fr;
             gap: 1.5rem;
         }
 
-        .trust-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 12px;
-            padding: 1.75rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: var(--transition);
+        .dv-scope { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.4rem 2.5rem; }
+
+        .dv-scope li {
             position: relative;
-            overflow: hidden;
+            padding-left: 1.6rem;
+            font-size: 0.94rem;
+            color: var(--silver);
+            padding-block: 0.35rem;
         }
 
-        .trust-card:hover {
-            border-color: var(--border-gold);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8), 0 0 20px var(--gold-glow);
-            background-color: var(--bg-card-hover);
+        .dv-scope li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 1.05em;
+            width: 10px;
+            height: 1px;
+            background: var(--gold);
         }
 
-        .trust-card-logo {
-            width: 100%;
-            height: 90px;
-            background: #FFFFFF;
-            border-radius: 8px;
+        /* ==========================================
+           CLIENTS & PARTNERS
+           ========================================== */
+        .group-label {
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 0.75rem;
-            margin-bottom: 1.25rem;
-            overflow: hidden;
-            position: relative;
+            gap: 1.25rem;
+            margin-bottom: 1.75rem;
         }
 
-        .trust-card-logo img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
+        .group-label::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(238px, 1fr)); gap: 1.25rem; }
+
+        .tile {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--rule);
+            padding: 1.25rem;
+            transition: border-color 0.35s var(--ease), transform 0.35s var(--ease), background-color 0.35s var(--ease);
         }
+
+        a.tile:hover { border-color: var(--rule-gold); transform: translateY(-4px); background: var(--ink-raised); }
+
+        .tile-plate {
+            height: 84px;
+            background: var(--plate);
+            display: grid;
+            place-items: center;
+            padding: 0.85rem;
+            margin-bottom: 1.15rem;
+        }
+
+        .tile-plate img { max-height: 100%; width: auto; object-fit: contain; }
 
         .logo-fallback-badge {
-            font-weight: 800;
-            font-size: 1.1rem;
-            color: #0F172A;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #0A0C10;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.06em;
             text-align: center;
         }
 
-        .trust-card-name {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #FFFFFF;
-            margin-bottom: 0.35rem;
-        }
+        .tile-name { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: #FFFFFF; }
+        .tile-cat { font-size: 0.85rem; color: var(--mute); margin-top: 0.15rem; }
 
-        .trust-card-category {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-        }
-
-        .trust-card-action {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--gold-primary);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            margin-top: auto;
-            transition: var(--transition);
-        }
-
-        .trust-card:hover .trust-card-action {
-            color: #FFFFFF;
-            transform: translateX(3px);
-        }
-
-        /* ==========================================
-           TRAINING ACADEMY CTA BANNER
-           ========================================== */
-        .academy-banner {
-            background: linear-gradient(135deg, #161B26 0%, #0C0F15 100%);
-            border: 1px solid var(--border-gold);
-            border-radius: 18px;
-            padding: 4.5rem 2.5rem;
-            text-align: center;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--gold-glow);
-        }
-
-        .academy-banner h3 {
-            font-size: 2.4rem;
-            color: #FFFFFF;
-            margin-bottom: 1.2rem;
-            font-weight: 800;
-        }
-
-        .academy-banner p {
-            color: var(--text-muted);
-            max-width: 780px;
-            margin: 0 auto 2.5rem auto;
-            font-size: 1.125rem;
-        }
-
-        /* ==========================================
-           CONTACT & FOOTER
-           ========================================== */
-        .contact-section {
-            background-color: var(--bg-obsidian);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4.5rem;
-        }
-
-        .contact-info h3 {
-            font-size: 2.2rem;
-            color: #FFFFFF;
-            margin-bottom: 1rem;
-            font-weight: 800;
-        }
-
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-            margin-top: 1.5rem;
-        }
-
-        .contact-detail-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            color: var(--silver-primary);
-            font-weight: 600;
-            background: var(--bg-card);
-            padding: 1rem 1.25rem;
-            border-radius: 10px;
-            border: 1px solid var(--border-subtle);
-        }
-
-        .contact-form form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
-
-        .form-group input, 
-        .form-group textarea {
-            width: 100%;
-            padding: 1.1rem 1.25rem;
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 8px;
-            outline: none;
-            font-size: 0.975rem;
-            color: #FFFFFF;
-            transition: var(--transition);
-        }
-
-        .form-group input:focus, 
-        .form-group textarea:focus {
-            border-color: var(--gold-primary);
-            box-shadow: 0 0 15px var(--gold-glow);
-        }
-
-        footer {
-            background-color: #060709;
-            color: var(--text-muted);
-            padding: 4rem 0 2.5rem 0;
-            border-top: 1px solid var(--border-subtle);
-        }
-
-        .footer-top {
+        .tile-foot {
+            font-family: var(--font-mono);
+            font-size: 0.66rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--mute);
+            margin-top: 1.25rem;
+            padding-top: 0.85rem;
+            border-top: 1px solid var(--rule);
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding-bottom: 2.5rem;
-            border-bottom: 1px solid var(--border-subtle);
+            gap: 0.5rem;
         }
 
-        .footer-logo img {
-            height: 46px;
-            width: auto;
-            border-radius: 6px;
-            border: 1px solid var(--border-gold);
-        }
+        a.tile:hover .tile-foot { color: var(--gold); }
 
-        .footer-bottom {
+        /* ==========================================
+           ACADEMY
+           ========================================== */
+        .academy {
+            border: 1px solid var(--rule-gold);
+            padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+            background:
+                radial-gradient(ellipse 70% 120% at 50% 0%, rgba(212, 175, 55, 0.07) 0%, transparent 70%),
+                var(--ink-raised);
             text-align: center;
-            padding-top: 2rem;
-            font-size: 0.9rem;
         }
 
+        .academy h2 { font-size: clamp(1.9rem, 3.6vw, 2.8rem); font-weight: 700; }
+        .academy p { color: var(--mute); max-width: 62ch; margin: 1.15rem auto 2.25rem; font-size: 1.05rem; }
+
+        /* ==========================================
+           CONTACT
+           ========================================== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: clamp(2.5rem, 5vw, 4.5rem);
+            align-items: start;
+        }
+
+        .contact-copy h2 { font-size: clamp(1.75rem, 3vw, 2.4rem); font-weight: 700; }
+        .contact-copy > p { color: var(--mute); margin-top: 1.15rem; }
+
+        .contact-table { margin-top: 2.25rem; border-top: 1px solid var(--rule); }
+
+        .contact-table .spec-row { grid-template-columns: 108px 1fr; padding-block: 1.15rem; }
+        .contact-table dd a:hover { color: var(--gold); }
+        .contact-table .note { display: block; font-size: 0.78rem; color: var(--mute); }
+
+        .form { display: grid; gap: 1.25rem; }
+
+        .field { display: grid; gap: 0.5rem; }
+
+        .field label {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--mute);
+        }
+
+        .field input, .field textarea {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            background: var(--ink-raised);
+            border: 1px solid var(--rule);
+            color: #FFFFFF;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            transition: border-color 0.3s var(--ease), background-color 0.3s var(--ease);
+        }
+
+        .field textarea { resize: vertical; min-height: 120px; }
+        .field input:focus, .field textarea:focus { outline: none; border-color: var(--gold); background: #0D1016; }
+        .field input:focus-visible, .field textarea:focus-visible { outline: none; }
+
+        .form-status { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); min-height: 1.2em; }
+
+        /* ==========================================
+           FOOTER — title block
+           ========================================== */
+        footer { border-top: 1px solid var(--rule); padding-block: clamp(2.5rem, 5vw, 4rem) 2rem; }
+
+        .title-block {
+            display: grid;
+            grid-template-columns: 1.4fr repeat(3, 1fr);
+            border: 1px solid var(--rule);
+        }
+
+        .tb-cell { padding: 1.35rem 1.4rem; border-left: 1px solid var(--rule); }
+        .tb-cell:first-child { border-left: none; display: flex; align-items: center; }
+        .tb-cell img { height: 40px; width: auto; }
+
+        .tb-key {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--mute);
+            margin-bottom: 0.45rem;
+        }
+
+        .tb-val { font-family: var(--font-display); font-size: 0.95rem; font-weight: 600; color: #FFFFFF; }
+
+        .footer-foot {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--mute);
+        }
+
+        .footer-foot nav { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+        .footer-foot a:hover { color: var(--gold); }
+
+        /* ==========================================
+           SCROLL REVEAL
+           ========================================== */
+        .js-ready .reveal { opacity: 0; transform: translateY(16px); }
+        .js-ready .reveal.in-view {
+            opacity: 1;
+            transform: none;
+            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+        }
+
+        .js-ready .hero-stagger > * { opacity: 0; transform: translateY(14px); animation: rise 0.85s var(--ease) forwards; }
+        .js-ready .hero-stagger > *:nth-child(1) { animation-delay: 0.05s; }
+        .js-ready .hero-stagger > *:nth-child(2) { animation-delay: 0.15s; }
+        .js-ready .hero-stagger > *:nth-child(3) { animation-delay: 0.28s; }
+        .js-ready .hero-stagger > *:nth-child(4) { animation-delay: 0.38s; }
+        .js-ready .hero-stagger > *:nth-child(5) { animation-delay: 0.48s; }
+        @keyframes rise { to { opacity: 1; transform: none; } }
+
+        /* ==========================================
+           RESPONSIVE
+           ========================================== */
         @media (max-width: 992px) {
             .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
-            .hero-text h1 { font-size: 2.75rem; }
-            .hero { padding-top: 150px; }
+            .axis-figure { max-width: 460px; margin-inline: auto; }
+            .dv-panel-inner { grid-template-columns: 1fr; }
+            .title-block { grid-template-columns: 1fr 1fr; }
+            .tb-cell:nth-child(3) { border-left: none; }
+            .tb-cell:nth-child(n+3) { border-top: 1px solid var(--rule); }
         }
 
         @media (max-width: 768px) {
+            .nav-toggle { display: flex; }
+
             .nav-links {
                 position: fixed;
-                top: 90px;
-                left: 0;
-                width: 100%;
-                background-color: rgba(9, 11, 14, 0.98);
+                inset: 84px 0 auto 0;
                 flex-direction: column;
-                padding: 3rem 0;
-                clip-path: circle(0% at 100% 0);
-                transition: clip-path 0.4s ease-in-out;
+                align-items: stretch;
+                gap: 0;
+                background: rgba(10, 12, 16, 0.985);
+                border-bottom: 1px solid var(--rule);
+                padding: 1rem var(--gutter) 2rem;
+                transform: translateY(-12px);
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), visibility 0.3s;
             }
 
-            .nav-links.active { clip-path: circle(140% at 100% 0); }
-            .mobile-toggle { display: block; }
-            .hero-cta { flex-direction: column; }
-            .btn-gold, .btn-outline-silver { width: 100%; text-align: center; }
+            .nav-links.is-open { opacity: 1; transform: none; visibility: visible; }
+            .nav-links a { padding-block: 1rem; border-bottom: 1px solid var(--rule); }
+            .nav-links .btn { justify-content: flex-start; margin-top: 1rem; border: 1px solid var(--gold); }
+
+            .code-strip li { flex: 1 1 100%; padding: 0.85rem 0; border-bottom: 1px solid var(--rule); }
+            .dv-head { grid-template-columns: 1fr auto; gap: 1rem 1.25rem; }
+            .dv-code { grid-column: 1 / -1; }
+            .dv-scope { grid-template-columns: 1fr; }
+            .dv-icon { display: none; }
+            .spec-row { grid-template-columns: 1fr; gap: 0.5rem; }
+            .contact-table .spec-row { grid-template-columns: 1fr; }
+            .title-block { grid-template-columns: 1fr; }
+            .tb-cell { border-left: none; border-top: 1px solid var(--rule); }
+            .tb-cell:first-child { border-top: none; }
+            .btn { width: 100%; }
+            .academy .btn { width: auto; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+            }
+            .js-ready .reveal, .js-ready .hero-stagger > * { opacity: 1; transform: none; }
+            .axis-stroke { stroke-dashoffset: 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER / NAVIGATION -->
-    <header>
-        <div class="container nav-container">
-            <a href="#" class="brand-logo">
-                <img src="./assets/images/nexo-logo.png" alt="NEXO Engineering & Contracting - شركة نكسو للهندسة والمقاولات" onerror="this.onerror=null; this.src='https://placehold.co/180x50/121620/D4AF37?text=NEXO+LOGO';">
+    <!-- HEADER -->
+    <header id="siteHeader">
+        <div class="container nav-bar">
+            <a href="#" class="brand" aria-label="NEXO Engineering & Contracting — home">
+                <img src="./assets/images/nexo-logo.png" width="180" height="44" alt="NEXO Engineering &amp; Contracting - شركة نكسو للهندسة والمقاولات" onerror="this.onerror=null; this.src='https://placehold.co/180x44/10131A/D4AF37?text=NEXO';">
             </a>
-            <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation">☰</button>
+            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu"><span></span></button>
             <nav class="nav-links" id="navLinks">
-                <a href="#about">About NEXO</a>
-                <a href="#services">Divisions</a>
-                <a href="#portfolio">Clients & Partners</a>
+                <a href="#about">About</a>
+                <a href="#divisions">Divisions</a>
+                <a href="#network">Clients</a>
                 <a href="#academy">Academy</a>
-                <a href="#contact" class="btn-nav-gold">Get In Touch</a>
+                <a href="#contact" class="btn btn--gold">Get in touch</a>
             </nav>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <main>
+
+    <!-- HERO -->
     <section class="hero">
         <div class="container">
             <div class="hero-grid">
-                <div class="hero-text">
-                    <span class="badge-gold">
-                        <span>📍</span> Baghdad, Iraq
-                    </span>
-                    <h1>Connecting Vision with <span>Structural Excellence</span></h1>
-                    <p>NEXO Engineering & Contracting Co. is a premier engineering entity in Iraq—delivering state-of-the-art architectural design, heavy civil contracting, and specialized capacity-building technical training.</p>
+                <div class="hero-stagger">
+                    <p class="mono eyebrow">Baghdad · Iraq</p>
+                    <h1>
+                        <span class="line-mask"><span>Vision meets</span></span>
+                        <span class="line-mask"><span><em>structural</em> execution</span></span>
+                    </h1>
+                    <p class="hero-lede">NEXO Engineering &amp; Contracting designs, builds, and teaches — architectural and structural modelling, heavy civil contracting, and the technical training that keeps both standing.</p>
                     <div class="hero-cta">
-                        <a href="#services" class="btn-gold">Explore Our Divisions <span>→</span></a>
-                        <a href="#contact" class="btn-outline-silver">Request Consultation</a>
+                        <a href="#divisions" class="btn btn--gold">See the divisions <span class="arw" aria-hidden="true">→</span></a>
+                        <a href="#contact" class="btn">Request a consultation</a>
                     </div>
+                    <ul class="code-strip">
+                        <li><b>A—</b><span>Architectural &amp; structural design</span></li>
+                        <li><b>C—</b><span>General contracting</span></li>
+                        <li><b>T—</b><span>Training academy</span></li>
+                    </ul>
                 </div>
-                <!-- Hero Building Image -->
-                <div class="hero-image-frame">
-                    <img src="./assets/images/hero-facade.png" alt="NEXO Headquarters Facade" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80';">
-                </div>
+
+                <!-- The axis: the brand mark as structural diagram -->
+                <figure class="axis-figure" style="margin:0">
+                    <svg viewBox="0 0 480 480" role="img" aria-label="The NEXO mark drawn as two crossing structural axes: design and execution meeting at a node.">
+                        <defs>
+                            <linearGradient id="goldFill" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#F3E5AB"/>
+                                <stop offset="52%" stop-color="#D4AF37"/>
+                                <stop offset="100%" stop-color="#8A6F2E"/>
+                            </linearGradient>
+                            <mask id="axisMask">
+                                <line class="axis-stroke" x1="70" y1="60" x2="410" y2="440"/>
+                                <line class="axis-stroke" x1="410" y1="60" x2="70" y2="440"/>
+                            </mask>
+                        </defs>
+
+                        <!-- construction lines -->
+                        <rect class="axis-hair" x="70" y="60" width="340" height="380"/>
+                        <line class="axis-hair" x1="0" y1="250" x2="480" y2="250"/>
+                        <line class="axis-hair" x1="240" y1="20" x2="240" y2="470"/>
+
+                        <g mask="url(#axisMask)">
+                            <rect x="60" y="50" width="360" height="400" fill="url(#goldFill)"/>
+                            <image href="./assets/images/hero-facade.png" x="60" y="50" width="360" height="400"
+                                   preserveAspectRatio="xMidYMid slice" opacity="0.82"
+                                   onerror="this.onerror=null; this.setAttribute('href','https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;w=900&amp;q=80');"/>
+                        </g>
+
+                        <circle cx="240" cy="250" r="6" fill="#0A0C10" stroke="#D4AF37" stroke-width="1.5"/>
+                        <text class="axis-label" x="70" y="42">DESIGN</text>
+                        <text class="axis-label" x="410" y="42" text-anchor="end">EXECUTION</text>
+                    </svg>
+                    <figcaption class="fig-caption">Fig. 01 — Two axes, one node</figcaption>
+                </figure>
             </div>
         </div>
     </section>
 
-    <!-- ABOUT SECTION WITH ACRONYM SHOWCASE -->
-    <section class="section-padding about-section" id="about">
+    <!-- ABOUT -->
+    <section class="section section--ruled" id="about">
         <div class="container">
             <div class="about-grid">
-                <div class="acronym-frame">
-                    <img src="./assets/images/about.png" alt="NEXO - Next-Generation Engineering eXcellence Organization" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80';">
-                </div>
-                <div class="about-content">
-                    <span class="badge-gold">Who We Are</span>
-                    <h3>Next-Generation Engineering eXcellence Organization</h3>
-                    <p>Rooted in Baghdad, NEXO is engineered to bridge modern BIM technical modeling with rigorous site execution. We unify engineering precision, advanced construction chemicals, and local workforce development.</p>
-                    
-                    <div class="vm-grid">
-                        <div class="vm-card">
-                            <h4><span></span> Our Vision</h4>
-                            <p>To be Iraq’s leading multidisciplinary engineering powerhouse—setting new benchmarks in architectural modeling, structural durability, and technical education.</p>
-                        </div>
-                        <div class="vm-card">
-                            <h4><span></span> Our Mission</h4>
-                            <p>Delivering turnkey civil contracting, architectural precision, and practical software workshops by pairing international engineering standards with strategic industrial partnerships.</p>
-                        </div>
+                <figure class="reveal" style="margin:0">
+                    <div class="frame">
+                        <img src="./assets/images/about.png" width="800" height="600" loading="lazy" decoding="async" alt="NEXO — Next-Generation Engineering eXcellence Organization" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&amp;fit=crop&amp;w=800&amp;q=80';">
                     </div>
+                    <figcaption class="fig-caption">Fig. 02 — The mark, expanded</figcaption>
+                </figure>
+
+                <div class="about-copy reveal">
+                    <p class="mono eyebrow">Who we are</p>
+                    <h2>Next-Generation Engineering eXcellence Organization</h2>
+                    <p>Rooted in Baghdad, NEXO closes the gap between the model and the site. We bring BIM-grade technical modelling, advanced construction chemistry, and local workforce development under one practice — so what gets drawn is what gets built.</p>
+
+                    <dl class="spec-list">
+                        <div class="spec-row">
+                            <dt>Vision</dt>
+                            <dd>To be Iraq's leading multidisciplinary engineering practice, setting the benchmark for architectural modelling, structural durability, and technical education.</dd>
+                        </div>
+                        <div class="spec-row">
+                            <dt>Mission</dt>
+                            <dd>Deliver turnkey civil contracting, architectural precision, and practical software training by pairing international engineering standards with strategic industrial partnerships.</dd>
+                        </div>
+                        <div class="spec-row">
+                            <dt>Where we work</dt>
+                            <dd>Commercial, hospitality, petroleum, and urban development projects across Iraq — from concept package to handover.</dd>
+                        </div>
+                    </dl>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- DIVISIONS & SERVICES SECTION -->
-    <section class="section-padding divisions-section" id="services">
+    <!-- DIVISIONS -->
+    <section class="section section--ruled" id="divisions">
         <div class="container">
-            <div class="section-title">
-                <span class="badge-gold">Our Capabilities</span>
-                <h2>Core Operational Divisions</h2>
-                <p>Comprehensive engineering services spanning BIM design modeling, major civil contracting, and hands-on academy training. Click any division below to view detailed works.</p>
+            <div class="section-head reveal">
+                <p class="mono eyebrow">Capabilities</p>
+                <h2>Three divisions, one practice</h2>
+                <p>Each runs its own discipline and its own crew. Open one to see the scope of work.</p>
             </div>
 
-            <!-- OPERATIONAL DIVISIONS COLLAGE -->
-            <div class="operational-collage-frame">
-                <img src="./assets/images/operations-collage.png" alt="NEXO Operations" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=1200&q=80';">
-            </div>
+            <div class="divisions reveal">
 
-            <div class="services-grid">
-                <!-- Division 1 -->
-                <a href="architectural-design.html" target="_blank" class="service-card">
-                    <div class="service-icon">📐</div>
-                    <h3>Architectural & Structural Design</h3>
-                    <p>Conceptual and detailed engineering calculations built to strict international codes.</p>
-                    <ul>
-                        <li>Architectural Spatial Planning & 3D Visualizations</li>
-                        <li>Structural Calculations & BIM Modeling</li>
-                        <li>Civil Layout Optimization</li>
-                        <li>Exterior Facade & Interior Engineering</li>
-                    </ul>
-                    <span class="btn-gold" style="width: 100%; text-align: center;">View Projects & Details ↗</span>
-                </a>
+                <!-- A — Architectural & Structural Design -->
+                <div class="dv">
+                    <button class="dv-head" type="button" aria-expanded="false" aria-controls="dv-a">
+                        <span class="dv-code">A—01</span>
+                        <span class="dv-icon" aria-hidden="true">
+                            <svg width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25">
+                                <rect x="3.5" y="5.5" width="25" height="21"/>
+                                <path d="M18.5 5.5v12M3.5 17.5h15"/>
+                                <path d="M8 26.5a6 6 0 0 1 6-6"/>
+                            </svg>
+                        </span>
+                        <span>
+                            <span class="dv-title">Architectural &amp; Structural Design</span>
+                            <span class="dv-sub">Concept packages and detailed calculations to international code.</span>
+                        </span>
+                        <span class="dv-sign" aria-hidden="true"></span>
+                    </button>
+                    <div class="dv-panel" id="dv-a" role="region">
+                        <div><div class="dv-panel-inner">
+                            <p class="mono">Scope of work</p>
+                            <ul class="dv-scope">
+                                <li>Architectural spatial planning &amp; 3D visualisation</li>
+                                <li>Structural calculations &amp; BIM modelling</li>
+                                <li>Civil layout optimisation</li>
+                                <li>Exterior facade &amp; interior engineering</li>
+                            </ul>
+                        </div></div>
+                    </div>
+                </div>
 
-                <!-- Division 2 -->
-                <a href="general-contracting.html" target="_blank" class="service-card">
-                    <div class="service-icon">🏗️</div>
-                    <h3>General Contracting & Construction</h3>
-                    <p>Turnkey execution for commercial, petroleum, hospitality, and urban developments.</p>
-                    <ul>
-                        <li>High-Rise Structural Construction</li>
-                        <li>Petroleum & Industrial Infrastructure</li>
-                        <li>MEP Systems Integration</li>
-                        <li>Structural Rehabilitation & Retrofitting</li>
-                    </ul>
-                    <span class="btn-gold" style="width: 100%; text-align: center;">View Projects & Details ↗</span>
-                </a>
+                <!-- C — General Contracting -->
+                <div class="dv">
+                    <button class="dv-head" type="button" aria-expanded="false" aria-controls="dv-c">
+                        <span class="dv-code">C—02</span>
+                        <span class="dv-icon" aria-hidden="true">
+                            <svg width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25">
+                                <path d="M5 27V7h22v20"/>
+                                <path d="M5 7l22 20"/>
+                                <path d="M2 29h28"/>
+                            </svg>
+                        </span>
+                        <span>
+                            <span class="dv-title">General Contracting &amp; Construction</span>
+                            <span class="dv-sub">Turnkey execution for commercial, petroleum, hospitality, and urban work.</span>
+                        </span>
+                        <span class="dv-sign" aria-hidden="true"></span>
+                    </button>
+                    <div class="dv-panel" id="dv-c" role="region">
+                        <div><div class="dv-panel-inner">
+                            <p class="mono">Scope of work</p>
+                            <ul class="dv-scope">
+                                <li>High-rise structural construction</li>
+                                <li>Petroleum &amp; industrial infrastructure</li>
+                                <li>MEP systems integration</li>
+                                <li>Structural rehabilitation &amp; retrofitting</li>
+                            </ul>
+                        </div></div>
+                    </div>
+                </div>
 
-                <!-- Division 3 -->
-                <a href="training-academy.html" target="_blank" class="service-card">
-                    <div class="service-icon">🎓</div>
-                    <h3>Training & Capacity Academy</h3>
-                    <p>Empowering engineers across Iraq with industry-standard software and site expertise.</p>
-                    <ul>
-                        <li>BIM (Revit, ETABS, AutoCAD, Primavera P6)</li>
-                        <li>Site Supervision & HSE Standards</li>
-                        <li>Concrete Testing & Chemical Application</li>
-                        <li>Technical Masterclasses & Certification</li>
-                    </ul>
-                    <span class="btn-gold" style="width: 100%; text-align: center;">View Workshops & Details ↗</span>
-                </a>
+                <!-- T — Training Academy -->
+                <div class="dv">
+                    <button class="dv-head" type="button" aria-expanded="false" aria-controls="dv-t">
+                        <span class="dv-code">T—03</span>
+                        <span class="dv-icon" aria-hidden="true">
+                            <svg width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25">
+                                <rect x="2.5" y="4.5" width="27" height="19"/>
+                                <path d="M12 28h8M16 23.5V28"/>
+                                <path d="M11 12.5l5-2.5 5 2.5v5l-5 2.5-5-2.5z"/>
+                                <path d="M16 15l5-2.5M16 15v5M16 15l-5-2.5"/>
+                            </svg>
+                        </span>
+                        <span>
+                            <span class="dv-title">Training &amp; Capacity Academy</span>
+                            <span class="dv-sub">Industry-standard software and site expertise for engineers across Iraq.</span>
+                        </span>
+                        <span class="dv-sign" aria-hidden="true"></span>
+                    </button>
+                    <div class="dv-panel" id="dv-t" role="region">
+                        <div><div class="dv-panel-inner">
+                            <p class="mono">Scope of work</p>
+                            <ul class="dv-scope">
+                                <li>BIM — Revit, ETABS, AutoCAD, Primavera P6</li>
+                                <li>Site supervision &amp; HSE standards</li>
+                                <li>Concrete testing &amp; chemical application</li>
+                                <li>Technical masterclasses &amp; certification</li>
+                            </ul>
+                        </div></div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- CLIENTS & PARTNERS SECTION -->
-    <section class="section-padding trust-section" id="portfolio">
+    <!-- CLIENTS & PARTNERS -->
+    <section class="section section--ruled" id="network">
         <div class="container">
-            <div class="section-title">
-                <span class="badge-gold">Strategic Network</span>
-                <h2>Clients & Industry Partners</h2>
-                <p>Collaborating with top-tier developers, energy leaders, and global construction chemical pioneers.</p>
+            <div class="section-head reveal">
+                <p class="mono eyebrow">Network</p>
+                <h2>Who we build with</h2>
+                <p>Developers, energy operators, and the construction-chemistry suppliers behind the work.</p>
             </div>
 
-            <!-- Key Clients -->
-            <div class="trust-group">
-                <div class="trust-group-title">Valued Clients</div>
-                <div class="cards-grid">
-                    
-                    <a href="https://rixosbaghdadresidences.com/" target="_blank" rel="noopener noreferrer" class="trust-card">
-                        <div class="trust-card-logo">
-                            <img src="./assets/images/rixos.png" alt="Rixos Baghdad Hotel & Residences - فندق وشقق ريكسوس بغداد" 
-                                 onerror="this.onerror=null; this.src='https://logo.clearbit.com/rixos.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">RIXOS BAGHDAD</span>'; }">
+            <div class="reveal" style="margin-bottom:3.5rem">
+                <p class="mono group-label">Clients</p>
+                <div class="grid-cards">
+
+                    <a href="https://rixosbaghdadresidences.com/" target="_blank" rel="noopener noreferrer" class="tile">
+                        <div class="tile-plate">
+                            <img src="./assets/images/rixos.png" width="160" height="60" loading="lazy" decoding="async" alt="Rixos Baghdad Hotel &amp; Residences - فندق وشقق ريكسوس بغداد"
+                                 onerror="this.onerror=null; this.src='https://logo.clearbit.com/rixos.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>Rixos Baghdad</span>'; }">
                         </div>
-                        <div>
-                            <div class="trust-card-name">Rixos Baghdad</div>
-                            <div class="trust-card-category">Luxury Hospitality & Residences</div>
-                        </div>
-                        <div class="trust-card-action">Visit Web Page ↗</div>
+                        <div class="tile-name">Rixos Baghdad</div>
+                        <div class="tile-cat">Luxury hospitality &amp; residences</div>
+                        <div class="tile-foot"><span>Client</span><span aria-hidden="true">Visit ↗</span></div>
                     </a>
 
-                    <a href="https://www.ebspetroleum.com/" target="_blank" rel="noopener noreferrer" class="trust-card">
-                        <div class="trust-card-logo">
-                            <img src="./assets/images/ebs-petroleum.png" alt="EBS Petroleum Company Limited" 
-                                 onerror="this.onerror=null; this.src='https://logo.clearbit.com/ebspetroleum.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">EBS PETROLEUM</span>'; }">
+                    <a href="https://www.ebspetroleum.com/" target="_blank" rel="noopener noreferrer" class="tile">
+                        <div class="tile-plate">
+                            <img src="./assets/images/ebs-petroleum.png" width="160" height="60" loading="lazy" decoding="async" alt="EBS Petroleum Company Limited"
+                                 onerror="this.onerror=null; this.src='https://logo.clearbit.com/ebspetroleum.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>EBS Petroleum</span>'; }">
                         </div>
-                        <div>
-                            <div class="trust-card-name">EBS Petroleum</div>
-                            <div class="trust-card-category">Energy & Industrial Sector</div>
-                        </div>
-                        <div class="trust-card-action">Visit Web Page ↗</div>
+                        <div class="tile-name">EBS Petroleum</div>
+                        <div class="tile-cat">Energy &amp; industrial</div>
+                        <div class="tile-foot"><span>Client</span><span aria-hidden="true">Visit ↗</span></div>
                     </a>
 
-                    <a href="https://ramlah.co/millennium" target="_blank" rel="noopener noreferrer" class="trust-card">
-                        <div class="trust-card-logo">
-                            <img src="./assets/images/millennium-towers.png" alt="TOWERS MILLENNIUM by RAMLAH - ابراج ميلينيوم من رملة" 
-                                 onerror="this.onerror=null; this.src='https://logo.clearbit.com/ramlah.co'; this.onerror=function(){ this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">MILLENNIUM TOWER</span>'; }">
+                    <a href="https://ramlah.co/millennium" target="_blank" rel="noopener noreferrer" class="tile">
+                        <div class="tile-plate">
+                            <img src="./assets/images/millennium-towers.png" width="160" height="60" loading="lazy" decoding="async" alt="TOWERS MILLENNIUM by RAMLAH - ابراج ميلينيوم من رملة"
+                                 onerror="this.onerror=null; this.src='https://logo.clearbit.com/ramlah.co'; this.onerror=function(){ this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>Millennium Tower</span>'; }">
                         </div>
-                        <div>
-                            <div class="trust-card-name">Millennium Tower</div>
-                            <div class="trust-card-category">Ramlah Urban Developments</div>
-                        </div>
-                        <div class="trust-card-action">Visit Web Page ↗</div>
+                        <div class="tile-name">Millennium Tower</div>
+                        <div class="tile-cat">Ramlah urban developments</div>
+                        <div class="tile-foot"><span>Client</span><span aria-hidden="true">Visit ↗</span></div>
                     </a>
 
-                    <a href="https://modoniq.com/ar/future-city/" target="_blank" rel="noopener noreferrer" class="trust-card">
-                        <div class="trust-card-logo">
-                            <img src="./assets/images/future-city.png" alt="Modon Future City - مدن" 
-                                 onerror="this.onerror=null; this.src='https://logo.clearbit.com/modoniq.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">FUTURE CITY</span>'; }">
+                    <a href="https://modoniq.com/ar/future-city/" target="_blank" rel="noopener noreferrer" class="tile">
+                        <div class="tile-plate">
+                            <img src="./assets/images/future-city.png" width="160" height="60" loading="lazy" decoding="async" alt="Modon Future City - مدن"
+                                 onerror="this.onerror=null; this.src='https://logo.clearbit.com/modoniq.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>Future City</span>'; }">
                         </div>
-                        <div>
-                            <div class="trust-card-name">Future City</div>
-                            <div class="trust-card-category">Modon Developments</div>
-                        </div>
-                        <div class="trust-card-action">Visit Web Page ↗</div>
+                        <div class="tile-name">Future City</div>
+                        <div class="tile-cat">Modon developments</div>
+                        <div class="tile-foot"><span>Client</span><span aria-hidden="true">Visit ↗</span></div>
                     </a>
                 </div>
             </div>
 
-            <!-- Strategic Partners & Suppliers -->
-            <div class="trust-group">
-                <div class="trust-group-title">Strategic Partners & Chemical Suppliers</div>
-                <div class="cards-grid">
+            <div class="reveal">
+                <p class="mono group-label">Partners &amp; suppliers</p>
+                <div class="grid-cards">
 
-                    <div class="trust-card">
-                        <div class="trust-card-logo">
-                            <img src="./assets/images/sika.png" alt="Sika - Building Trust" 
-                                 onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">SIKA</span>';">
+                    <div class="tile">
+                        <div class="tile-plate">
+                            <img src="./assets/images/sika.png" width="160" height="60" loading="lazy" decoding="async" alt="Sika"
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>Sika</span>';">
                         </div>
-                        <div>
-                            <div class="trust-card-name">Sika</div>
-                            <div class="trust-card-category">Construction Chemicals & Solutions</div>
-                        </div>
-                        <div class="trust-card-action">Building Trust</div>
+                        <div class="tile-name">Sika</div>
+                        <div class="tile-cat">Construction chemicals</div>
+                        <div class="tile-foot"><span>Supplier</span><span>Building Trust</span></div>
                     </div>
 
-                    <div class="trust-card">
-                        <div class="trust-card-logo">
-                            <img src="./assets/images/fosroc.png" alt="Fosroc Saint-Gobain" 
-                                 onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">FOSROC</span>';">
+                    <div class="tile">
+                        <div class="tile-plate">
+                            <img src="./assets/images/fosroc.png" width="160" height="60" loading="lazy" decoding="async" alt="Fosroc Saint-Gobain"
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>Fosroc</span>';">
                         </div>
-                        <div>
-                            <div class="trust-card-name">Fosroc</div>
-                            <div class="trust-card-category">Constructive Solutions</div>
-                        </div>
-                        <div class="trust-card-action">Saint-Gobain</div>
+                        <div class="tile-name">Fosroc</div>
+                        <div class="tile-cat">Constructive solutions</div>
+                        <div class="tile-foot"><span>Supplier</span><span>Saint-Gobain</span></div>
                     </div>
 
-                    <div class="trust-card">
-                        <div class="trust-card-logo">
-                            <img src="./assets/images/dcp.png" alt="DCP - Don Construction Products" 
-                                 onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">DCP</span>';">
+                    <div class="tile">
+                        <div class="tile-plate">
+                            <img src="./assets/images/dcp.png" width="160" height="60" loading="lazy" decoding="async" alt="DCP - Don Construction Products"
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>DCP</span>';">
                         </div>
-                        <div>
-                            <div class="trust-card-name">DCP</div>
-                            <div class="trust-card-category">Don Construction Products</div>
-                        </div>
-                        <div class="trust-card-action">Specialty Chemicals</div>
+                        <div class="tile-name">DCP</div>
+                        <div class="tile-cat">Don Construction Products</div>
+                        <div class="tile-foot"><span>Supplier</span><span>Specialty chemicals</span></div>
                     </div>
 
-                    <div class="trust-card">
-                        <div class="trust-card-logo">
-                            <img src="./assets/images/zamzam-land.png" alt="Zamzam Land" 
-                                 onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">ZAMZAM LAND</span>';">
+                    <div class="tile">
+                        <div class="tile-plate">
+                            <img src="./assets/images/zamzam-land.png" width="160" height="60" loading="lazy" decoding="async" alt="Zamzam Land"
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>Zamzam Land</span>';">
                         </div>
-                        <div>
-                            <div class="trust-card-name">Zamzam Land</div>
-                            <div class="trust-card-category">Development Partner</div>
-                        </div>
-                        <div class="trust-card-action">Partner Project</div>
+                        <div class="tile-name">Zamzam Land</div>
+                        <div class="tile-cat">Development partner</div>
+                        <div class="tile-foot"><span>Partner</span><span>Joint project</span></div>
                     </div>
 
                 </div>
@@ -950,105 +1031,163 @@
         </div>
     </section>
 
-    <!-- TRAINING ACADEMY CTA BANNER -->
-    <section class="section-padding" id="academy">
+    <!-- ACADEMY -->
+    <section class="section section--ruled" id="academy">
         <div class="container">
-            <div class="academy-banner">
-                <span class="badge-gold">NEXO Academy</span>
-                <h3>Empower Your Engineering Career</h3>
-                <p>Join our specialized workshops in BIM, structural engineering, and construction management. Hands-on technical training designed for professional growth in Iraq.</p>
-                <a href="#contact" class="btn-gold">Enroll or Inquire Today <span>→</span></a>
+            <div class="academy reveal">
+                <p class="mono eyebrow" style="justify-content:center">NEXO Academy</p>
+                <h2>Learn it where it gets built</h2>
+                <p>Workshops in BIM, structural engineering, and construction management — taught by the engineers running our sites, on the software the industry actually uses.</p>
+                <a href="#contact" class="btn btn--gold">Enrol or ask a question <span class="arw" aria-hidden="true">→</span></a>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
-    <section class="section-padding contact-section" id="contact">
+    <!-- CONTACT -->
+    <section class="section section--ruled" id="contact">
         <div class="container">
             <div class="contact-grid">
-                <div class="contact-info">
-                    <span class="badge-gold">Get In Touch</span>
-                    <h3>Let's Build Something Exceptional Together</h3>
-                    <p>Have a project proposal, engineering inquiry, or academy training question? Contact our headquarters in Baghdad.</p>
-                    <div class="contact-details">
-                        <div class="contact-detail-item">
-                            <span>📍</span>
-                            <div>
-                                <strong>Headquarters:</strong> Baghdad, Iraq
-                            </div>
+                <div class="contact-copy reveal">
+                    <p class="mono eyebrow">Get in touch</p>
+                    <h2>Start a project with us</h2>
+                    <p>Tender documents, an engineering question, or a place on the next workshop — reach the Baghdad office directly.</p>
+
+                    <dl class="contact-table">
+                        <div class="spec-row">
+                            <dt>Office</dt>
+                            <dd>Baghdad, Iraq</dd>
                         </div>
-                        <div class="contact-detail-item">
-                            <span>✉️</span>
-                            <div>
-                                <strong>Email:</strong> info@nexo-engineering.com
-                            </div>
+                        <div class="spec-row">
+                            <dt>Email</dt>
+                            <dd><a href="mailto:info@nexo-engineering.com">info@nexo-engineering.com</a></dd>
                         </div>
-                        <div class="contact-detail-item">
-                            <span>📞</span>
-                            <div>
-                                <strong>Phone:</strong> +964 7XX XXX XXXX
-                            </div>
+                        <div class="spec-row">
+                            <dt>Phone</dt>
+                            <dd>+964 7XX XXX XXXX <span class="note">Placeholder — replace with the real number.</span></dd>
                         </div>
-                    </div>
+                    </dl>
                 </div>
 
-                <div class="contact-form">
-                    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you for reaching out! The NEXO team will contact you shortly.');">
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
+                <div class="reveal">
+                    <form class="form" id="contactForm" action="#" method="POST" novalidate>
+                        <div class="field">
+                            <label for="cf-name">Name</label>
+                            <input type="text" id="cf-name" name="name" autocomplete="name" required>
                         </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email Address" required>
+                        <div class="field">
+                            <label for="cf-email">Email</label>
+                            <input type="email" id="cf-email" name="email" autocomplete="email" required>
                         </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Subject / Inquiry Type">
+                        <div class="field">
+                            <label for="cf-subject">Subject</label>
+                            <input type="text" id="cf-subject" name="subject">
                         </div>
-                        <div class="form-group">
-                            <textarea rows="5" placeholder="Your Message..." required></textarea>
+                        <div class="field">
+                            <label for="cf-message">Message</label>
+                            <textarea id="cf-message" name="message" rows="5" required></textarea>
                         </div>
-                        <button type="submit" class="btn-gold">Send Message <span>→</span></button>
+                        <button type="submit" class="btn btn--gold">Send message <span class="arw" aria-hidden="true">→</span></button>
+                        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    </main>
+
+    <!-- FOOTER — title block -->
     <footer>
         <div class="container">
-            <div class="footer-top">
-                <div class="footer-logo">
-                    <img src="./assets/images/nexo-logo.png" alt="NEXO Engineering & Contracting - شركة نكسو للهندسة والمقاولات" onerror="this.onerror=null; this.src='https://placehold.co/180x50/121620/D4AF37?text=NEXO+LOGO';">
+            <div class="title-block">
+                <div class="tb-cell">
+                    <img src="./assets/images/nexo-logo.png" width="164" height="40" loading="lazy" decoding="async" alt="NEXO Engineering &amp; Contracting - شركة نكسو للهندسة والمقاولات" onerror="this.onerror=null; this.src='https://placehold.co/164x40/10131A/D4AF37?text=NEXO';">
                 </div>
-                <div class="nav-links">
-                    <a href="#about">About</a>
-                    <a href="#services">Divisions</a>
-                    <a href="#portfolio">Partners</a>
-                    <a href="#contact">Contact</a>
+                <div class="tb-cell">
+                    <span class="tb-key">Office</span>
+                    <span class="tb-val">Baghdad, IQ</span>
+                </div>
+                <div class="tb-cell">
+                    <span class="tb-key">Divisions</span>
+                    <span class="tb-val">A / C / T</span>
+                </div>
+                <div class="tb-cell">
+                    <span class="tb-key">Practice</span>
+                    <span class="tb-val">Engineering &amp; Contracting</span>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 NEXO Engineering & Contracting Co. All rights reserved.</p>
+            <div class="footer-foot">
+                <nav aria-label="Footer">
+                    <a href="#about">About</a>
+                    <a href="#divisions">Divisions</a>
+                    <a href="#network">Clients</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                <p>&copy; 2026 NEXO Engineering &amp; Contracting Co.</p>
             </div>
         </div>
     </footer>
 
-    <!-- MOBILE MENU JAVASCRIPT -->
     <script>
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        document.documentElement.classList.add('js-ready');
+
+        // Mobile navigation
+        const navToggle = document.getElementById('navToggle');
         const navLinks = document.getElementById('navLinks');
 
-        if (mobileMenuBtn && navLinks) {
-            mobileMenuBtn.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-            });
-
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                });
-            });
+        function setNav(open) {
+            navLinks.classList.toggle('is-open', open);
+            navToggle.setAttribute('aria-expanded', String(open));
+            navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
         }
+
+        navToggle.addEventListener('click', () => setNav(navToggle.getAttribute('aria-expanded') !== 'true'));
+        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setNav(false)));
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') setNav(false); });
+
+        // Header state on scroll
+        const header = document.getElementById('siteHeader');
+        const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // Division accordions
+        document.querySelectorAll('.dv-head').forEach(head => {
+            head.addEventListener('click', () => {
+                const open = head.getAttribute('aria-expanded') === 'true';
+                document.querySelectorAll('.dv-head').forEach(h => h.setAttribute('aria-expanded', 'false'));
+                head.setAttribute('aria-expanded', String(!open));
+            });
+        });
+
+        // Scroll reveal
+        const reveals = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '0px 0px -12% 0px' });
+            reveals.forEach(el => io.observe(el));
+        } else {
+            reveals.forEach(el => el.classList.add('in-view'));
+        }
+
+        // Contact form — no backend yet, so confirm in place rather than navigating away
+        const form = document.getElementById('contactForm');
+        const status = document.getElementById('formStatus');
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            if (!form.checkValidity()) {
+                status.textContent = 'Add your name, email, and a message to send.';
+                form.reportValidity();
+                return;
+            }
+            status.textContent = 'Message ready — connect a form endpoint to deliver it.';
+        });
     </script>
 </body>
 </html>
