@@ -7,7 +7,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         /* ==========================================
@@ -154,11 +154,6 @@
             transition: var(--transition);
         }
 
-        .brand-logo:hover img {
-            transform: scale(1.03);
-            border-color: var(--gold-primary);
-        }
-
         .nav-links {
             display: flex;
             gap: 2.2rem;
@@ -170,12 +165,10 @@
             font-weight: 600;
             color: var(--silver-primary);
             transition: var(--transition);
-            letter-spacing: 0.3px;
         }
 
         .nav-links a:hover {
             color: var(--gold-primary);
-            text-shadow: 0 0 10px var(--gold-glow);
         }
 
         .btn-nav-gold {
@@ -186,13 +179,6 @@
             font-weight: 800 !important;
             transition: var(--transition);
             box-shadow: 0 4px 18px var(--gold-glow);
-            letter-spacing: 0.5px;
-        }
-
-        .btn-nav-gold:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
-            filter: brightness(1.1);
         }
 
         .mobile-toggle {
@@ -211,7 +197,6 @@
             padding-top: 170px;
             padding-bottom: 110px;
             position: relative;
-            overflow: hidden;
         }
 
         .hero-grid {
@@ -239,7 +224,6 @@
             font-size: 1.15rem;
             color: var(--text-muted);
             margin-bottom: 2.5rem;
-            font-weight: 400;
             line-height: 1.7;
         }
 
@@ -263,12 +247,10 @@
             border: none;
             cursor: pointer;
             box-shadow: 0 6px 20px var(--gold-glow);
-            letter-spacing: 0.5px;
         }
 
         .btn-gold:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.45);
             filter: brightness(1.08);
         }
 
@@ -280,16 +262,6 @@
             font-weight: 700;
             border: 1px solid var(--border-subtle);
             transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn-outline-silver:hover {
-            border-color: var(--gold-primary);
-            color: var(--gold-primary);
-            background: rgba(212, 175, 55, 0.06);
-            transform: translateY(-2px);
         }
 
         .hero-image-frame {
@@ -298,28 +270,23 @@
             overflow: hidden;
             border: 1px solid var(--border-gold);
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85), 0 0 30px var(--gold-glow);
-            transition: var(--transition);
+            background: var(--bg-card);
+            min-height: 300px;
         }
 
         .hero-image-frame img {
             width: 100%;
             height: auto;
             display: block;
-            transition: var(--transition);
-        }
-
-        .hero-image-frame:hover img {
-            transform: scale(1.02);
         }
 
         /* ==========================================
-           ABOUT SECTION & ACRONYM SHOWCASE
+           ABOUT SECTION
            ========================================== */
         .about-section {
             background: linear-gradient(180deg, rgba(14, 18, 25, 0.6) 0%, rgba(9, 11, 14, 0.9) 100%);
             border-top: 1px solid var(--border-subtle);
             border-bottom: 1px solid var(--border-subtle);
-            position: relative;
         }
 
         .about-grid {
@@ -335,8 +302,6 @@
             overflow: hidden;
             background: var(--bg-card);
             border: 1px solid var(--border-gold);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 25px var(--gold-glow);
-            transition: var(--transition);
             padding: 0.5rem;
         }
 
@@ -347,24 +312,17 @@
             border-radius: 12px;
         }
 
-        .acronym-frame:hover {
-            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.9), 0 0 35px rgba(212, 175, 55, 0.3);
-            border-color: var(--gold-primary);
-        }
-
         .about-content h3 {
             font-size: 2.3rem;
             font-weight: 800;
             color: #FFFFFF;
             margin-bottom: 1.25rem;
-            line-height: 1.25;
         }
 
         .about-content p {
             color: var(--text-muted);
             margin-bottom: 2rem;
             font-size: 1.075rem;
-            line-height: 1.7;
         }
 
         .vm-grid {
@@ -381,15 +339,6 @@
             border-bottom: 1px solid var(--border-subtle);
             padding: 1.5rem;
             border-radius: 0 10px 10px 0;
-            transition: var(--transition);
-        }
-
-        .vm-card:hover {
-            border-top-color: rgba(212, 175, 55, 0.3);
-            border-right-color: rgba(212, 175, 55, 0.3);
-            border-bottom-color: rgba(212, 175, 55, 0.3);
-            background-color: var(--bg-card-hover);
-            transform: translateX(4px);
         }
 
         .vm-card h4 {
@@ -397,39 +346,23 @@
             font-size: 1.15rem;
             font-weight: 700;
             margin-bottom: 0.4rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        .vm-card h4 span {
-            color: var(--gold-primary);
         }
 
         /* ==========================================
            SERVICES / DIVISIONS SECTION
            ========================================== */
-        .divisions-section {
-            position: relative;
-        }
-
         .operational-collage-frame {
             margin-bottom: 4rem;
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid var(--border-gold);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 20px var(--gold-glow);
-            transition: var(--transition);
+            background: var(--bg-card);
         }
 
         .operational-collage-frame img {
             width: 100%;
             height: auto;
             display: block;
-        }
-
-        .operational-collage-frame:hover {
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 175, 55, 0.3);
         }
 
         .services-grid {
@@ -444,7 +377,6 @@
             border-radius: 14px;
             border: 1px solid var(--border-subtle);
             transition: var(--transition);
-            position: relative;
             display: flex;
             flex-direction: column;
             text-decoration: none;
@@ -483,7 +415,6 @@
             color: var(--text-muted);
             font-size: 0.975rem;
             margin-bottom: 1.75rem;
-            line-height: 1.6;
         }
 
         .service-card ul {
@@ -519,10 +450,6 @@
 
         .trust-group {
             margin-bottom: 4rem;
-        }
-
-        .trust-group:last-child {
-            margin-bottom: 0;
         }
 
         .trust-group-title {
@@ -563,18 +490,6 @@
             overflow: hidden;
         }
 
-        .trust-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--gold-gradient);
-            opacity: 0;
-            transition: var(--transition);
-        }
-
         .trust-card:hover {
             border-color: var(--border-gold);
             transform: translateY(-5px);
@@ -582,11 +497,7 @@
             background-color: var(--bg-card-hover);
         }
 
-        .trust-card:hover::before {
-            opacity: 1;
-        }
-
-        /* Partner & Client Logo Box Styles */
+        /* Partner & Client Logo Box Styles with Fallback Support */
         .trust-card-logo {
             width: 100%;
             height: 90px;
@@ -597,13 +508,24 @@
             justify-content: center;
             padding: 0.75rem;
             margin-bottom: 1.25rem;
-            transition: var(--transition);
+            overflow: hidden;
+            position: relative;
         }
 
         .trust-card-logo img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
+        }
+
+        /* Stylized Text Badge Fallback if image file is missing */
+        .logo-fallback-badge {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #0F172A;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
         }
 
         .trust-card-name {
@@ -645,8 +567,6 @@
             padding: 4.5rem 2.5rem;
             text-align: center;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--gold-glow);
-            position: relative;
-            overflow: hidden;
         }
 
         .academy-banner h3 {
@@ -661,7 +581,6 @@
             max-width: 780px;
             margin: 0 auto 2.5rem auto;
             font-size: 1.125rem;
-            line-height: 1.7;
         }
 
         /* ==========================================
@@ -684,16 +603,11 @@
             font-weight: 800;
         }
 
-        .contact-info p {
-            color: var(--text-muted);
-            margin-bottom: 2.2rem;
-            font-size: 1.075rem;
-        }
-
         .contact-details {
             display: flex;
             flex-direction: column;
             gap: 1.25rem;
+            margin-top: 1.5rem;
         }
 
         .contact-detail-item {
@@ -702,24 +616,10 @@
             gap: 1rem;
             color: var(--silver-primary);
             font-weight: 600;
-            font-size: 1.05rem;
             background: var(--bg-card);
             padding: 1rem 1.25rem;
             border-radius: 10px;
             border: 1px solid var(--border-subtle);
-        }
-
-        .contact-detail-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid var(--border-gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold-primary);
-            font-size: 1.1rem;
         }
 
         .contact-form form {
@@ -745,7 +645,6 @@
         .form-group textarea:focus {
             border-color: var(--gold-primary);
             box-shadow: 0 0 15px var(--gold-glow);
-            background-color: var(--bg-card-hover);
         }
 
         footer {
@@ -776,16 +675,10 @@
             font-size: 0.9rem;
         }
 
-        /* ==========================================
-           RESPONSIVE DESIGN
-           ========================================== */
         @media (max-width: 992px) {
-            .hero-grid, .about-grid, .contact-grid { 
-                grid-template-columns: 1fr; 
-            }
+            .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
             .hero-text h1 { font-size: 2.75rem; }
             .hero { padding-top: 150px; }
-            .section-title h2 { font-size: 2.2rem; }
         }
 
         @media (max-width: 768px) {
@@ -795,18 +688,13 @@
                 left: 0;
                 width: 100%;
                 background-color: rgba(9, 11, 14, 0.98);
-                backdrop-filter: blur(20px);
                 flex-direction: column;
                 padding: 3rem 0;
-                border-bottom: 1px solid var(--border-subtle);
                 clip-path: circle(0% at 100% 0);
                 transition: clip-path 0.4s ease-in-out;
             }
 
-            .nav-links.active {
-                clip-path: circle(140% at 100% 0);
-            }
-
+            .nav-links.active { clip-path: circle(140% at 100% 0); }
             .mobile-toggle { display: block; }
             .hero-cta { flex-direction: column; }
             .btn-gold, .btn-outline-silver { width: 100%; text-align: center; }
@@ -819,7 +707,7 @@
     <header>
         <div class="container nav-container">
             <a href="#" class="brand-logo">
-                <img src="./nexo-logo.webp" alt="NEXO Engineering Logo">
+                <img src="./nexo-logo.webp" alt="NEXO Engineering Logo" onerror="this.onerror=null; this.src='https://placehold.co/180x50/121620/D4AF37?text=NEXO+LOGO';">
             </a>
             <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation">☰</button>
             <nav class="nav-links" id="navLinks">
@@ -847,9 +735,9 @@
                         <a href="#contact" class="btn-outline-silver">Request Consultation</a>
                     </div>
                 </div>
-                <!-- Hero Building Showcase Image -->
+                <!-- Hero Building Image -->
                 <div class="hero-image-frame">
-                    <img src="./Gemini_Generated_Image_5j9e2n5j9e2n5j9e.png" alt="NEXO Headquarters Building Facade">
+                    <img src="./Gemini_Generated_Image_5j9e2n5j9e2n5j9e.png" alt="NEXO Headquarters Facade" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80';">
                 </div>
             </div>
         </div>
@@ -860,12 +748,12 @@
         <div class="container">
             <div class="about-grid">
                 <div class="acronym-frame">
-                    <img src="./about.webp" alt="NEXO Acronym Structure: Next-Generation Engineering eXcellence Organization">
+                    <img src="./about.webp" alt="NEXO Acronym Structure" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80';">
                 </div>
                 <div class="about-content">
                     <span class="badge-gold">Who We Are</span>
                     <h3>Next-Generation Engineering eXcellence Organization</h3>
-                    <p>Rooted in Baghdad, NEXO is engineered to bridge modern BIM technical modeling with rigorous site execution. We unify engineering precision, advanced construction chemicals, and local workforce development to elevate Iraqi infrastructure standards.</p>
+                    <p>Rooted in Baghdad, NEXO is engineered to bridge modern BIM technical modeling with rigorous site execution. We unify engineering precision, advanced construction chemicals, and local workforce development.</p>
                     
                     <div class="vm-grid">
                         <div class="vm-card">
@@ -893,7 +781,7 @@
 
             <!-- OPERATIONAL DIVISIONS COLLAGE -->
             <div class="operational-collage-frame">
-                <img src="./Gemini_Generated_Image_5j9e2n5j9e2n5j9e (3).png" alt="NEXO Architectural Design, Civil Site Construction, and Academy Training">
+                <img src="./Gemini_Generated_Image_5j9e2n5j9e2n5j9e (3).png" alt="NEXO Operations" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=1200&q=80';">
             </div>
 
             <div class="services-grid">
@@ -955,9 +843,11 @@
             <div class="trust-group">
                 <div class="trust-group-title">Valued Clients</div>
                 <div class="cards-grid">
+                    
                     <a href="https://rixosbaghdadresidences.com/" target="_blank" rel="noopener noreferrer" class="trust-card">
                         <div class="trust-card-logo">
-                            <img src="./risox.webp" alt="Rixos Baghdad Logo">
+                            <img src="./risox.webp" alt="Rixos Baghdad Logo" 
+                                 onerror="this.onerror=null; this.src='https://logo.clearbit.com/rixos.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">RIXOS BAGHDAD</span>'; }">
                         </div>
                         <div>
                             <div class="trust-card-name">Rixos Baghdad</div>
@@ -968,7 +858,8 @@
 
                     <a href="https://www.ebspetroleum.com/" target="_blank" rel="noopener noreferrer" class="trust-card">
                         <div class="trust-card-logo">
-                            <img src="./ebs.webp" alt="EBS Petroleum Logo">
+                            <img src="./ebs.webp" alt="EBS Petroleum Logo" 
+                                 onerror="this.onerror=null; this.src='https://logo.clearbit.com/ebspetroleum.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">EBS PETROLEUM</span>'; }">
                         </div>
                         <div>
                             <div class="trust-card-name">EBS Petroleum</div>
@@ -979,7 +870,8 @@
 
                     <a href="https://ramlah.co/millennium" target="_blank" rel="noopener noreferrer" class="trust-card">
                         <div class="trust-card-logo">
-                            <img src="./melinum.webp" alt="Millennium Towers Logo">
+                            <img src="./melinum.webp" alt="Millennium Towers Logo" 
+                                 onerror="this.onerror=null; this.src='https://logo.clearbit.com/ramlah.co'; this.onerror=function(){ this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">MILLENNIUM TOWER</span>'; }">
                         </div>
                         <div>
                             <div class="trust-card-name">Millennium Tower</div>
@@ -989,6 +881,10 @@
                     </a>
 
                     <a href="https://modoniq.com/ar/future-city/" target="_blank" rel="noopener noreferrer" class="trust-card">
+                        <div class="trust-card-logo">
+                            <img src="./modon.webp" alt="Future City Logo" 
+                                 onerror="this.onerror=null; this.src='https://logo.clearbit.com/modoniq.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">FUTURE CITY</span>'; }">
+                        </div>
                         <div>
                             <div class="trust-card-name">Future City</div>
                             <div class="trust-card-category">Modon Developments</div>
@@ -1002,9 +898,11 @@
             <div class="trust-group">
                 <div class="trust-group-title">Strategic Industrial Partners</div>
                 <div class="cards-grid">
+                    
                     <a href="https://www.fosroc.com/" target="_blank" rel="noopener noreferrer" class="trust-card">
                         <div class="trust-card-logo">
-                            <img src="./fosroc.webp" alt="Fosroc Logo">
+                            <img src="./fosroc.webp" alt="Fosroc Logo" 
+                                 onerror="this.onerror=null; this.src='https://logo.clearbit.com/fosroc.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">FOSROC</span>'; }">
                         </div>
                         <div>
                             <div class="trust-card-name">Fosroc</div>
@@ -1015,7 +913,8 @@
 
                     <a href="https://irq.sika.com/" target="_blank" rel="noopener noreferrer" class="trust-card">
                         <div class="trust-card-logo">
-                            <img src="./sika.webp" alt="Sika Iraq Logo">
+                            <img src="./sika.webp" alt="Sika Iraq Logo" 
+                                 onerror="this.onerror=null; this.src='https://logo.clearbit.com/sika.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">SIKA IRAQ</span>'; }">
                         </div>
                         <div>
                             <div class="trust-card-name">Sika Iraq</div>
@@ -1026,7 +925,8 @@
 
                     <a href="https://www.dcp-int.com/iq/ar" target="_blank" rel="noopener noreferrer" class="trust-card">
                         <div class="trust-card-logo">
-                            <img src="./dcp.webp" alt="DCP Iraq Logo">
+                            <img src="./dcp.webp" alt="DCP Iraq Logo" 
+                                 onerror="this.onerror=null; this.src='https://logo.clearbit.com/dcp-int.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">DCP IRAQ</span>'; }">
                         </div>
                         <div>
                             <div class="trust-card-name">DCP Iraq</div>
@@ -1037,7 +937,8 @@
 
                     <a href="https://zamzamland.com/en/" target="_blank" rel="noopener noreferrer" class="trust-card">
                         <div class="trust-card-logo">
-                            <img src="./Zamzam-Land-1.webp" alt="Zamzam Land Logo">
+                            <img src="./Zamzam-Land-1.webp" alt="Zamzam Land Logo" 
+                                 onerror="this.onerror=null; this.src='https://logo.clearbit.com/zamzamland.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">ZAMZAM LAND</span>'; }">
                         </div>
                         <div>
                             <div class="trust-card-name">Zamzam Land</div>
@@ -1048,7 +949,8 @@
 
                     <a href="https://hmairaq.com/" target="_blank" rel="noopener noreferrer" class="trust-card">
                         <div class="trust-card-logo">
-                            <img src="./hma.jpg" alt="HMA Iraq Logo">
+                            <img src="./hma.jpg" alt="HMA Iraq Logo" 
+                                 onerror="this.onerror=null; this.src='https://logo.clearbit.com/hmairaq.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=\"logo-fallback-badge\">HMA IRAQ</span>'; }">
                         </div>
                         <div>
                             <div class="trust-card-name">HMA Iraq</div>
@@ -1056,6 +958,7 @@
                         </div>
                         <div class="trust-card-action">Visit Web Page ↗</div>
                     </a>
+
                 </div>
             </div>
 
@@ -1085,15 +988,15 @@
                     
                     <div class="contact-details">
                         <div class="contact-detail-item">
-                            <div class="contact-detail-icon">📍</div>
+                            <div style="color:var(--gold-primary)">📍</div>
                             <div>Location: Baghdad, Iraq</div>
                         </div>
                         <div class="contact-detail-item">
-                            <div class="contact-detail-icon">🌐</div>
+                            <div style="color:var(--gold-primary)">🌐</div>
                             <div>Website: <a href="http://nexo-iq.com" target="_blank" style="color: var(--gold-primary);">nexo-iq.com</a></div>
                         </div>
                         <div class="contact-detail-item">
-                            <div class="contact-detail-icon">📧</div>
+                            <div style="color:var(--gold-primary)">📧</div>
                             <div>Email: info@nexo-iq.com</div>
                         </div>
                     </div>
@@ -1125,7 +1028,7 @@
         <div class="container">
             <div class="footer-top">
                 <div class="footer-logo">
-                    <img src="./nexo-logo.webp" alt="NEXO Logo Footer">
+                    <img src="./nexo-logo.webp" alt="NEXO Logo Footer" onerror="this.onerror=null; this.src='https://placehold.co/180x50/121620/D4AF37?text=NEXO+LOGO';">
                 </div>
                 <p style="font-size: 0.95rem; color: var(--silver-primary);">Next-Generation Engineering eXcellence Organization</p>
             </div>
@@ -1137,7 +1040,6 @@
 
     <!-- JAVASCRIPT -->
     <script>
-        // Mobile Navigation Menu Toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.getElementById('navLinks');
 
@@ -1153,10 +1055,8 @@
             });
         });
 
-        // Dynamic Copyright Year
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Contact Form Handler
         document.getElementById('inquiryForm').addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Thank you for contacting NEXO Engineering & Contracting Co. Our representative will respond shortly.');
