@@ -3,8 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXO | Next-Generation Engineering eXcellence Organization</title>
-    <meta name="description" content="NEXO Engineering & Contracting Co. — architectural and structural design, general contracting, and technical training. Baghdad, Iraq.">
+    <title>NEXO | Engineering &amp; Contracting Company in Baghdad, Iraq</title>
+    <meta name="description" content="NEXO Engineering &amp; Contracting delivers architectural and structural design, general contracting, and BIM training across Iraq. Based in Baghdad.">
+    <link rel="canonical" href="https://nexo-iq.com/">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta name="theme-color" content="#0A0C10">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="NEXO Engineering &amp; Contracting">
+    <meta property="og:url" content="https://nexo-iq.com/">
+    <meta property="og:title" content="NEXO | Engineering &amp; Contracting Company in Baghdad, Iraq">
+    <meta property="og:description" content="Architectural and structural design, general contracting, and BIM training across Iraq.">
+    <meta property="og:image" content="https://nexo-iq.com/assets/images/og-cover.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="The NEXO mark — two gold axes crossing — beside the company name.">
+    <meta property="og:locale" content="en">
+    <meta property="og:locale:alternate" content="ar_IQ">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NEXO | Engineering &amp; Contracting Company in Baghdad, Iraq">
+    <meta name="twitter:description" content="Architectural and structural design, general contracting, and BIM training across Iraq.">
+    <meta name="twitter:image" content="https://nexo-iq.com/assets/images/og-cover.png">
+
+    <!-- Icons -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/assets/icons/favicon-32.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+
     <!-- Google Fonts: Archivo (display) · Plus Jakarta Sans (body) · IBM Plex Mono (utility) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -366,6 +395,10 @@
         .divisions { display: grid; gap: 1px; background: var(--rule); border-block: 1px solid var(--rule); }
 
         .dv { background: var(--ink); transition: background-color 0.4s var(--ease); }
+
+        /* Heading wrapper exists for the document outline only — it must not style. */
+        .dv-h { font-family: var(--font-body); font-weight: 400; font-size: 1rem;
+                letter-spacing: normal; line-height: inherit; color: inherit; margin: 0; }
         .dv:hover { background: var(--ink-raised); }
 
         .dv-head {
@@ -395,7 +428,7 @@
         .dv:hover .dv-icon { opacity: 1; }
 
         .dv-title { display: block; font-family: var(--font-display); font-size: clamp(1.15rem, 2vw, 1.5rem); font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em; line-height: 1.15; }
-        .dv-sub { display: block; color: var(--mute); font-size: 0.92rem; line-height: 1.5; margin-top: 0.4rem; max-width: 52ch; }
+        .dv-sub { display: block; font-family: var(--font-body); color: var(--mute); font-size: 0.92rem; line-height: 1.5; margin-top: 0.4rem; max-width: 52ch; }
 
         .dv-sign {
             width: 40px;
@@ -427,7 +460,7 @@
             transition: grid-template-rows 0.5s var(--ease);
         }
 
-        .dv-head[aria-expanded="true"] + .dv-panel { grid-template-rows: 1fr; }
+        .dv.is-open .dv-panel { grid-template-rows: 1fr; }
         .dv-panel > div { overflow: hidden; }
 
         .dv-panel-inner {
@@ -486,11 +519,19 @@
             background: var(--plate);
             display: grid;
             place-items: center;
-            padding: 0.85rem;
             margin-bottom: 1.15rem;
         }
 
-        .tile-plate img { max-height: 100%; width: auto; object-fit: contain; }
+        /* No padding on the plate, and absolute caps on the logo: percentage max-width
+           /max-height on a centred item resolve against the padding box, not the content
+           box, so a padded plate lets tall logos escape. These caps inset the logo instead. */
+        .tile-plate img {
+            max-height: 56px;
+            max-width: 86%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
 
         .logo-fallback-badge {
             font-family: var(--font-display);
@@ -500,6 +541,7 @@
             text-transform: uppercase;
             letter-spacing: 0.06em;
             text-align: center;
+            padding-inline: 0.85rem;
         }
 
         .tile-name { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: #FFFFFF; }
@@ -712,7 +754,7 @@
     <header id="siteHeader">
         <div class="container nav-bar">
             <a href="#" class="brand" aria-label="NEXO Engineering & Contracting — home">
-                <img src="./assets/images/nexo-logo.png" width="180" height="44" alt="NEXO Engineering &amp; Contracting - شركة نكسو للهندسة والمقاولات" onerror="this.onerror=null; this.src='https://placehold.co/180x44/10131A/D4AF37?text=NEXO';">
+                <img src="./assets/images/nexo-logo.png" width="440" height="310" alt="NEXO Engineering &amp; Contracting - شركة نكسو للهندسة والمقاولات" onerror="this.onerror=null; this.src='https://placehold.co/180x44/10131A/D4AF37?text=NEXO';">
             </a>
             <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu"><span></span></button>
             <nav class="nav-links" id="navLinks">
@@ -792,7 +834,7 @@
             <div class="about-grid">
                 <figure class="reveal" style="margin:0">
                     <div class="frame">
-                        <img src="./assets/images/about.png" width="800" height="600" loading="lazy" decoding="async" alt="NEXO — Next-Generation Engineering eXcellence Organization" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&amp;fit=crop&amp;w=800&amp;q=80';">
+                        <img src="./assets/images/about.png" width="1100" height="776" loading="lazy" decoding="async" alt="NEXO — Next-Generation Engineering eXcellence Organization" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&amp;fit=crop&amp;w=800&amp;q=80';">
                     </div>
                     <figcaption class="fig-caption">Fig. 02 — The mark, expanded</figcaption>
                 </figure>
@@ -834,7 +876,7 @@
 
                 <!-- A — Architectural & Structural Design -->
                 <div class="dv">
-                    <button class="dv-head" type="button" aria-expanded="false" aria-controls="dv-a">
+                    <h3 class="dv-h"><button class="dv-head" type="button" aria-expanded="false" aria-controls="dv-a">
                         <span class="dv-code">A—01</span>
                         <span class="dv-icon" aria-hidden="true">
                             <svg width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25">
@@ -848,7 +890,7 @@
                             <span class="dv-sub">Concept packages and detailed calculations to international code.</span>
                         </span>
                         <span class="dv-sign" aria-hidden="true"></span>
-                    </button>
+                    </button></h3>
                     <div class="dv-panel" id="dv-a" role="region">
                         <div><div class="dv-panel-inner">
                             <p class="mono">Scope of work</p>
@@ -864,7 +906,7 @@
 
                 <!-- C — General Contracting -->
                 <div class="dv">
-                    <button class="dv-head" type="button" aria-expanded="false" aria-controls="dv-c">
+                    <h3 class="dv-h"><button class="dv-head" type="button" aria-expanded="false" aria-controls="dv-c">
                         <span class="dv-code">C—02</span>
                         <span class="dv-icon" aria-hidden="true">
                             <svg width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25">
@@ -878,7 +920,7 @@
                             <span class="dv-sub">Turnkey execution for commercial, petroleum, hospitality, and urban work.</span>
                         </span>
                         <span class="dv-sign" aria-hidden="true"></span>
-                    </button>
+                    </button></h3>
                     <div class="dv-panel" id="dv-c" role="region">
                         <div><div class="dv-panel-inner">
                             <p class="mono">Scope of work</p>
@@ -894,7 +936,7 @@
 
                 <!-- T — Training Academy -->
                 <div class="dv">
-                    <button class="dv-head" type="button" aria-expanded="false" aria-controls="dv-t">
+                    <h3 class="dv-h"><button class="dv-head" type="button" aria-expanded="false" aria-controls="dv-t">
                         <span class="dv-code">T—03</span>
                         <span class="dv-icon" aria-hidden="true">
                             <svg width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25">
@@ -909,7 +951,7 @@
                             <span class="dv-sub">Industry-standard software and site expertise for engineers across Iraq.</span>
                         </span>
                         <span class="dv-sign" aria-hidden="true"></span>
-                    </button>
+                    </button></h3>
                     <div class="dv-panel" id="dv-t" role="region">
                         <div><div class="dv-panel-inner">
                             <p class="mono">Scope of work</p>
@@ -937,45 +979,45 @@
             </div>
 
             <div class="reveal" style="margin-bottom:3.5rem">
-                <p class="mono group-label">Clients</p>
+                <h3 class="mono group-label">Clients</h3>
                 <div class="grid-cards">
 
                     <a href="https://rixosbaghdadresidences.com/" target="_blank" rel="noopener noreferrer" class="tile">
                         <div class="tile-plate">
-                            <img src="./assets/images/rixos.png" width="160" height="60" loading="lazy" decoding="async" alt="Rixos Baghdad Hotel &amp; Residences - فندق وشقق ريكسوس بغداد"
+                            <img src="./assets/images/rixos.png" width="189" height="88" loading="lazy" decoding="async" alt="Rixos Baghdad Hotel &amp; Residences - فندق وشقق ريكسوس بغداد"
                                  onerror="this.onerror=null; this.src='https://logo.clearbit.com/rixos.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>Rixos Baghdad</span>'; }">
                         </div>
-                        <div class="tile-name">Rixos Baghdad</div>
+                        <h4 class="tile-name">Rixos Baghdad</h4>
                         <div class="tile-cat">Luxury hospitality &amp; residences</div>
                         <div class="tile-foot"><span>Client</span><span aria-hidden="true">Visit ↗</span></div>
                     </a>
 
                     <a href="https://www.ebspetroleum.com/" target="_blank" rel="noopener noreferrer" class="tile">
                         <div class="tile-plate">
-                            <img src="./assets/images/ebs-petroleum.png" width="160" height="60" loading="lazy" decoding="async" alt="EBS Petroleum Company Limited"
+                            <img src="./assets/images/ebs-petroleum.png" width="520" height="134" loading="lazy" decoding="async" alt="EBS Petroleum Company Limited"
                                  onerror="this.onerror=null; this.src='https://logo.clearbit.com/ebspetroleum.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>EBS Petroleum</span>'; }">
                         </div>
-                        <div class="tile-name">EBS Petroleum</div>
+                        <h4 class="tile-name">EBS Petroleum</h4>
                         <div class="tile-cat">Energy &amp; industrial</div>
                         <div class="tile-foot"><span>Client</span><span aria-hidden="true">Visit ↗</span></div>
                     </a>
 
                     <a href="https://ramlah.co/millennium" target="_blank" rel="noopener noreferrer" class="tile">
                         <div class="tile-plate">
-                            <img src="./assets/images/millennium-towers.png" width="160" height="60" loading="lazy" decoding="async" alt="TOWERS MILLENNIUM by RAMLAH - ابراج ميلينيوم من رملة"
+                            <img src="./assets/images/millennium-towers.png" width="520" height="302" loading="lazy" decoding="async" alt="TOWERS MILLENNIUM by RAMLAH - ابراج ميلينيوم من رملة"
                                  onerror="this.onerror=null; this.src='https://logo.clearbit.com/ramlah.co'; this.onerror=function(){ this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>Millennium Tower</span>'; }">
                         </div>
-                        <div class="tile-name">Millennium Tower</div>
+                        <h4 class="tile-name">Millennium Tower</h4>
                         <div class="tile-cat">Ramlah urban developments</div>
                         <div class="tile-foot"><span>Client</span><span aria-hidden="true">Visit ↗</span></div>
                     </a>
 
                     <a href="https://modoniq.com/ar/future-city/" target="_blank" rel="noopener noreferrer" class="tile">
                         <div class="tile-plate">
-                            <img src="./assets/images/future-city.png" width="160" height="60" loading="lazy" decoding="async" alt="Modon Future City - مدن"
+                            <img src="./assets/images/future-city.png" width="140" height="54" loading="lazy" decoding="async" alt="Modon Future City - مدن"
                                  onerror="this.onerror=null; this.src='https://logo.clearbit.com/modoniq.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>Future City</span>'; }">
                         </div>
-                        <div class="tile-name">Future City</div>
+                        <h4 class="tile-name">Future City</h4>
                         <div class="tile-cat">Modon developments</div>
                         <div class="tile-foot"><span>Client</span><span aria-hidden="true">Visit ↗</span></div>
                     </a>
@@ -983,45 +1025,45 @@
             </div>
 
             <div class="reveal">
-                <p class="mono group-label">Partners &amp; suppliers</p>
+                <h3 class="mono group-label">Partners &amp; suppliers</h3>
                 <div class="grid-cards">
 
                     <div class="tile">
                         <div class="tile-plate">
-                            <img src="./assets/images/sika.png" width="160" height="60" loading="lazy" decoding="async" alt="Sika"
+                            <img src="./assets/images/sika.png" width="374" height="378" loading="lazy" decoding="async" alt="Sika"
                                  onerror="this.onerror=null; this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>Sika</span>';">
                         </div>
-                        <div class="tile-name">Sika</div>
+                        <h4 class="tile-name">Sika</h4>
                         <div class="tile-cat">Construction chemicals</div>
                         <div class="tile-foot"><span>Supplier</span><span>Building Trust</span></div>
                     </div>
 
                     <div class="tile">
                         <div class="tile-plate">
-                            <img src="./assets/images/fosroc.png" width="160" height="60" loading="lazy" decoding="async" alt="Fosroc Saint-Gobain"
+                            <img src="./assets/images/fosroc.png" width="520" height="144" loading="lazy" decoding="async" alt="Fosroc Saint-Gobain"
                                  onerror="this.onerror=null; this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>Fosroc</span>';">
                         </div>
-                        <div class="tile-name">Fosroc</div>
+                        <h4 class="tile-name">Fosroc</h4>
                         <div class="tile-cat">Constructive solutions</div>
                         <div class="tile-foot"><span>Supplier</span><span>Saint-Gobain</span></div>
                     </div>
 
                     <div class="tile">
                         <div class="tile-plate">
-                            <img src="./assets/images/dcp.png" width="160" height="60" loading="lazy" decoding="async" alt="DCP - Don Construction Products"
+                            <img src="./assets/images/dcp.png" width="420" height="516" loading="lazy" decoding="async" alt="DCP - Don Construction Products"
                                  onerror="this.onerror=null; this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>DCP</span>';">
                         </div>
-                        <div class="tile-name">DCP</div>
+                        <h4 class="tile-name">DCP</h4>
                         <div class="tile-cat">Don Construction Products</div>
                         <div class="tile-foot"><span>Supplier</span><span>Specialty chemicals</span></div>
                     </div>
 
                     <div class="tile">
                         <div class="tile-plate">
-                            <img src="./assets/images/zamzam-land.png" width="160" height="60" loading="lazy" decoding="async" alt="Zamzam Land"
+                            <img src="./assets/images/zamzam-land.png" width="420" height="462" loading="lazy" decoding="async" alt="Zamzam Land"
                                  onerror="this.onerror=null; this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>Zamzam Land</span>';">
                         </div>
-                        <div class="tile-name">Zamzam Land</div>
+                        <h4 class="tile-name">Zamzam Land</h4>
                         <div class="tile-cat">Development partner</div>
                         <div class="tile-foot"><span>Partner</span><span>Joint project</span></div>
                     </div>
@@ -1059,7 +1101,7 @@
                         </div>
                         <div class="spec-row">
                             <dt>Email</dt>
-                            <dd><a href="mailto:info@nexo-engineering.com">info@nexo-engineering.com</a></dd>
+                            <dd><a href="mailto:info@nexo-iq.com">info@nexo-iq.com</a></dd>
                         </div>
                         <div class="spec-row">
                             <dt>Phone</dt>
@@ -1101,7 +1143,7 @@
         <div class="container">
             <div class="title-block">
                 <div class="tb-cell">
-                    <img src="./assets/images/nexo-logo.png" width="164" height="40" loading="lazy" decoding="async" alt="NEXO Engineering &amp; Contracting - شركة نكسو للهندسة والمقاولات" onerror="this.onerror=null; this.src='https://placehold.co/164x40/10131A/D4AF37?text=NEXO';">
+                    <img src="./assets/images/nexo-logo.png" width="440" height="310" loading="lazy" decoding="async" alt="NEXO Engineering &amp; Contracting - شركة نكسو للهندسة والمقاولات" onerror="this.onerror=null; this.src='https://placehold.co/164x40/10131A/D4AF37?text=NEXO';">
                 </div>
                 <div class="tb-cell">
                     <span class="tb-key">Office</span>
@@ -1155,8 +1197,12 @@
         document.querySelectorAll('.dv-head').forEach(head => {
             head.addEventListener('click', () => {
                 const open = head.getAttribute('aria-expanded') === 'true';
-                document.querySelectorAll('.dv-head').forEach(h => h.setAttribute('aria-expanded', 'false'));
+                document.querySelectorAll('.dv-head').forEach(h => {
+                    h.setAttribute('aria-expanded', 'false');
+                    h.closest('.dv').classList.remove('is-open');
+                });
                 head.setAttribute('aria-expanded', String(!open));
+                head.closest('.dv').classList.toggle('is-open', !open);
             });
         });
 
@@ -1188,6 +1234,107 @@
             }
             status.textContent = 'Message ready — connect a form endpoint to deliver it.';
         });
+    </script>
+
+    <!-- Structured data. Claims only what the page can back up: no address beyond the
+         city, no phone, no founding date, no ratings. Add them here as they become real. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": ["Organization", "GeneralContractor"],
+          "@id": "https://nexo-iq.com/#organization",
+          "name": "NEXO Engineering & Contracting",
+          "alternateName": ["NEXO", "شركة نكسو للهندسة والمقاولات"],
+          "legalName": "NEXO Engineering & Contracting Co.",
+          "description": "Next-Generation Engineering eXcellence Organization — architectural and structural design, general contracting, and technical training, based in Baghdad, Iraq.",
+          "url": "https://nexo-iq.com/",
+          "email": "info@nexo-iq.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://nexo-iq.com/assets/images/nexo-logo.png",
+            "width": 440,
+            "height": 310
+          },
+          "image": "https://nexo-iq.com/assets/images/og-cover.png",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Baghdad",
+            "addressCountry": "IQ"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "Iraq"
+          },
+          "knowsAbout": [
+            "Architectural design",
+            "Structural engineering",
+            "Building information modeling",
+            "General contracting",
+            "Construction chemicals",
+            "Site supervision and HSE"
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Divisions",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Architectural & Structural Design",
+                  "description": "Concept packages and detailed calculations to international code: spatial planning, 3D visualisation, structural calculations, BIM modelling, civil layout optimisation, and facade engineering.",
+                  "serviceType": "Architectural and structural design",
+                  "provider": { "@id": "https://nexo-iq.com/#organization" },
+                  "areaServed": { "@type": "Country", "name": "Iraq" }
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "General Contracting & Construction",
+                  "description": "Turnkey execution for commercial, petroleum, hospitality, and urban work: high-rise structural construction, industrial infrastructure, MEP integration, and structural rehabilitation.",
+                  "serviceType": "General contracting",
+                  "provider": { "@id": "https://nexo-iq.com/#organization" },
+                  "areaServed": { "@type": "Country", "name": "Iraq" }
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Training & Capacity Academy",
+                  "description": "Technical workshops for engineers: BIM with Revit, ETABS, AutoCAD and Primavera P6, site supervision and HSE standards, concrete testing, and chemical application.",
+                  "serviceType": "Engineering training",
+                  "provider": { "@id": "https://nexo-iq.com/#organization" },
+                  "areaServed": { "@type": "Country", "name": "Iraq" }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://nexo-iq.com/#website",
+          "url": "https://nexo-iq.com/",
+          "name": "NEXO Engineering & Contracting",
+          "inLanguage": "en",
+          "publisher": { "@id": "https://nexo-iq.com/#organization" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://nexo-iq.com/#webpage",
+          "url": "https://nexo-iq.com/",
+          "name": "NEXO | Engineering & Contracting Company in Baghdad, Iraq",
+          "description": "NEXO Engineering & Contracting delivers architectural and structural design, general contracting, and BIM training across Iraq. Based in Baghdad.",
+          "isPartOf": { "@id": "https://nexo-iq.com/#website" },
+          "about": { "@id": "https://nexo-iq.com/#organization" },
+          "primaryImageOfPage": "https://nexo-iq.com/assets/images/og-cover.png"
+        }
+      ]
+    }
     </script>
 </body>
 </html>
