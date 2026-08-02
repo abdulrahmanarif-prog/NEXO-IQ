@@ -1,6 +1,3 @@
-Here is the complete, single-file `index.html` landing page tailored specifically for **NEXO Engineering & Contracting Co.** It includes responsive CSS and lightweight JavaScript embedded directly in the file.
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,20 +11,18 @@ Here is the complete, single-file `index.html` landing page tailored specificall
     
     <style>
         /* ==========================================
-           1. CSS VARIABLES & RESET
+           1. DARK CHARCOAL & GOLD THEME VARIABLES
            ========================================== */
         :root {
-            --primary: #0f172a;       /* Deep Slate/Navy */
-            --primary-light: #1e293b; /* Card Background Dark */
-            --accent: #d97706;        /* Engineering Amber/Gold */
-            --accent-hover: #b45309;  /* Darker Gold */
-            --text-main: #0f172a;     /* Main Dark Text */
-            --text-muted: #64748b;    /* Subtitle Text */
-            --bg-light: #f8fafc;      /* Light Section Background */
-            --bg-white: #ffffff;      /* Pure White */
-            --border-color: #e2e8f0;  /* Divider Line Color */
-            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-            --transition: all 0.3s ease;
+            --bg-dark: #0a0d12;          /* Ultra Dark Slate/Charcoal Background */
+            --card-dark: #121620;        /* Dark Card Container */
+            --card-border: #222938;      /* Border Accent */
+            --gold-accent: #c59b27;      /* Primary Metallic Gold */
+            --gold-hover: #e5b32a;       /* Bright Gold Hover */
+            --silver-text: #e2e8f0;      /* Platinum Silver Text */
+            --muted-text: #94a3b8;       /* Subtitle Gray */
+            --gold-glow: rgba(197, 155, 39, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
@@ -39,8 +34,8 @@ Here is the complete, single-file `index.html` landing page tailored specificall
         }
 
         body {
-            background-color: var(--bg-white);
-            color: var(--text-main);
+            background-color: var(--bg-dark);
+            color: var(--silver-text);
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -56,44 +51,46 @@ Here is the complete, single-file `index.html` landing page tailored specificall
 
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1240px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
 
         .section-padding {
-            padding: 5rem 0;
+            padding: 6rem 0;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
         }
 
         .section-title h2 {
-            font-size: 2.25rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.5px;
         }
 
         .section-title p {
-            color: var(--text-muted);
+            color: var(--muted-text);
             font-size: 1.1rem;
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
         }
 
         .badge {
             display: inline-block;
-            background: rgba(217, 119, 6, 0.1);
-            color: var(--accent);
-            padding: 0.4rem 1rem;
+            background: var(--gold-glow);
+            color: var(--gold-accent);
+            border: 1px solid rgba(197, 155, 39, 0.3);
+            padding: 0.4rem 1.2rem;
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             margin-bottom: 1rem;
         }
 
@@ -105,9 +102,9 @@ Here is the complete, single-file `index.html` landing page tailored specificall
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
+            background: rgba(10, 13, 18, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
             z-index: 1000;
             transition: var(--transition);
         }
@@ -116,21 +113,19 @@ Here is the complete, single-file `index.html` landing page tailored specificall
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 80px;
+            height: 85px;
         }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary);
-            letter-spacing: 1px;
+        .brand-logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1rem;
         }
 
-        .logo span {
-            color: var(--accent);
+        .brand-logo img {
+            height: 48px;
+            width: auto;
+            border-radius: 4px;
         }
 
         .nav-links {
@@ -142,32 +137,35 @@ Here is the complete, single-file `index.html` landing page tailored specificall
         .nav-links a {
             font-size: 0.95rem;
             font-weight: 600;
-            color: var(--primary);
+            color: var(--silver-text);
             transition: var(--transition);
         }
 
         .nav-links a:hover {
-            color: var(--accent);
+            color: var(--gold-accent);
         }
 
         .btn-nav {
-            background-color: var(--primary);
-            color: var(--bg-white) !important;
-            padding: 0.6rem 1.4rem;
+            background: linear-gradient(135deg, var(--gold-accent) 0%, #9a781b 100%);
+            color: #000000 !important;
+            padding: 0.65rem 1.5rem;
             border-radius: 6px;
+            font-weight: 700 !important;
             transition: var(--transition);
+            box-shadow: 0 4px 15px var(--gold-glow);
         }
 
         .btn-nav:hover {
-            background-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(197, 155, 39, 0.4);
         }
 
         .mobile-toggle {
             display: none;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             background: none;
             border: none;
-            color: var(--primary);
+            color: var(--gold-accent);
             cursor: pointer;
         }
 
@@ -175,80 +173,110 @@ Here is the complete, single-file `index.html` landing page tailored specificall
            3. HERO SECTION
            ========================================== */
         .hero {
-            padding-top: 160px;
-            padding-bottom: 100px;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: var(--bg-white);
+            padding-top: 170px;
+            padding-bottom: 110px;
             position: relative;
+            background: radial-gradient(circle at 50% 20%, rgba(197, 155, 39, 0.08) 0%, rgba(10, 13, 18, 1) 70%);
         }
 
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 3rem;
+            align-items: center;
         }
 
-        .hero h1 {
+        .hero-text h1 {
             font-size: 3.25rem;
             font-weight: 800;
-            line-height: 1.2;
+            line-height: 1.15;
             margin-bottom: 1.5rem;
+            color: #ffffff;
         }
 
-        .hero h1 span {
-            color: var(--accent);
+        .hero-text h1 span {
+            background: linear-gradient(135deg, #ffffff 0%, var(--gold-accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: #94a3b8;
+        .hero-text p {
+            font-size: 1.15rem;
+            color: var(--muted-text);
             margin-bottom: 2.5rem;
             font-weight: 400;
         }
 
         .hero-cta {
             display: flex;
-            gap: 1rem;
-            justify-content: center;
+            gap: 1.25rem;
             align-items: center;
         }
 
         .btn-primary {
-            background-color: var(--accent);
-            color: var(--bg-white);
-            padding: 0.85rem 2rem;
+            background: linear-gradient(135deg, var(--gold-accent) 0%, #a67c1e 100%);
+            color: #000000;
+            padding: 0.9rem 2.2rem;
             border-radius: 6px;
             font-weight: 700;
             transition: var(--transition);
             display: inline-block;
             border: none;
             cursor: pointer;
+            box-shadow: 0 4px 20px var(--gold-glow);
         }
 
         .btn-primary:hover {
-            background-color: var(--accent-hover);
+            background: var(--gold-hover);
             transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(229, 179, 42, 0.4);
         }
 
         .btn-secondary {
-            background-color: transparent;
-            color: var(--bg-white);
-            padding: 0.85rem 2rem;
+            background: transparent;
+            color: #ffffff;
+            padding: 0.9rem 2.2rem;
             border-radius: 6px;
             font-weight: 700;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid var(--card-border);
             transition: var(--transition);
             display: inline-block;
         }
 
         .btn-secondary:hover {
-            border-color: var(--bg-white);
-            background-color: rgba(255, 255, 255, 0.05);
+            border-color: var(--gold-accent);
+            color: var(--gold-accent);
+            background: var(--gold-glow);
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .hero-image-wrapper:hover img {
+            transform: scale(1.02);
         }
 
         /* ==========================================
-           4. ABOUT & ACRONYM
+           4. ABOUT & ACRONYM SECTION
            ========================================== */
+        .about-section {
+            background-color: #0e121a;
+            border-top: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--card-border);
+        }
+
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -256,37 +284,71 @@ Here is the complete, single-file `index.html` landing page tailored specificall
             align-items: center;
         }
 
-        .about-text h3 {
-            font-size: 2rem;
+        .about-image {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-content h3 {
+            font-size: 2.2rem;
             font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 1rem;
+            color: #ffffff;
+            margin-bottom: 1.25rem;
+            line-height: 1.2;
         }
 
-        .about-text p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
+        .about-content p {
+            color: var(--muted-text);
+            margin-bottom: 1.75rem;
+            font-size: 1.05rem;
         }
 
-        .acronym-card {
-            background-color: var(--bg-light);
-            border-left: 4px solid var(--accent);
+        .vision-mission-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .vm-card {
+            background-color: var(--card-dark);
+            border-left: 4px solid var(--gold-accent);
+            border-top: 1px solid var(--card-border);
+            border-right: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--card-border);
             padding: 1.5rem;
             border-radius: 0 8px 8px 0;
-            margin-bottom: 1.5rem;
         }
 
-        .acronym-card h4 {
-            font-weight: 800;
-            color: var(--primary);
+        .vm-card h4 {
+            color: #ffffff;
             font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
         }
 
         /* ==========================================
            5. DEPARTMENTS & SERVICES
            ========================================== */
-        .services {
-            background-color: var(--bg-light);
+        .collage-container {
+            margin-bottom: 4rem;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        }
+
+        .collage-container img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .services-grid {
@@ -296,218 +358,264 @@ Here is the complete, single-file `index.html` landing page tailored specificall
         }
 
         .service-card {
-            background: var(--bg-white);
+            background: var(--card-dark);
             padding: 2.5rem;
             border-radius: 12px;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--card-border);
             transition: var(--transition);
-            box-shadow: var(--shadow);
+            position: relative;
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
+            transform: translateY(-6px);
+            border-color: var(--gold-accent);
+            box-shadow: 0 15px 30px var(--gold-glow);
         }
 
         .service-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(217, 119, 6, 0.1);
-            color: var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            font-weight: bold;
+            font-size: 2rem;
+            margin-bottom: 1.25rem;
+            display: inline-block;
         }
 
         .service-card h3 {
             font-size: 1.35rem;
-            color: var(--primary);
+            color: #ffffff;
             margin-bottom: 1rem;
             font-weight: 700;
         }
 
-        .service-card ul {
-            margin-top: 1rem;
+        .service-card p {
+            color: var(--muted-text);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
         }
 
         .service-card ul li {
-            color: var(--text-muted);
+            color: var(--silver-text);
             font-size: 0.95rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
             position: relative;
             padding-left: 1.25rem;
         }
 
         .service-card ul li::before {
-            content: "•";
-            color: var(--accent);
-            font-weight: bold;
+            content: "✦";
+            color: var(--gold-accent);
             position: absolute;
             left: 0;
+            font-size: 0.8rem;
         }
 
         /* ==========================================
-           6. CLIENTS & PARTNERS
+           6. CLIENTS & PARTNERS CARDS (HYPERLINKED)
            ========================================== */
         .trust-section {
-            border-bottom: 1px solid var(--border-color);
+            background-color: #0c0f16;
+            border-top: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--card-border);
         }
 
-        .trust-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+        .trust-category {
+            margin-bottom: 3.5rem;
         }
 
-        .trust-block h3 {
-            font-size: 1.25rem;
-            color: var(--primary);
+        .trust-category h3 {
+            font-size: 1.3rem;
+            color: var(--gold-accent);
             margin-bottom: 1.5rem;
-            text-align: center;
-            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .logo-flex {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .trust-badge {
-            background-color: var(--bg-light);
-            border: 1px solid var(--border-color);
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
+            letter-spacing: 1.5px;
             font-weight: 700;
-            color: var(--primary);
-            text-align: center;
-            flex: 1 1 140px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .trust-category h3::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--card-border);
+        }
+
+        .partner-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .partner-card {
+            background-color: var(--card-dark);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        .partner-card:hover {
+            border-color: var(--gold-accent);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px var(--gold-glow);
+        }
+
+        .partner-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.3rem;
+        }
+
+        .partner-type {
+            font-size: 0.825rem;
+            color: var(--muted-text);
+            margin-bottom: 1.25rem;
+        }
+
+        .partner-link {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--gold-accent);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: var(--transition);
+        }
+
+        .partner-card:hover .partner-link {
+            color: #ffffff;
         }
 
         /* ==========================================
            7. TRAINING ACADEMY BANNER
            ========================================== */
         .academy-banner {
-            background: linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.95));
-            color: var(--bg-white);
+            background: linear-gradient(135deg, #121824 0%, #0a0d12 100%);
+            border: 1px solid var(--gold-accent);
             border-radius: 16px;
-            padding: 3.5rem 2rem;
+            padding: 4rem 2rem;
             text-align: center;
-            margin-top: 2rem;
+            box-shadow: 0 20px 40px var(--gold-glow);
         }
 
         .academy-banner h3 {
-            font-size: 2rem;
+            font-size: 2.25rem;
+            color: #ffffff;
             margin-bottom: 1rem;
             font-weight: 800;
         }
 
         .academy-banner p {
-            color: #94a3b8;
-            max-width: 700px;
-            margin: 0 auto 2rem auto;
+            color: var(--muted-text);
+            max-width: 750px;
+            margin: 0 auto 2.5rem auto;
+            font-size: 1.1rem;
         }
 
         /* ==========================================
            8. CONTACT & FOOTER
            ========================================== */
         .contact {
-            background-color: var(--bg-light);
+            background-color: #0a0d12;
         }
 
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 4rem;
         }
 
         .contact-info h3 {
-            font-size: 1.5rem;
-            color: var(--primary);
+            font-size: 2rem;
+            color: #ffffff;
             margin-bottom: 1rem;
+            font-weight: 800;
         }
 
         .contact-info p {
-            color: var(--text-muted);
+            color: var(--muted-text);
             margin-bottom: 2rem;
+            font-size: 1.05rem;
         }
 
         .contact-details div {
-            margin-bottom: 1rem;
-            color: var(--primary);
+            margin-bottom: 1.25rem;
+            color: var(--silver-text);
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.05rem;
         }
 
         .contact-form form {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.25rem;
         }
 
         .form-group input, 
         .form-group textarea {
             width: 100%;
-            padding: 0.85rem;
-            border: 1px solid var(--border-color);
+            padding: 1rem;
+            background-color: var(--card-dark);
+            border: 1px solid var(--card-border);
             border-radius: 6px;
             outline: none;
             font-size: 0.95rem;
+            color: #ffffff;
+            transition: var(--transition);
         }
 
         .form-group input:focus, 
         .form-group textarea:focus {
-            border-color: var(--accent);
+            border-color: var(--gold-accent);
+            box-shadow: 0 0 10px var(--gold-glow);
         }
 
         footer {
-            background-color: var(--primary);
-            color: #94a3b8;
-            padding: 3rem 0 1.5rem 0;
-            border-top: 1px solid var(--primary-light);
+            background-color: #06080b;
+            color: var(--muted-text);
+            padding: 3.5rem 0 2rem 0;
+            border-top: 1px solid var(--card-border);
         }
 
         .footer-flex {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--primary-light);
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--card-border);
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 1.5rem;
-            font-size: 0.85rem;
+            padding-top: 2rem;
+            font-size: 0.875rem;
         }
 
         /* ==========================================
            9. RESPONSIVE DESIGN
            ========================================== */
         @media (max-width: 992px) {
-            .hero h1 { font-size: 2.5rem; }
-            .about-grid, .trust-grid, .contact-grid { grid-template-columns: 1fr; }
+            .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .hero { padding-top: 140px; }
         }
 
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
-                top: 80px;
+                top: 85px;
                 left: 0;
                 width: 100%;
-                background-color: var(--bg-white);
+                background-color: #0a0d12;
                 flex-direction: column;
-                padding: 2rem 0;
-                border-bottom: 1px solid var(--border-color);
+                padding: 2.5rem 0;
+                border-bottom: 1px solid var(--card-border);
                 clip-path: circle(0% at 100% 0);
                 transition: clip-path 0.4s ease-in-out;
             }
@@ -527,11 +635,13 @@ Here is the complete, single-file `index.html` landing page tailored specificall
     <!-- HEADER / NAVIGATION -->
     <header>
         <div class="container nav-container">
-            <a href="#" class="logo">NEXO<span>.</span></a>
+            <a href="#" class="brand-logo">
+                <img src="watermarked_img_7571915110530932117.png" alt="NEXO Engineering & Contracting Logo">
+            </a>
             <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation">☰</button>
             <nav class="nav-links" id="navLinks">
-                <a href="#about">About</a>
-                <a href="#services">Departments</a>
+                <a href="#about">About NEXO</a>
+                <a href="#services">Divisions</a>
                 <a href="#portfolio">Clients & Partners</a>
                 <a href="#academy">Academy</a>
                 <a href="#contact" class="btn-nav">Get In Touch</a>
@@ -541,131 +651,211 @@ Here is the complete, single-file `index.html` landing page tailored specificall
 
     <!-- HERO SECTION -->
     <section class="hero">
-        <div class="container hero-content">
-            <span class="badge">Baghdad, Iraq</span>
-            <h1>Connecting Vision with <span>Structural Excellence</span></h1>
-            <p>NEXO is a multidisciplinary engineering powerhouse specializing in modern architectural design, high-standard general contracting, and technical capacity building.</p>
-            <div class="hero-cta">
-                <a href="#services" class="btn-primary">Explore Services</a>
-                <a href="#contact" class="btn-secondary">Contact Our Team</a>
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <span class="badge">📍 Baghdad, Iraq</span>
+                    <h1>Connecting Vision with <span>Structural Excellence</span></h1>
+                    <p>NEXO Engineering & Contracting Co. is a premier multidisciplinary powerhouse—delivering state-of-the-art architectural design, high-standard civil contracting, and capacity-building technical training across Iraq.</p>
+                    <div class="hero-cta">
+                        <a href="#services" class="btn-primary">Explore Our Divisions</a>
+                        <a href="#contact" class="btn-secondary">Request Consultation</a>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <img src="watermarked_img_7571915110530930444.png" alt="NEXO Engineering Building Facade">
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section class="section-padding" id="about">
+    <!-- ABOUT & ACRONYM SECTION -->
+    <section class="section-padding about-section" id="about">
         <div class="container">
             <div class="about-grid">
-                <div class="about-text">
-                    <span class="badge">Who We Are</span>
-                    <h3>Shaping Iraq’s Infrastructure with Innovation & Skill</h3>
-                    <p>At NEXO, we bridge architectural concepts, structural execution, and workforce empowerment. Based in Baghdad, we transform complex structural challenges into lasting national landmarks.</p>
-                    <div class="acronym-card">
-                        <h4>N.E.X.O</h4>
-                        <p><strong>N</strong>ext-Generation <strong>E</strong>ngineering <strong>eX</strong>cellence <strong>O</strong>rganization</p>
-                    </div>
+                <div class="about-image">
+                    <img src="watermarked_img_6798940545294702460.png" alt="NEXO Acronym Structure">
                 </div>
-                <div>
-                    <div class="acronym-card" style="margin-bottom: 1rem; border-left-color: var(--primary);">
-                        <h4>👁️ Vision</h4>
-                        <p>To be Iraq’s premier engineering powerhouse—pioneering modern architectural design, executing high-standard construction projects, and building local technical capacity.</p>
-                    </div>
-                    <div class="acronym-card" style="border-left-color: var(--accent);">
-                        <h4>🎯 Mission</h4>
-                        <p>To deliver world-class engineering design, top-tier contracting, and specialized training by combining international technical standards with strategic industry partnerships.</p>
+                <div class="about-content">
+                    <span class="badge">Who We Are</span>
+                    <h3>Next-Generation Engineering eXcellence Organization</h3>
+                    <p>Rooted in Baghdad, NEXO is structured to bridge modern technical modeling with flawless site execution. We bring together engineering precision, quality construction chemicals, and local workforce development to reshape the Iraqi infrastructure landscape.</p>
+                    <div class="vision-mission-cards">
+                        <div class="vm-card">
+                            <h4>👁️ Vision</h4>
+                            <p>To be Iraq’s premier engineering powerhouse—pioneering modern architectural designs, executing complex infrastructure, and cultivating top-tier local engineering talent.</p>
+                        </div>
+                        <div class="vm-card" style="border-left-color: #ffffff;">
+                            <h4>🎯 Mission</h4>
+                            <p>Delivering world-class engineering design, heavy civil contracting, and specialized software training by pairing global standards with strategic industrial partnerships.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- DEPARTMENTS / SERVICES SECTION -->
-    <section class="section-padding services" id="services">
+    <!-- DEPARTMENTS / DIVISIONS SECTION -->
+    <section class="section-padding" id="services">
         <div class="container">
             <div class="section-title">
-                <span class="badge">Our Core Divisions</span>
-                <h2>Multidisciplinary Engineering Services</h2>
-                <p>Delivering end-to-end execution across three operational pillars.</p>
+                <span class="badge">Our Expertise</span>
+                <h2>Core Operational Divisions</h2>
+                <p>Integrated services covering architectural modeling, high-rise contracting, and technical academy workshops.</p>
             </div>
+
+            <!-- Operational Collage Graphic -->
+            <div class="collage-container">
+                <img src="watermarked_img_7159644917220652265.png" alt="NEXO Operational Divisions Overview">
+            </div>
+
             <div class="services-grid">
-                <!-- Department 1 -->
+                <!-- Division 1 -->
                 <div class="service-card">
                     <div class="service-icon">📐</div>
                     <h3>Architectural & Structural Design</h3>
-                    <p>Creating functional, aesthetically modern designs engineered for durability and code compliance.</p>
+                    <p>Conceptual and detailed engineering layouts built to modern international codes.</p>
                     <ul>
-                        <li>Conceptual Design & Spatial Planning</li>
-                        <li>3D Rendering & Visualizations</li>
+                        <li>Architectural Spatial Planning & 3D Rendering</li>
                         <li>Structural Calculations & BIM Modeling</li>
-                        <li>Interior & Exterior Layout Engineering</li>
+                        <li>Civil Engineering Layout Optimization</li>
+                        <li>Interior & Exterior Facade Engineering</li>
                     </ul>
                 </div>
-                <!-- Department 2 -->
+                <!-- Division 2 -->
                 <div class="service-card">
                     <div class="service-icon">🏗️</div>
                     <h3>General Contracting & Construction</h3>
-                    <p>Full-scale site execution managed with precise civil, structural, and MEP engineering standards.</p>
+                    <p>Turnkey civil execution for hospitality, industrial, and high-rise developments.</p>
                     <ul>
-                        <li>Site Execution & Project Management</li>
-                        <li>Civil Work & High-Rise Infrastructure</li>
-                        <li>MEP Works (Mechanical, Electrical, Plumbing)</li>
-                        <li>Hospitality & Commercial Developments</li>
+                        <li>High-Rise Structural Construction</li>
+                        <li>Industrial & Petroleum Infrastructure</li>
+                        <li>Mechanical, Electrical & Plumbing (MEP)</li>
+                        <li>Advanced Structural Rehabilitation</li>
                     </ul>
                 </div>
-                <!-- Department 3 -->
+                <!-- Division 3 -->
                 <div class="service-card">
                     <div class="service-icon">🎓</div>
                     <h3>Training & Capacity Academy</h3>
-                    <p>Empowering local Iraqi engineering talent with modern software mastery and field expertise.</p>
+                    <p>Empowering engineers across Iraq with industry-leading software and site applications.</p>
                     <ul>
-                        <li>Revit, ETABS, AutoCAD & Primavera P6</li>
-                        <li>Structural Code Compliance Workshops</li>
-                        <li>Site Supervision & Safety Practices</li>
-                        <li>Applied Materials & Chemical Application</li>
+                        <li>BIM (Revit, ETABS, AutoCAD, Primavera P6)</li>
+                        <li>Site Supervision & HSE Safety Workshops</li>
+                        <li>Concrete Repair & Material Science</li>
+                        <li>Specialized Chemical Application Masterclasses</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CLIENTS & PARTNERS SECTION -->
+    <!-- CLIENTS & PARTNERS SECTION (WITH EXTERNAL LINKS) -->
     <section class="section-padding trust-section" id="portfolio">
         <div class="container">
             <div class="section-title">
-                <span class="badge">Track Record & Network</span>
+                <span class="badge">Network of Trust</span>
                 <h2>Clients & Strategic Partners</h2>
-                <p>Trusted by industry leaders and backed by global chemical & development partners.</p>
+                <p>Collaborating with top-tier developers, petroleum enterprises, and global construction chemical leaders.</p>
             </div>
-            <div class="trust-grid">
-                <!-- Key Clients -->
-                <div class="trust-block">
-                    <h3>Valued Clients</h3>
-                    <div class="logo-flex">
-                        <div class="trust-badge">Rixos Baghdad</div>
-                        <div class="trust-badge">Millennium Tower</div>
-                        <div class="trust-badge">EBS Petroleum</div>
-                    </div>
-                </div>
-                <!-- Strategic Partners -->
-                <div class="trust-block">
-                    <h3>Strategic Partners</h3>
-                    <div class="logo-flex">
-                        <div class="trust-badge" style="border-color: var(--accent);">Fosroc</div>
-                        <div class="trust-badge" style="border-color: var(--accent);">Zamzam Land</div>
-                    </div>
+
+            <!-- Key Clients -->
+            <div class="trust-category">
+                <h3>Valued Clients</h3>
+                <div class="partner-grid">
+                    <!-- Client 1 -->
+                    <a href="https://rixosbaghdadresidences.com/" target="_blank" rel="noopener noreferrer" class="partner-card">
+                        <div>
+                            <div class="partner-title">Rixos Baghdad</div>
+                            <div class="partner-type">Luxury Hospitality & Residences</div>
+                        </div>
+                        <div class="partner-link">Visit Official Site ↗</div>
+                    </a>
+                    <!-- Client 2 -->
+                    <a href="https://www.ebspetroleum.com/" target="_blank" rel="noopener noreferrer" class="partner-card">
+                        <div>
+                            <div class="partner-title">EBS Petroleum</div>
+                            <div class="partner-type">Energy & Industrial Infrastructure</div>
+                        </div>
+                        <div class="partner-link">Visit Official Site ↗</div>
+                    </a>
+                    <!-- Client 3 -->
+                    <a href="https://ramlah.co/millennium" target="_blank" rel="noopener noreferrer" class="partner-card">
+                        <div>
+                            <div class="partner-title">Millennium Tower</div>
+                            <div class="partner-type">Ramlah Urban Developments</div>
+                        </div>
+                        <div class="partner-link">Visit Official Site ↗</div>
+                    </a>
+                    <!-- Client 4 -->
+                    <a href="https://modoniq.com/ar/future-city/" target="_blank" rel="noopener noreferrer" class="partner-card">
+                        <div>
+                            <div class="partner-title">Future City</div>
+                            <div class="partner-type">Modon Developments</div>
+                        </div>
+                        <div class="partner-link">Visit Official Site ↗</div>
+                    </a>
                 </div>
             </div>
+
+            <!-- Strategic Partners -->
+            <div class="trust-category">
+                <h3>Strategic Industry Partners</h3>
+                <div class="partner-grid">
+                    <!-- Partner 1 -->
+                    <a href="https://www.fosroc.com/" target="_blank" rel="noopener noreferrer" class="partner-card" style="border-color: rgba(197, 155, 39, 0.4);">
+                        <div>
+                            <div class="partner-title">Fosroc</div>
+                            <div class="partner-type">Construction Chemicals & Solutions</div>
+                        </div>
+                        <div class="partner-link">Visit Official Site ↗</div>
+                    </a>
+                    <!-- Partner 2 -->
+                    <a href="https://irq.sika.com/" target="_blank" rel="noopener noreferrer" class="partner-card" style="border-color: rgba(197, 155, 39, 0.4);">
+                        <div>
+                            <div class="partner-title">Sika Iraq</div>
+                            <div class="partner-type">Specialty Chemicals & Waterproofing</div>
+                        </div>
+                        <div class="partner-link">Visit Official Site ↗</div>
+                    </a>
+                    <!-- Partner 3 -->
+                    <a href="https://www.dcp-int.com/iq/ar" target="_blank" rel="noopener noreferrer" class="partner-card" style="border-color: rgba(197, 155, 39, 0.4);">
+                        <div>
+                            <div class="partner-title">DCP Iraq</div>
+                            <div class="partner-type">Don Construction Products</div>
+                        </div>
+                        <div class="partner-link">Visit Official Site ↗</div>
+                    </a>
+                    <!-- Partner 4 -->
+                    <a href="https://zamzamland.com/en/" target="_blank" rel="noopener noreferrer" class="partner-card" style="border-color: rgba(197, 155, 39, 0.4);">
+                        <div>
+                            <div class="partner-title">Zamzam Land</div>
+                            <div class="partner-type">Commercial & Tourism Real Estate</div>
+                        </div>
+                        <div class="partner-link">Visit Official Site ↗</div>
+                    </a>
+                    <!-- Partner 5 -->
+                    <a href="https://hmairaq.com/" target="_blank" rel="noopener noreferrer" class="partner-card" style="border-color: rgba(197, 155, 39, 0.4);">
+                        <div>
+                            <div class="partner-title">HMA Iraq</div>
+                            <div class="partner-type">Heavy Engineering & Equipment</div>
+                        </div>
+                        <div class="partner-link">Visit Official Site ↗</div>
+                    </a>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- TRAINING ACADEMY BANNER -->
+    <!-- ACADEMY BANNER -->
     <section class="section-padding" id="academy">
         <div class="container">
             <div class="academy-banner">
-                <span class="badge" style="background: rgba(255,255,255,0.1); color: #fff;">NEXO Academy</span>
-                <h3>Advance Your Engineering Career</h3>
-                <p>Join our professional engineering workshops in Baghdad. Master industry-standard BIM modeling, structural design tools, and specialized chemical application techniques.</p>
-                <a href="#contact" class="btn-primary">Register For Upcoming Courses</a>
+                <span class="badge">NEXO Engineering Academy</span>
+                <h3>Advance Your Technical Expertise in Baghdad</h3>
+                <p>Register for specialized workshops taught by industry experts—covering BIM engineering, structural software calculations, and chemical application standards.</p>
+                <a href="#contact" class="btn-primary">View Upcoming Courses</a>
             </div>
         </div>
     </section>
@@ -675,13 +865,13 @@ Here is the complete, single-file `index.html` landing page tailored specificall
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-info">
-                    <span class="badge">Contact Us</span>
-                    <h3>Let’s Build Something Great Together</h3>
-                    <p>Have an upcoming project or want to learn more about our engineering and training programs? Reach out to our team in Baghdad.</p>
+                    <span class="badge">Get In Touch</span>
+                    <h3>Partner With NEXO Engineering</h3>
+                    <p>Whether you require full-scale contracting, structural consultation, or enrollment in our technical academy, contact our team in Baghdad.</p>
                     <div class="contact-details">
                         <div>📍 Location: Baghdad, Iraq</div>
-                        <div>🌐 Website: <a href="http://nexo-iq.com" target="_blank" style="color: var(--accent);">nexo-iq.com</a></div>
-                        <div>📧 Email: info@nexo-iq.com</div>
+                        <div>🌐 Website: <a href="http://nexo-iq.com" target="_blank" style="color: var(--gold-accent);">nexo-iq.com</a></div>
+                        <div>📧 Official Email: info@nexo-iq.com</div>
                     </div>
                 </div>
                 <div class="contact-form">
@@ -693,12 +883,12 @@ Here is the complete, single-file `index.html` landing page tailored specificall
                             <input type="email" placeholder="Your Email Address" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Subject / Department Interested In" required>
+                            <input type="text" placeholder="Subject / Project Scope" required>
                         </div>
                         <div class="form-group">
-                            <textarea rows="5" placeholder="Project details or message..." required></textarea>
+                            <textarea rows="5" placeholder="Write your inquiry here..." required></textarea>
                         </div>
-                        <button type="submit" class="btn-primary" style="width: 100%;">Send Message</button>
+                        <button type="submit" class="btn-primary" style="width: 100%;">Submit Message</button>
                     </form>
                 </div>
             </div>
@@ -709,11 +899,13 @@ Here is the complete, single-file `index.html` landing page tailored specificall
     <footer>
         <div class="container">
             <div class="footer-flex">
-                <div class="logo" style="color: var(--bg-white);">NEXO<span style="color: var(--accent);">.</span></div>
+                <div class="brand-logo">
+                    <img src="watermarked_img_7571915110530932117.png" alt="NEXO Logo Footer" style="height: 40px;">
+                </div>
                 <p style="font-size: 0.9rem;">Next-Generation Engineering eXcellence Organization</p>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <span id="year"></span> NEXO Engineering, Contracting & Training Co. All rights reserved. | <a href="http://nexo-iq.com" style="color: var(--accent);">nexo-iq.com</a></p>
+                <p>&copy; <span id="year"></span> NEXO Engineering & Contracting Co. All rights reserved. | <a href="http://nexo-iq.com" style="color: var(--gold-accent);">nexo-iq.com</a></p>
             </div>
         </div>
     </footer>
@@ -729,7 +921,7 @@ Here is the complete, single-file `index.html` landing page tailored specificall
             mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
         });
 
-        // Close menu when clicking links on mobile
+        // Close mobile nav menu on item click
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -740,14 +932,12 @@ Here is the complete, single-file `index.html` landing page tailored specificall
         // Dynamic Copyright Year
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Simple Form Submission Alert
+        // Contact Form Interactivity
         document.getElementById('inquiryForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for contacting NEXO Engineering. We will respond to your message shortly.');
+            alert('Thank you for contacting NEXO Engineering & Contracting. Our team will review your message and reach out shortly.');
             this.reset();
         });
     </script>
 </body>
 </html>
-
-```
