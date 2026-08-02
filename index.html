@@ -583,6 +583,26 @@
             opacity: 1;
         }
 
+        /* Partner & Client Logo Box Styles */
+        .trust-card-logo {
+            width: 100%;
+            height: 90px;
+            background: #FFFFFF;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem;
+            margin-bottom: 1.25rem;
+            transition: var(--transition);
+        }
+
+        .trust-card-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
         .trust-card-name {
             font-size: 1.2rem;
             font-weight: 700;
@@ -593,20 +613,21 @@
         .trust-card-category {
             font-size: 0.85rem;
             color: var(--text-muted);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
-        .trust-card-link {
-            font-size: 0.875rem;
+        .trust-card-action {
+            font-size: 0.85rem;
             font-weight: 700;
             color: var(--gold-primary);
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
+            margin-top: auto;
             transition: var(--transition);
         }
 
-        .trust-card:hover .trust-card-link {
+        .trust-card:hover .trust-card-action {
             color: #FFFFFF;
             transform: translateX(3px);
         }
@@ -795,7 +816,7 @@
     <header>
         <div class="container nav-container">
             <a href="#" class="brand-logo">
-                <img src="Gemini_Generated_Image_5j9e2n5j9e2n5j9e (1).png" alt="NEXO Engineering Logo">
+                <img src="nexo logo.webp" alt="NEXO Engineering Logo">
             </a>
             <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation">☰</button>
             <nav class="nav-links" id="navLinks">
@@ -837,7 +858,7 @@
             <div class="about-grid">
                 <!-- SECOND IMAGE: NEXO ACRONYM DIAGRAM PLACED IN ABOUT SECTION -->
                 <div class="acronym-frame">
-                    <img src="Gemini_Generated_Image_5j9e2n5j9e2n5j9e (2).png" alt="NEXO Acronym Structure: Next-Generation Engineering eXcellence Organization">
+                    <img src="about.webp" alt="NEXO Acronym Structure: Next-Generation Engineering eXcellence Organization">
                 </div>
                 <div class="about-content">
                     <span class="badge-gold">Who We Are</span>
@@ -930,27 +951,36 @@
                 <div class="trust-group-title">Valued Clients</div>
                 <div class="cards-grid">
                     <a href="https://rixosbaghdadresidences.com/" target="_blank" rel="noopener noreferrer" class="trust-card">
+                        <div class="trust-card-logo">
+                            <img src="risox.webp" alt="Rixos Baghdad Logo">
+                        </div>
                         <div>
                             <div class="trust-card-name">Rixos Baghdad</div>
                             <div class="trust-card-category">Luxury Hospitality & Residences</div>
                         </div>
-                        <div class="trust-card-link">Visit Web Page ↗</div>
+                        <div class="trust-card-action">Visit Web Page ↗</div>
                     </a>
 
                     <a href="https://www.ebspetroleum.com/" target="_blank" rel="noopener noreferrer" class="trust-card">
+                        <div class="trust-card-logo">
+                            <img src="ebs.webp" alt="EBS Petroleum Logo">
+                        </div>
                         <div>
                             <div class="trust-card-name">EBS Petroleum</div>
                             <div class="trust-card-category">Energy & Industrial Sector</div>
                         </div>
-                        <div class="trust-card-link">Visit Web Page ↗</div>
+                        <div class="trust-card-action">Visit Web Page ↗</div>
                     </a>
 
                     <a href="https://ramlah.co/millennium" target="_blank" rel="noopener noreferrer" class="trust-card">
+                        <div class="trust-card-logo">
+                            <img src="melinum.webp" alt="Millennium Towers Logo">
+                        </div>
                         <div>
                             <div class="trust-card-name">Millennium Tower</div>
                             <div class="trust-card-category">Ramlah Urban Developments</div>
                         </div>
-                        <div class="trust-card-link">Visit Web Page ↗</div>
+                        <div class="trust-card-action">Visit Web Page ↗</div>
                     </a>
 
                     <a href="https://modoniq.com/ar/future-city/" target="_blank" rel="noopener noreferrer" class="trust-card">
@@ -958,7 +988,7 @@
                             <div class="trust-card-name">Future City</div>
                             <div class="trust-card-category">Modon Developments</div>
                         </div>
-                        <div class="trust-card-link">Visit Web Page ↗</div>
+                        <div class="trust-card-action">Visit Web Page ↗</div>
                     </a>
                 </div>
             </div>
@@ -968,35 +998,47 @@
                 <div class="trust-group-title">Strategic Industrial Partners</div>
                 <div class="cards-grid">
                     <a href="https://www.fosroc.com/" target="_blank" rel="noopener noreferrer" class="trust-card">
+                        <div class="trust-card-logo">
+                            <img src="fosroc.webp" alt="Fosroc Logo">
+                        </div>
                         <div>
                             <div class="trust-card-name">Fosroc</div>
                             <div class="trust-card-category">Construction Chemical Solutions</div>
                         </div>
-                        <div class="trust-card-link">Visit Web Page ↗</div>
+                        <div class="trust-card-action">Visit Web Page ↗</div>
                     </a>
 
                     <a href="https://irq.sika.com/" target="_blank" rel="noopener noreferrer" class="trust-card">
+                        <div class="trust-card-logo">
+                            <img src="sika.webp" alt="Sika Iraq Logo">
+                        </div>
                         <div>
                             <div class="trust-card-name">Sika Iraq</div>
                             <div class="trust-card-category">Specialty Chemical Technology</div>
                         </div>
-                        <div class="trust-card-link">Visit Web Page ↗</div>
+                        <div class="trust-card-action">Visit Web Page ↗</div>
                     </a>
 
                     <a href="https://www.dcp-int.com/iq/ar" target="_blank" rel="noopener noreferrer" class="trust-card">
+                        <div class="trust-card-logo">
+                            <img src="dcp.webp" alt="DCP Iraq Logo">
+                        </div>
                         <div>
                             <div class="trust-card-name">DCP Iraq</div>
                             <div class="trust-card-category">Don Construction Products</div>
                         </div>
-                        <div class="trust-card-link">Visit Web Page ↗</div>
+                        <div class="trust-card-action">Visit Web Page ↗</div>
                     </a>
 
                     <a href="https://zamzamland.com/en/" target="_blank" rel="noopener noreferrer" class="trust-card">
+                        <div class="trust-card-logo">
+                            <img src="Zamzam-Land-1.webp" alt="Zamzam Land Logo">
+                        </div>
                         <div>
                             <div class="trust-card-name">Zamzam Land</div>
                             <div class="trust-card-category">Commercial & Real Estate</div>
                         </div>
-                        <div class="trust-card-link">Visit Web Page ↗</div>
+                        <div class="trust-card-action">Visit Web Page ↗</div>
                     </a>
 
                     <a href="https://hmairaq.com/" target="_blank" rel="noopener noreferrer" class="trust-card">
@@ -1004,7 +1046,7 @@
                             <div class="trust-card-name">HMA Iraq</div>
                             <div class="trust-card-category">Heavy Engineering & Equipment</div>
                         </div>
-                        <div class="trust-card-link">Visit Web Page ↗</div>
+                        <div class="trust-card-action">Visit Web Page ↗</div>
                     </a>
                 </div>
             </div>
@@ -1075,7 +1117,7 @@
         <div class="container">
             <div class="footer-top">
                 <div class="footer-logo">
-                    <img src="Gemini_Generated_Image_5j9e2n5j9e2n5j9e (1).png" alt="NEXO Logo Footer">
+                    <img src="nexo logo.webp" alt="NEXO Logo Footer">
                 </div>
                 <p style="font-size: 0.95rem; color: var(--silver-primary);">Next-Generation Engineering eXcellence Organization</p>
             </div>
