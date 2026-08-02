@@ -447,6 +447,8 @@
             position: relative;
             display: flex;
             flex-direction: column;
+            text-decoration: none;
+            color: inherit;
         }
 
         .service-card:hover {
@@ -486,6 +488,7 @@
 
         .service-card ul {
             margin-top: auto;
+            margin-bottom: 1.5rem;
         }
 
         .service-card ul li {
@@ -852,11 +855,10 @@
         </div>
     </section>
 
-    <!-- ABOUT SECTION WITH SPECIFICALLY PLACED ACRONYM DIAGRAM -->
+    <!-- ABOUT SECTION WITH ACRONYM SHOWCASE -->
     <section class="section-padding about-section" id="about">
         <div class="container">
             <div class="about-grid">
-                <!-- SECOND IMAGE: NEXO ACRONYM DIAGRAM PLACED IN ABOUT SECTION -->
                 <div class="acronym-frame">
                     <img src="./about.webp" alt="NEXO Acronym Structure: Next-Generation Engineering eXcellence Organization">
                 </div>
@@ -880,23 +882,23 @@
         </div>
     </section>
 
-    <!-- DIVISIONS & SERVICES SECTION WITH OPERATIONAL COLLAGE -->
+    <!-- DIVISIONS & SERVICES SECTION -->
     <section class="section-padding divisions-section" id="services">
         <div class="container">
             <div class="section-title">
                 <span class="badge-gold">Our Capabilities</span>
                 <h2>Core Operational Divisions</h2>
-                <p>Comprehensive engineering services spanning BIM design modeling, major civil contracting, and hands-on academy training.</p>
+                <p>Comprehensive engineering services spanning BIM design modeling, major civil contracting, and hands-on academy training. Click any division below to view detailed works.</p>
             </div>
 
-            <!-- THIRD IMAGE: OPERATIONAL DIVISIONS COLLAGE -->
+            <!-- OPERATIONAL DIVISIONS COLLAGE -->
             <div class="operational-collage-frame">
                 <img src="./Gemini_Generated_Image_5j9e2n5j9e2n5j9e (3).png" alt="NEXO Architectural Design, Civil Site Construction, and Academy Training">
             </div>
 
             <div class="services-grid">
                 <!-- Division 1 -->
-                <div class="service-card">
+                <a href="architectural-design.html" target="_blank" class="service-card">
                     <div class="service-icon">📐</div>
                     <h3>Architectural & Structural Design</h3>
                     <p>Conceptual and detailed engineering calculations built to strict international codes.</p>
@@ -906,10 +908,11 @@
                         <li>Civil Layout Optimization</li>
                         <li>Exterior Facade & Interior Engineering</li>
                     </ul>
-                </div>
+                    <span class="btn-gold" style="width: 100%; text-align: center;">View Projects & Details ↗</span>
+                </a>
 
                 <!-- Division 2 -->
-                <div class="service-card">
+                <a href="general-contracting.html" target="_blank" class="service-card">
                     <div class="service-icon">🏗️</div>
                     <h3>General Contracting & Construction</h3>
                     <p>Turnkey execution for commercial, petroleum, hospitality, and urban developments.</p>
@@ -919,10 +922,11 @@
                         <li>MEP Systems Integration</li>
                         <li>Structural Rehabilitation & Retrofitting</li>
                     </ul>
-                </div>
+                    <span class="btn-gold" style="width: 100%; text-align: center;">View Projects & Details ↗</span>
+                </a>
 
                 <!-- Division 3 -->
-                <div class="service-card">
+                <a href="training-academy.html" target="_blank" class="service-card">
                     <div class="service-icon">🎓</div>
                     <h3>Training & Capacity Academy</h3>
                     <p>Empowering engineers across Iraq with industry-standard software and site expertise.</p>
@@ -932,7 +936,8 @@
                         <li>Concrete Testing & Chemical Application</li>
                         <li>Technical Masterclasses & Certification</li>
                     </ul>
-                </div>
+                    <span class="btn-gold" style="width: 100%; text-align: center;">View Workshops & Details ↗</span>
+                </a>
             </div>
         </div>
     </section>
