@@ -523,18 +523,24 @@
            150 is measured, not guessed: the arms are far wider at their tips than
            at the waist, and the widest vertex sits 195 units off the axis in the
            mark's own 1000 space. Anything narrower shaves the end-cuts off.
-           The hidden state lives under .js-ready so that with JS off the mark
-           renders complete rather than never being drawn at all. */
+
+           The resting state is DRAWN, and the animation carries its own start
+           frame via `from` + `both`. Parking the hidden state in a static rule
+           instead means anything that stops the animation finishing — a stalled
+           compositor, a dropped keyframe, JS that never adds .js-ready — leaves
+           the mark permanently invisible. This way the failure mode is "no
+           animation", not "no logo". */
         .axis-stroke {
             stroke: #fff;
             stroke-width: 150;
             fill: none;
             stroke-dasharray: 554;
+            stroke-dashoffset: 0;
         }
 
-        .js-ready .axis-stroke { stroke-dashoffset: 554; animation: draw 1.35s var(--ease) forwards; }
+        .js-ready .axis-stroke { animation: draw 1.35s var(--ease) both; }
         .js-ready .axis-stroke:nth-child(2) { animation-delay: 0.18s; }
-        @keyframes draw { to { stroke-dashoffset: 0; } }
+        @keyframes draw { from { stroke-dashoffset: 554; } to { stroke-dashoffset: 0; } }
 
         .fig-caption {
             font-family: var(--font-mono);
@@ -973,6 +979,11 @@
                 transition-duration: 0.001ms !important;
             }
             .js-ready .reveal, .js-ready .hero-stagger > * { opacity: 1; transform: none; }
+            /* Cancel the draw outright rather than compressing it. The blanket
+               animation-duration override above does not touch animation-delay,
+               and with fill-mode `both` a delayed member keeps holding its hidden
+               start frame — so the second half of the mark stayed invisible. */
+            .js-ready .axis-stroke { animation: none; }
             .axis-stroke { stroke-dashoffset: 0; }
         }
     </style>
@@ -1027,23 +1038,22 @@
                 <figure class="axis-figure" style="margin:0">
                     <svg viewBox="0 0 480 480" role="img" aria-label="علامة نكسو مرسومة كمحورين إنشائيين متقاطعين: التصميم والتنفيذ يلتقيان عند عقدة واحدة.">
                         <defs>
-                            <!-- The wipe that makes the mark draw itself. It is nested
-                                 INSIDE axisMask rather than used as the mask itself,
-                                 because the mask is now the real symbol silhouette and
-                                 a stroke-dash animation only applies to a stroke. The
-                                 lines overrun the members at both ends so the angled
-                                 end-cuts are covered to the corner. -->
+                            <!-- Two separate mechanisms, deliberately NOT nested. The
+                                 silhouette is a clipPath and the draw-on wipe is a mask,
+                                 each applied to its own group. A mask referenced from
+                                 inside another mask renders under software rasterisation
+                                 but drops out entirely on GPU-composited Chrome, which
+                                 left the hero empty. Keep these two apart. -->
+                            <clipPath id="markClip">
+                                <!-- assets/brand/nexo-symbol.svg, uniformly scaled into a
+                                     360 square. Never scale non-uniformly. -->
+                                <path transform="translate(60,70) scale(0.36)" d="M 0.00 0.00 L 190.94 0.00 L 478.35 288.39 L 478.35 356.30 L 444.88 431.10 L 520.67 355.31 L 520.67 288.39 L 808.07 0.00 L 1000.00 0.00 L 999.02 191.93 L 592.52 597.44 L 718.50 526.57 L 999.02 808.07 L 1000.00 1000.00 L 809.06 1000.00 L 520.67 711.61 L 520.67 644.69 L 554.13 568.90 L 478.35 644.69 L 478.35 710.63 L 189.96 1000.00 L 0.00 1000.00 L 0.00 808.07 L 405.51 402.56 L 281.50 473.43 L 0.00 191.93 Z"/>
+                            </clipPath>
                             <mask id="drawWipe">
+                                <!-- Overruns the members at both ends so the angled
+                                     end-cuts are covered right into the corners. -->
                                 <line class="axis-stroke" x1="66.1" y1="35" x2="413.9" y2="465"/>
                                 <line class="axis-stroke" x1="413.9" y1="35" x2="66.1" y2="465"/>
-                            </mask>
-                            <mask id="axisMask">
-                                <g mask="url(#drawWipe)">
-                                    <!-- assets/brand/nexo-symbol.svg, uniformly scaled into
-                                         a 360 square. The symbol is never mirrored in RTL. -->
-                                    <path fill="#fff" transform="translate(60,70) scale(0.36)"
-                                          d="M 0.00 0.00 L 190.94 0.00 L 478.35 288.39 L 478.35 356.30 L 444.88 431.10 L 520.67 355.31 L 520.67 288.39 L 808.07 0.00 L 1000.00 0.00 L 999.02 191.93 L 592.52 597.44 L 718.50 526.57 L 999.02 808.07 L 1000.00 1000.00 L 809.06 1000.00 L 520.67 711.61 L 520.67 644.69 L 554.13 568.90 L 478.35 644.69 L 478.35 710.63 L 189.96 1000.00 L 0.00 1000.00 L 0.00 808.07 L 405.51 402.56 L 281.50 473.43 L 0.00 191.93 Z"/>
-                                </g>
                             </mask>
                         </defs>
 
@@ -1052,14 +1062,14 @@
                         <line class="axis-hair" x1="0" y1="250" x2="480" y2="250"/>
                         <line class="axis-hair" x1="240" y1="20" x2="240" y2="470"/>
 
-                        <g mask="url(#axisMask)">
+                        <g clip-path="url(#markClip)"><g mask="url(#drawWipe)">
                             <!-- Flat gold, never a gradient. It is only ever seen if the
                                  photograph fails, which is what the onerror falls back to. -->
                             <rect x="60" y="70" width="360" height="360" fill="#C9A24E"/>
                             <image href="../assets/images/hero-facade.jpg" x="60" y="70" width="360" height="360"
                                    preserveAspectRatio="xMidYMid slice"
-                                   onerror="this.onerror=null; this.setAttribute('href','https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;w=900&amp;q=80');"/>
-                        </g>
+                                   onerror="this.onerror=function(){ this.remove(); }; this.setAttribute('href','https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;w=900&amp;q=80');"/>
+                        </g></g>
 
                         <circle cx="240" cy="250" r="6" fill="#0A0C10" stroke="#C9A24E" stroke-width="1.5"/>
                         <text class="axis-label" x="410" y="52" text-anchor="end">تصميم</text>
