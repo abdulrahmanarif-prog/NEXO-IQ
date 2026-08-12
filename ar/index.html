@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXO | Engineering &amp; Contracting Company in Baghdad, Iraq</title>
-    <meta name="description" content="NEXO Engineering &amp; Contracting delivers architectural and structural design, general contracting, and BIM training across Iraq. Based in Baghdad.">
-    <link rel="canonical" href="https://nexo-iq.com/">
+    <title>نكسو | شركة هندسة ومقاولات في بغداد، العراق</title>
+    <meta name="description" content="شركة نكسو للهندسة والمقاولات تقدّم التصميم المعماري والإنشائي، والمقاولات العامة، والتدريب على الـ BIM في عموم العراق. مقرّها بغداد.">
+    <link rel="canonical" href="https://nexo-iq.com/ar/">
     <link rel="alternate" hreflang="en" href="https://nexo-iq.com/">
     <link rel="alternate" hreflang="ar" href="https://nexo-iq.com/ar/">
     <link rel="alternate" hreflang="x-default" href="https://nexo-iq.com/">
@@ -14,21 +14,21 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="NEXO Engineering &amp; Contracting">
-    <meta property="og:url" content="https://nexo-iq.com/">
-    <meta property="og:title" content="NEXO | Engineering &amp; Contracting Company in Baghdad, Iraq">
-    <meta property="og:description" content="Architectural and structural design, general contracting, and BIM training across Iraq.">
+    <meta property="og:site_name" content="شركة نكسو للهندسة والمقاولات">
+    <meta property="og:url" content="https://nexo-iq.com/ar/">
+    <meta property="og:title" content="نكسو | شركة هندسة ومقاولات في بغداد، العراق">
+    <meta property="og:description" content="تصميم معماري وإنشائي، ومقاولات عامة، وتدريب على الـ BIM في عموم العراق.">
     <meta property="og:image" content="https://nexo-iq.com/assets/images/og-cover.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="The NEXO mark — two gold axes crossing — beside the company name.">
-    <meta property="og:locale" content="en">
-    <meta property="og:locale:alternate" content="ar_IQ">
+    <meta property="og:image:alt" content="علامة نكسو — محوران ذهبيان متقاطعان — إلى جانب اسم الشركة.">
+    <meta property="og:locale" content="ar_IQ">
+    <meta property="og:locale:alternate" content="en">
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="NEXO | Engineering &amp; Contracting Company in Baghdad, Iraq">
-    <meta name="twitter:description" content="Architectural and structural design, general contracting, and BIM training across Iraq.">
+    <meta name="twitter:title" content="نكسو | شركة هندسة ومقاولات في بغداد، العراق">
+    <meta name="twitter:description" content="تصميم معماري وإنشائي، ومقاولات عامة، وتدريب على الـ BIM في عموم العراق.">
     <meta name="twitter:image" content="https://nexo-iq.com/assets/images/og-cover.png">
 
     <!-- Icons -->
@@ -37,14 +37,16 @@
     <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
 
-    <!-- Google Fonts: Archivo (display) · Plus Jakarta Sans (body) · IBM Plex Mono (utility) -->
+    <!-- Google Fonts: Tajawal (display) · IBM Plex Sans Arabic (body) · IBM Plex Mono (Latin codes) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet">
 
     <style>
         /* ==========================================
-           TOKENS — charcoal drawing sheet
+           TOKENS — charcoal drawing sheet (RTL / Arabic)
+           Same sheet as the English page. Two things change:
+           the type stack, and every physical direction becomes logical.
            ========================================== */
         :root {
             --ink: #0A0C10;
@@ -58,14 +60,23 @@
             --mute: #8A93A3;
             --plate: #F7F8FA;
 
-            --font-display: 'Archivo', system-ui, sans-serif;
-            --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
-            --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+            /* Arabic glyphs come from the Arabic faces; Latin runs inside the same
+               string fall through to IBM Plex Mono, which keeps the drafting voice
+               on codes like A—01, BIM, MEP, P6. */
+            --font-display: 'Tajawal', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+            --font-body: 'IBM Plex Sans Arabic', 'Tajawal', system-ui, sans-serif;
+            --font-mono: 'IBM Plex Mono', 'IBM Plex Sans Arabic', ui-monospace, monospace;
 
             --ease: cubic-bezier(0.16, 1, 0.3, 1);
             --gutter: clamp(1.15rem, 4vw, 2.5rem);
             --section-y: clamp(4rem, 9vw, 8.5rem);
             --header-h: 84px;
+
+            /* Arabic is cursive: letter-spacing pulls joined letters apart, so the
+               tracking that carries the mono voice in English is zero here, and the
+               Latin-only .ltr runs carry it instead. */
+            --track: 0;
+            --track-latin: 0.18em;
         }
 
         *, *::before, *::after { box-sizing: border-box; }
@@ -78,7 +89,7 @@
             color: var(--silver);
             font-family: var(--font-body);
             font-size: 1rem;
-            line-height: 1.65;
+            line-height: 1.85; /* Arabic needs more leading than the Latin 1.65 */
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
@@ -103,14 +114,22 @@
             font-family: var(--font-display);
             margin: 0;
             color: #FFFFFF;
-            letter-spacing: -0.03em;
-            line-height: 1.08;
+            letter-spacing: normal; /* never negative on Arabic */
+            line-height: 1.35;      /* Arabic ascenders/descenders need the room */
         }
 
         p { margin: 0; }
         ul { list-style: none; margin: 0; padding: 0; }
         a { color: inherit; text-decoration: none; }
         img { max-width: 100%; display: block; }
+
+        /* Latin runs inside Arabic text: isolated so bidi can't reorder them,
+           and the only place tracking survives. */
+        .ltr {
+            direction: ltr;
+            unicode-bidi: isolate;
+            font-family: var(--font-mono);
+        }
 
         :focus-visible {
             outline: 2px solid var(--gold);
@@ -131,10 +150,9 @@
         /* Mono utility voice — eyebrows, codes, captions, labels */
         .mono {
             font-family: var(--font-mono);
-            font-size: 0.72rem;
-            font-weight: 500;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: var(--track);
             color: var(--gold);
         }
 
@@ -163,10 +181,9 @@
             justify-content: center;
             gap: 0.65rem;
             font-family: var(--font-mono);
-            font-size: 0.74rem;
+            font-size: 0.82rem;
             font-weight: 600;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
+            letter-spacing: var(--track);
             padding: 0.95rem 1.75rem;
             border: 1px solid var(--rule);
             background: none;
@@ -186,8 +203,9 @@
 
         .btn--gold:hover { background: var(--gold-light); border-color: var(--gold-light); color: #0A0C10; transform: translateY(-2px); }
 
+        /* The arrow points ← in RTL, so it travels the other way on hover. */
         .btn .arw { transition: transform 0.3s var(--ease); }
-        .btn:hover .arw { transform: translateX(4px); }
+        .btn:hover .arw { transform: translateX(-4px); }
 
         /* ==========================================
            HEADER
@@ -195,7 +213,7 @@
         header {
             position: fixed;
             top: 0;
-            left: 0;
+            inset-inline: 0;
             width: 100%;
             z-index: 100;
             background: rgba(10, 12, 16, 0.72);
@@ -220,14 +238,13 @@
 
         .brand img { height: 44px; width: auto; }
 
-        .nav-links { display: flex; align-items: center; gap: 2.1rem; }
+        .nav-links { display: flex; align-items: center; gap: 1.9rem; }
 
         .nav-links a {
             font-family: var(--font-mono);
-            font-size: 0.72rem;
+            font-size: 0.8rem;
             font-weight: 500;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
+            letter-spacing: var(--track);
             color: var(--mute);
             padding-block: 0.4rem;
             border-bottom: 1px solid transparent;
@@ -238,21 +255,22 @@
         .nav-links .btn { border-bottom-width: 1px; }
         .nav-links .btn:hover { color: #0A0C10; }
 
-        /* Language switch — a quiet chip, not a nav item */
+        /* Language switch — a quiet Latin chip, not a nav item */
         .lang-switch {
-            font-size: 0.78rem;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
             font-weight: 600;
-            letter-spacing: normal; /* Arabic is cursive — tracking breaks the joins */
-            text-transform: none;
-            direction: rtl;
+            letter-spacing: var(--track-latin);
+            direction: ltr;
             unicode-bidi: isolate;
+            color: var(--mute);
             border: 1px solid var(--rule);
-            border-bottom: 1px solid var(--rule);
-            padding: 0.35rem 0.7rem;
-            line-height: 1.4;
+            padding: 0.45rem 0.7rem;
+            line-height: 1;
+            transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
         }
 
-        .nav-links a.lang-switch:hover { color: var(--gold); border-color: var(--rule-gold); }
+        .lang-switch:hover { color: var(--gold); border-color: var(--rule-gold); border-bottom-color: var(--rule-gold); }
 
         .nav-toggle {
             display: none;
@@ -293,21 +311,22 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.15rem, 7.4vw, 4.5rem);
+            font-size: clamp(2.05rem, 6.8vw, 4.2rem);
             font-weight: 800;
-            letter-spacing: -0.042em;
-            line-height: 0.98;
+            letter-spacing: normal;
+            line-height: 1.22;
         }
 
         .hero h1 em { font-style: normal; color: var(--gold); }
 
-        .line-mask { display: block; overflow: hidden; }
+        /* The mask crops the line as it rises; Arabic descenders need the slack. */
+        .line-mask { display: block; overflow: hidden; padding-bottom: 0.12em; }
         .line-mask > span { display: block; }
 
         .hero-lede {
             color: var(--mute);
             font-size: 1.075rem;
-            max-width: 46ch;
+            max-width: 48ch;
             margin-top: 1.75rem;
         }
 
@@ -331,18 +350,22 @@
             transition: color 0.3s var(--ease);
         }
 
+        /* Latin code, isolated so bidi cannot flip "A—" against the RTL paragraph */
         .code-strip b {
             display: block;
             font-family: var(--font-mono);
             font-size: 0.72rem;
             font-weight: 600;
-            letter-spacing: 0.2em;
+            letter-spacing: var(--track-latin);
             color: var(--gold);
+            direction: ltr;
+            unicode-bidi: isolate;
+            text-align: right;
         }
 
         .code-strip .code-label {
             display: block;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             color: var(--mute);
             margin-top: 0.2rem;
             transition: color 0.3s var(--ease);
@@ -354,7 +377,7 @@
         /* The X figure */
         .axis-figure { position: relative; }
         .axis-figure svg { width: 100%; height: auto; overflow: visible; }
-        .axis-label { font-family: var(--font-mono); font-size: 14px; letter-spacing: 3px; fill: var(--mute); }
+        .axis-label { font-family: var(--font-body); font-size: 15px; letter-spacing: 0; fill: var(--mute); }
         .axis-hair { stroke: var(--rule); stroke-width: 1; fill: none; }
 
         .axis-stroke {
@@ -371,9 +394,8 @@
 
         .fig-caption {
             font-family: var(--font-mono);
-            font-size: 0.68rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
+            font-size: 0.74rem;
+            letter-spacing: var(--track);
             color: var(--mute);
             margin-top: 1rem;
             padding-top: 0.75rem;
@@ -393,7 +415,8 @@
         .frame { border: 1px solid var(--rule); padding: 0.5rem; background: var(--ink-raised); }
         .frame img { width: 100%; height: auto; }
 
-        .about-copy h2 { font-size: clamp(1.75rem, 3vw, 2.4rem); font-weight: 700; }
+        .about-copy h2 { font-size: clamp(1.6rem, 2.8vw, 2.25rem); font-weight: 700; }
+        .about-copy h2 .ltr { display: block; font-size: 0.72em; color: var(--mute); font-weight: 500; margin-bottom: 0.35rem; text-align: right; }
         .about-copy > p { color: var(--mute); margin-top: 1.15rem; font-size: 1.05rem; }
 
         /* Vision / mission as a spec table, not cards */
@@ -409,10 +432,9 @@
 
         .spec-row dt {
             font-family: var(--font-mono);
-            font-size: 0.72rem;
+            font-size: 0.8rem;
             font-weight: 600;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
+            letter-spacing: var(--track);
             color: var(--gold);
             padding-top: 0.2rem;
         }
@@ -442,7 +464,7 @@
             border: none;
             color: inherit;
             font: inherit;
-            text-align: left;
+            text-align: start; /* was `left` — follows dir now */
             cursor: pointer;
         }
 
@@ -450,15 +472,18 @@
             font-family: var(--font-mono);
             font-size: 0.78rem;
             font-weight: 600;
-            letter-spacing: 0.18em;
+            letter-spacing: var(--track-latin);
             color: var(--gold);
+            direction: ltr;
+            unicode-bidi: isolate;
+            text-align: right; /* hugs the RTL start edge */
         }
 
         .dv-icon { color: var(--gold); opacity: 0.85; transition: opacity 0.3s var(--ease); }
         .dv:hover .dv-icon { opacity: 1; }
 
-        .dv-title { display: block; font-family: var(--font-display); font-size: clamp(1.15rem, 2vw, 1.5rem); font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em; line-height: 1.15; }
-        .dv-sub { display: block; font-family: var(--font-body); color: var(--mute); font-size: 0.92rem; line-height: 1.5; margin-top: 0.4rem; max-width: 52ch; }
+        .dv-title { display: block; font-family: var(--font-display); font-size: clamp(1.15rem, 2vw, 1.5rem); font-weight: 700; color: #FFFFFF; letter-spacing: normal; line-height: 1.4; }
+        .dv-sub { display: block; font-family: var(--font-body); color: var(--mute); font-size: 0.92rem; line-height: 1.7; margin-top: 0.4rem; max-width: 56ch; }
 
         .dv-sign {
             width: 40px;
@@ -504,7 +529,7 @@
 
         .dv-scope li {
             position: relative;
-            padding-left: 1.6rem;
+            padding-inline-start: 1.6rem; /* was padding-left */
             font-size: 0.94rem;
             color: var(--silver);
             padding-block: 0.35rem;
@@ -513,8 +538,8 @@
         .dv-scope li::before {
             content: "";
             position: absolute;
-            left: 0;
-            top: 1.05em;
+            inset-inline-start: 0; /* was left */
+            top: 1.15em;
             width: 10px;
             height: 1px;
             background: var(--gold);
@@ -569,20 +594,18 @@
             font-weight: 700;
             font-size: 0.95rem;
             color: #0A0C10;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.04em;
             text-align: center;
             padding-inline: 0.85rem;
         }
 
-        .tile-name { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: #FFFFFF; overflow-wrap: anywhere; }
+        .tile-name { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: #FFFFFF; overflow-wrap: anywhere; line-height: 1.5; }
         .tile-cat { font-size: 0.85rem; color: var(--mute); margin: 0.15rem 0 1.25rem; }
 
         .tile-foot {
             font-family: var(--font-mono);
-            font-size: 0.66rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
+            font-size: 0.72rem;
+            letter-spacing: var(--track);
             color: var(--mute);
             margin-top: auto;
             padding-top: 0.85rem;
@@ -608,7 +631,7 @@
         }
 
         .academy h2 { font-size: clamp(1.9rem, 3.6vw, 2.8rem); font-weight: 700; }
-        .academy p { color: var(--mute); max-width: 62ch; margin: 1.15rem auto 2.25rem; font-size: 1.05rem; }
+        .academy p { color: var(--mute); max-width: 64ch; margin: 1.15rem auto 2.25rem; font-size: 1.05rem; }
 
         /* ==========================================
            CONTACT
@@ -625,7 +648,7 @@
 
         .contact-table { margin-top: 2.25rem; border-top: 1px solid var(--rule); }
 
-        .contact-table .spec-row { grid-template-columns: 108px 1fr; padding-block: 1.15rem; }
+        .contact-table .spec-row { grid-template-columns: 130px 1fr; padding-block: 1.15rem; }
         .contact-table dd a:hover { color: var(--gold); }
         .contact-table .note { display: block; font-size: 0.78rem; color: var(--mute); }
 
@@ -635,10 +658,9 @@
 
         .field label {
             font-family: var(--font-mono);
-            font-size: 0.68rem;
+            font-size: 0.76rem;
             font-weight: 500;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
+            letter-spacing: var(--track);
             color: var(--mute);
         }
 
@@ -653,11 +675,14 @@
             transition: border-color 0.3s var(--ease), background-color 0.3s var(--ease);
         }
 
+        /* An address is typed left-to-right but still reads from the RTL edge */
+        .field input[type="email"] { direction: ltr; text-align: right; }
+
         .field textarea { resize: vertical; min-height: 120px; }
         .field input:focus, .field textarea:focus { outline: none; border-color: var(--gold); background: #0D1016; }
         .field input:focus-visible, .field textarea:focus-visible { outline: none; }
 
-        .form-status { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); min-height: 1.2em; }
+        .form-status { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: var(--track); color: var(--gold); min-height: 1.2em; }
 
         /* ==========================================
            FOOTER — title block
@@ -670,21 +695,23 @@
             border: 1px solid var(--rule);
         }
 
-        .tb-cell { padding: 1.35rem 1.4rem; border-left: 1px solid var(--rule); }
-        .tb-cell:first-child { border-left: none; display: flex; align-items: center; }
+        /* Logical border: the rule sits on each cell's start edge, so the grid
+           reads right-to-left without the first cell growing a stray hairline. */
+        .tb-cell { padding: 1.35rem 1.4rem; border-inline-start: 1px solid var(--rule); }
+        .tb-cell:first-child { border-inline-start: none; display: flex; align-items: center; }
         .tb-cell img { height: 40px; width: auto; }
 
         .tb-key {
             display: block;
             font-family: var(--font-mono);
-            font-size: 0.62rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: var(--track);
             color: var(--mute);
             margin-bottom: 0.45rem;
         }
 
-        .tb-val { font-family: var(--font-display); font-size: 0.95rem; font-weight: 600; color: #FFFFFF; }
+        .tb-val { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: #FFFFFF; }
+        .tb-val.ltr { text-align: right; letter-spacing: var(--track-latin); }
 
         .footer-foot {
             display: flex;
@@ -693,14 +720,14 @@
             gap: 1rem;
             margin-top: 1.5rem;
             font-family: var(--font-mono);
-            font-size: 0.68rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
+            font-size: 0.76rem;
+            letter-spacing: var(--track);
             color: var(--mute);
         }
 
         .footer-foot nav { display: flex; flex-wrap: wrap; gap: 1.5rem; }
         .footer-foot a:hover { color: var(--gold); }
+        .footer-foot .copy { direction: rtl; }
 
         /* ==========================================
            SCROLL REVEAL
@@ -729,7 +756,7 @@
             .axis-figure { max-width: 460px; justify-self: center; }
             .dv-panel-inner { grid-template-columns: minmax(0, 1fr); }
             .title-block { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .tb-cell:nth-child(3) { border-left: none; }
+            .tb-cell:nth-child(3) { border-inline-start: none; }
             .tb-cell:nth-child(n+3) { border-top: 1px solid var(--rule); }
         }
 
@@ -761,7 +788,7 @@
             .nav-links.is-open { opacity: 1; transform: none; visibility: visible; }
             .nav-links a { padding-block: 1rem; border-bottom: 1px solid var(--rule); }
             .nav-links .btn { justify-content: flex-start; margin-top: 1rem; border: 1px solid var(--gold); }
-            .nav-links a.lang-switch { align-self: flex-start; margin-top: 1rem; padding: 0.6rem 0.9rem; }
+            .lang-switch { align-self: flex-start; margin-top: 1rem; padding: 0.6rem 0.9rem; border-bottom-color: var(--rule); }
 
             /* Codes become ruled, tappable one-line rows. No top border — the
                secondary CTA's bottom rule already opens the block. */
@@ -777,7 +804,7 @@
                 padding: 0.6rem 0;
             }
 
-            .code-strip .code-label { margin-top: 0; font-size: 0.88rem; color: var(--silver); }
+            .code-strip .code-label { margin-top: 0; font-size: 0.9rem; color: var(--silver); }
             .code-strip .arw { display: block; font-size: 0.8rem; }
 
             /* Secondary CTA drops to a quiet ruled row so the gold one leads */
@@ -790,7 +817,7 @@
 
             .hero-grid { gap: 2rem; }
             .axis-figure { max-width: 340px; }
-            .axis-label { font-size: 20px; letter-spacing: 4px; }
+            .axis-label { font-size: 21px; }
 
             .dv-head { grid-template-columns: minmax(0, 1fr) auto; gap: 0.9rem 1.25rem; }
             .dv-code { grid-column: 1 / -1; }
@@ -805,13 +832,13 @@
             .tile-plate { height: 62px; margin-bottom: 0.9rem; }
             .tile-plate img { max-height: 40px; }
             .tile-name { font-size: 0.95rem; }
-            .tile-cat { font-size: 0.78rem; margin-bottom: 0.9rem; }
-            .tile-foot { margin-top: auto; padding-top: 0.6rem; font-size: 0.6rem; letter-spacing: 0.12em; }
+            .tile-cat { font-size: 0.8rem; margin-bottom: 0.9rem; }
+            .tile-foot { margin-top: auto; padding-top: 0.6rem; font-size: 0.66rem; }
 
             .group-label { gap: 0.9rem; }
 
             .title-block { grid-template-columns: minmax(0, 1fr); }
-            .tb-cell { border-left: none; border-top: 1px solid var(--rule); }
+            .tb-cell { border-inline-start: none; border-top: 1px solid var(--rule); }
             .tb-cell:first-child { border-top: none; }
             .footer-foot { justify-content: flex-start; }
             .footer-foot nav { gap: 1rem 1.25rem; }
@@ -840,19 +867,17 @@
     <!-- HEADER -->
     <header id="siteHeader">
         <div class="container nav-bar">
-            <a href="#" class="brand" aria-label="NEXO Engineering & Contracting — home">
-                <img src="./assets/images/nexo-logo.png" width="440" height="310" alt="NEXO Engineering &amp; Contracting - شركة نكسو للهندسة والمقاولات" onerror="this.onerror=null; this.src='https://placehold.co/180x44/10131A/D4AF37?text=NEXO';">
+            <a href="#" class="brand" aria-label="شركة نكسو للهندسة والمقاولات — الرئيسية">
+                <img src="../assets/images/nexo-logo.png" width="440" height="310" alt="شركة نكسو للهندسة والمقاولات - NEXO Engineering &amp; Contracting" onerror="this.onerror=null; this.src='https://placehold.co/180x44/10131A/D4AF37?text=NEXO';">
             </a>
-            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu"><span></span></button>
+            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="فتح القائمة"><span></span></button>
             <nav class="nav-links" id="navLinks">
-                <a href="#about">About</a>
-                <a href="#divisions">Divisions</a>
-                <a href="#network">Clients</a>
-                <a href="#academy">Academy</a>
-                <a href="#contact" class="btn btn--gold">Get in touch</a>
-                <!-- ./ar/index.html, not ./ar/ — file:// has no directory index, and the
-                     explicit filename resolves identically over HTTP. -->
-                <a href="./ar/index.html" class="lang-switch" lang="ar" hreflang="ar" aria-label="النسخة العربية">عربي</a>
+                <a href="#about">من نحن</a>
+                <a href="#divisions">الأقسام</a>
+                <a href="#network">عملاؤنا</a>
+                <a href="#academy">الأكاديمية</a>
+                <a href="#contact" class="btn btn--gold">تواصل معنا</a>
+                <a href="../index.html" class="lang-switch" lang="en" hreflang="en" aria-label="English version">EN</a>
             </nav>
         </div>
     </header>
@@ -864,26 +889,28 @@
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-stagger">
-                    <p class="mono eyebrow">Baghdad · Iraq</p>
+                    <p class="mono eyebrow">بغداد · العراق</p>
                     <h1>
-                        <span class="line-mask"><span>Vision meets</span></span>
-                        <span class="line-mask"><span><em>structural</em> execution</span></span>
+                        <span class="line-mask"><span>الرؤية تلتقي</span></span>
+                        <span class="line-mask"><span>بالتنفيذ <em>الإنشائي</em></span></span>
                     </h1>
-                    <p class="hero-lede">NEXO Engineering &amp; Contracting designs, builds, and teaches — architectural and structural modelling, heavy civil contracting, and the technical training that keeps both standing.</p>
+                    <p class="hero-lede">شركة نكسو للهندسة والمقاولات تُصمِّم وتُنفِّذ وتُدرِّب — نمذجة معمارية وإنشائية، ومقاولات مدنية ثقيلة، والتدريب التقني الذي يُبقي الاثنين قائمين.</p>
                     <div class="hero-cta">
-                        <a href="#divisions" class="btn btn--gold">See the divisions <span class="arw" aria-hidden="true">→</span></a>
-                        <a href="#contact" class="btn">Request a consultation</a>
+                        <a href="#divisions" class="btn btn--gold">تعرَّف على الأقسام <span class="arw" aria-hidden="true">←</span></a>
+                        <a href="#contact" class="btn">اطلب استشارة</a>
                     </div>
                     <ul class="code-strip">
-                        <li><a href="#divisions" data-open="dv-a"><b>A—</b><span class="code-label">Architectural &amp; structural design</span><span class="arw" aria-hidden="true">→</span></a></li>
-                        <li><a href="#divisions" data-open="dv-c"><b>C—</b><span class="code-label">General contracting</span><span class="arw" aria-hidden="true">→</span></a></li>
-                        <li><a href="#divisions" data-open="dv-t"><b>T—</b><span class="code-label">Training academy</span><span class="arw" aria-hidden="true">→</span></a></li>
+                        <li><a href="#divisions" data-open="dv-a"><b>A—</b><span class="code-label">التصميم المعماري والإنشائي</span><span class="arw" aria-hidden="true">←</span></a></li>
+                        <li><a href="#divisions" data-open="dv-c"><b>C—</b><span class="code-label">المقاولات العامة</span><span class="arw" aria-hidden="true">←</span></a></li>
+                        <li><a href="#divisions" data-open="dv-t"><b>T—</b><span class="code-label">أكاديمية التدريب</span><span class="arw" aria-hidden="true">←</span></a></li>
                     </ul>
                 </div>
 
-                <!-- The axis: the brand mark as structural diagram -->
+                <!-- The axis: the brand mark as structural diagram.
+                     SVG does not mirror with dir, so the labels are swapped by hand:
+                     تصميم sits on the right, تنفيذ on the left. -->
                 <figure class="axis-figure" style="margin:0">
-                    <svg viewBox="0 0 480 480" role="img" aria-label="The NEXO mark drawn as two crossing structural axes: design and execution meeting at a node.">
+                    <svg viewBox="0 0 480 480" role="img" aria-label="علامة نكسو مرسومة كمحورين إنشائيين متقاطعين: التصميم والتنفيذ يلتقيان عند عقدة واحدة.">
                         <defs>
                             <linearGradient id="goldFill" x1="0" y1="0" x2="1" y2="1">
                                 <stop offset="0%" stop-color="#F3E5AB"/>
@@ -903,16 +930,16 @@
 
                         <g mask="url(#axisMask)">
                             <rect x="60" y="50" width="360" height="400" fill="url(#goldFill)"/>
-                            <image href="./assets/images/hero-facade.png" x="60" y="50" width="360" height="400"
+                            <image href="../assets/images/hero-facade.png" x="60" y="50" width="360" height="400"
                                    preserveAspectRatio="xMidYMid slice" opacity="0.82"
                                    onerror="this.onerror=null; this.setAttribute('href','https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;w=900&amp;q=80');"/>
                         </g>
 
                         <circle cx="240" cy="250" r="6" fill="#0A0C10" stroke="#D4AF37" stroke-width="1.5"/>
-                        <text class="axis-label" x="70" y="42">DESIGN</text>
-                        <text class="axis-label" x="410" y="42" text-anchor="end">EXECUTION</text>
+                        <text class="axis-label" x="410" y="42" text-anchor="end">تصميم</text>
+                        <text class="axis-label" x="70" y="42">تنفيذ</text>
                     </svg>
-                    <figcaption class="fig-caption">Fig. 01 — Two axes, one node</figcaption>
+                    <figcaption class="fig-caption">شكل <span class="ltr">01</span> — محوران، عقدة واحدة</figcaption>
                 </figure>
             </div>
         </div>
@@ -924,28 +951,28 @@
             <div class="about-grid">
                 <figure class="reveal" style="margin:0">
                     <div class="frame">
-                        <img src="./assets/images/about.png" width="1100" height="776" loading="lazy" decoding="async" alt="NEXO — Next-Generation Engineering eXcellence Organization" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&amp;fit=crop&amp;w=800&amp;q=80';">
+                        <img src="../assets/images/about.png" width="1100" height="776" loading="lazy" decoding="async" alt="نكسو — مؤسسة التميّز الهندسي للجيل القادم (Next-Generation Engineering eXcellence Organization)" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&amp;fit=crop&amp;w=800&amp;q=80';">
                     </div>
-                    <figcaption class="fig-caption">Fig. 02 — The mark, expanded</figcaption>
+                    <figcaption class="fig-caption">شكل <span class="ltr">02</span> — العلامة، موسَّعة</figcaption>
                 </figure>
 
                 <div class="about-copy reveal">
-                    <p class="mono eyebrow">Who we are</p>
-                    <h2>Next-Generation Engineering eXcellence Organization</h2>
-                    <p>Rooted in Baghdad, NEXO closes the gap between the model and the site. We bring BIM-grade technical modelling, advanced construction chemistry, and local workforce development under one practice — so what gets drawn is what gets built.</p>
+                    <p class="mono eyebrow">من نحن</p>
+                    <h2><span class="ltr" lang="en">Next-Generation Engineering eXcellence Organization</span>مؤسسة التميّز الهندسي للجيل القادم</h2>
+                    <p>من بغداد، تُغلق نكسو المسافة بين النموذج والموقع. نجمع النمذجة التقنية بمعايير الـ <span class="ltr">BIM</span>، وكيمياء البناء المتقدّمة، وتأهيل الكوادر المحلية في ممارسة مهنية واحدة — ليكون ما يُرسم هو ما يُبنى.</p>
 
                     <dl class="spec-list">
                         <div class="spec-row">
-                            <dt>Vision</dt>
-                            <dd>To be Iraq's leading multidisciplinary engineering practice, setting the benchmark for architectural modelling, structural durability, and technical education.</dd>
+                            <dt>الرؤية</dt>
+                            <dd>أن نكون الممارسة الهندسية متعددة التخصصات الرائدة في العراق، وأن نضع المعيار في النمذجة المعمارية، والديمومة الإنشائية، والتعليم التقني.</dd>
                         </div>
                         <div class="spec-row">
-                            <dt>Mission</dt>
-                            <dd>Deliver turnkey civil contracting, architectural precision, and practical software training by pairing international engineering standards with strategic industrial partnerships.</dd>
+                            <dt>الرسالة</dt>
+                            <dd>تقديم مقاولات مدنية متكاملة، ودقّة معمارية، وتدريب برمجي عملي، عبر الجمع بين المعايير الهندسية العالمية والشراكات الصناعية الاستراتيجية.</dd>
                         </div>
                         <div class="spec-row">
-                            <dt>Where we work</dt>
-                            <dd>Commercial, hospitality, petroleum, and urban development projects across Iraq — from concept package to handover.</dd>
+                            <dt>نطاق عملنا</dt>
+                            <dd>مشاريع تجارية وفندقية ونفطية وتطوير حضري في عموم العراق — من حزمة التصميم الأولي حتى التسليم.</dd>
                         </div>
                     </dl>
                 </div>
@@ -957,14 +984,14 @@
     <section class="section section--ruled" id="divisions">
         <div class="container">
             <div class="section-head reveal">
-                <p class="mono eyebrow">Capabilities</p>
-                <h2>Three divisions, one practice</h2>
-                <p>Each runs its own discipline and its own crew. Open one to see the scope of work.</p>
+                <p class="mono eyebrow">قدراتنا</p>
+                <h2>ثلاثة أقسام، ممارسة هندسية واحدة</h2>
+                <p>لكل قسم تخصصه وكادره. افتح أي قسم للاطلاع على نطاق العمل.</p>
             </div>
 
             <div class="divisions reveal">
 
-                <!-- A — Architectural & Structural Design -->
+                <!-- A — التصميم المعماري والإنشائي -->
                 <div class="dv">
                     <h3 class="dv-h"><button class="dv-head" type="button" aria-expanded="false" aria-controls="dv-a">
                         <span class="dv-code">A—01</span>
@@ -976,25 +1003,25 @@
                             </svg>
                         </span>
                         <span>
-                            <span class="dv-title">Architectural &amp; Structural Design</span>
-                            <span class="dv-sub">Concept packages and detailed calculations to international code.</span>
+                            <span class="dv-title">التصميم المعماري والإنشائي</span>
+                            <span class="dv-sub">حزم تصميم أولي وحسابات تفصيلية وفق الكودات العالمية.</span>
                         </span>
                         <span class="dv-sign" aria-hidden="true"></span>
                     </button></h3>
                     <div class="dv-panel" id="dv-a" role="region">
                         <div><div class="dv-panel-inner">
-                            <p class="mono">Scope of work</p>
+                            <p class="mono">نطاق العمل</p>
                             <ul class="dv-scope">
-                                <li>Architectural spatial planning &amp; 3D visualisation</li>
-                                <li>Structural calculations &amp; BIM modelling</li>
-                                <li>Civil layout optimisation</li>
-                                <li>Exterior facade &amp; interior engineering</li>
+                                <li>التخطيط المعماري للفراغات والإظهار ثلاثي الأبعاد</li>
+                                <li>الحسابات الإنشائية والنمذجة بالـ <span class="ltr">BIM</span></li>
+                                <li>تحسين المخططات المدنية</li>
+                                <li>هندسة الواجهات الخارجية والتصميم الداخلي</li>
                             </ul>
                         </div></div>
                     </div>
                 </div>
 
-                <!-- C — General Contracting -->
+                <!-- C — المقاولات العامة والإنشاء -->
                 <div class="dv">
                     <h3 class="dv-h"><button class="dv-head" type="button" aria-expanded="false" aria-controls="dv-c">
                         <span class="dv-code">C—02</span>
@@ -1006,25 +1033,25 @@
                             </svg>
                         </span>
                         <span>
-                            <span class="dv-title">General Contracting &amp; Construction</span>
-                            <span class="dv-sub">Turnkey execution for commercial, petroleum, hospitality, and urban work.</span>
+                            <span class="dv-title">المقاولات العامة والإنشاء</span>
+                            <span class="dv-sub">تنفيذ متكامل للمشاريع التجارية والنفطية والفندقية والحضرية.</span>
                         </span>
                         <span class="dv-sign" aria-hidden="true"></span>
                     </button></h3>
                     <div class="dv-panel" id="dv-c" role="region">
                         <div><div class="dv-panel-inner">
-                            <p class="mono">Scope of work</p>
+                            <p class="mono">نطاق العمل</p>
                             <ul class="dv-scope">
-                                <li>High-rise structural construction</li>
-                                <li>Petroleum &amp; industrial infrastructure</li>
-                                <li>MEP systems integration</li>
-                                <li>Structural rehabilitation &amp; retrofitting</li>
+                                <li>إنشاء الأبنية العالية بهياكلها الإنشائية</li>
+                                <li>البنى التحتية النفطية والصناعية</li>
+                                <li>تكامل الأنظمة الكهروميكانيكية (<span class="ltr">MEP</span>)</li>
+                                <li>التأهيل الإنشائي والتقوية</li>
                             </ul>
                         </div></div>
                     </div>
                 </div>
 
-                <!-- T — Training Academy -->
+                <!-- T — أكاديمية التدريب وبناء القدرات -->
                 <div class="dv">
                     <h3 class="dv-h"><button class="dv-head" type="button" aria-expanded="false" aria-controls="dv-t">
                         <span class="dv-code">T—03</span>
@@ -1037,19 +1064,19 @@
                             </svg>
                         </span>
                         <span>
-                            <span class="dv-title">Training &amp; Capacity Academy</span>
-                            <span class="dv-sub">Industry-standard software and site expertise for engineers across Iraq.</span>
+                            <span class="dv-title">أكاديمية التدريب وبناء القدرات</span>
+                            <span class="dv-sub">برمجيات بمعايير الصناعة وخبرة ميدانية للمهندسين في عموم العراق.</span>
                         </span>
                         <span class="dv-sign" aria-hidden="true"></span>
                     </button></h3>
                     <div class="dv-panel" id="dv-t" role="region">
                         <div><div class="dv-panel-inner">
-                            <p class="mono">Scope of work</p>
+                            <p class="mono">نطاق العمل</p>
                             <ul class="dv-scope">
-                                <li>BIM — Revit, ETABS, AutoCAD, Primavera P6</li>
-                                <li>Site supervision &amp; HSE standards</li>
-                                <li>Concrete testing &amp; chemical application</li>
-                                <li>Technical masterclasses &amp; certification</li>
+                                <li>الـ <span class="ltr">BIM</span> — ريفيت، إيتابس، أوتوكاد، بريمافيرا <span class="ltr">P6</span></li>
+                                <li>الإشراف الموقعي ومعايير الصحة والسلامة (<span class="ltr">HSE</span>)</li>
+                                <li>فحص الخرسانة وتطبيق المواد الكيميائية</li>
+                                <li>ورش تخصصية متقدّمة وشهادات</li>
                             </ul>
                         </div></div>
                     </div>
@@ -1063,99 +1090,99 @@
     <section class="section section--ruled" id="network">
         <div class="container">
             <div class="section-head reveal">
-                <p class="mono eyebrow">Network</p>
-                <h2>Who we build with</h2>
-                <p>Developers, energy operators, and the construction-chemistry suppliers behind the work.</p>
+                <p class="mono eyebrow">شبكتنا</p>
+                <h2>من نبني معهم</h2>
+                <p>مطوّرون، ومشغّلو طاقة، ومورّدو كيمياء البناء الذين يقف عملنا عليهم.</p>
             </div>
 
             <div class="reveal" style="margin-bottom:3.5rem">
-                <h3 class="mono group-label">Clients</h3>
+                <h3 class="mono group-label">العملاء</h3>
                 <div class="grid-cards">
 
                     <a href="https://rixosbaghdadresidences.com/" target="_blank" rel="noopener noreferrer" class="tile">
                         <div class="tile-plate">
-                            <img src="./assets/images/rixos.png" width="189" height="88" loading="lazy" decoding="async" alt="Rixos Baghdad Hotel &amp; Residences - فندق وشقق ريكسوس بغداد"
+                            <img src="../assets/images/rixos.png" width="189" height="88" loading="lazy" decoding="async" alt="فندق وشقق ريكسوس بغداد - Rixos Baghdad Hotel &amp; Residences"
                                  onerror="this.onerror=null; this.src='https://logo.clearbit.com/rixos.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>Rixos Baghdad</span>'; }">
                         </div>
-                        <h4 class="tile-name">Rixos Baghdad</h4>
-                        <div class="tile-cat">Luxury hospitality &amp; residences</div>
-                        <div class="tile-foot"><span>Client</span><span aria-hidden="true">Visit ↗</span></div>
+                        <h4 class="tile-name">ريكسوس بغداد</h4>
+                        <div class="tile-cat">ضيافة وشقق فاخرة</div>
+                        <div class="tile-foot"><span>عميل</span><span aria-hidden="true">زيارة ↗</span></div>
                     </a>
 
                     <a href="https://www.ebspetroleum.com/" target="_blank" rel="noopener noreferrer" class="tile">
                         <div class="tile-plate">
-                            <img src="./assets/images/ebs-petroleum.png" width="520" height="134" loading="lazy" decoding="async" alt="EBS Petroleum Company Limited"
+                            <img src="../assets/images/ebs-petroleum.png" width="520" height="134" loading="lazy" decoding="async" alt="EBS Petroleum Company Limited"
                                  onerror="this.onerror=null; this.src='https://logo.clearbit.com/ebspetroleum.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>EBS Petroleum</span>'; }">
                         </div>
-                        <h4 class="tile-name">EBS Petroleum</h4>
-                        <div class="tile-cat">Energy &amp; industrial</div>
-                        <div class="tile-foot"><span>Client</span><span aria-hidden="true">Visit ↗</span></div>
+                        <h4 class="tile-name"><span class="ltr">EBS</span> للنفط</h4>
+                        <div class="tile-cat">طاقة وصناعة</div>
+                        <div class="tile-foot"><span>عميل</span><span aria-hidden="true">زيارة ↗</span></div>
                     </a>
 
                     <a href="https://ramlah.co/millennium" target="_blank" rel="noopener noreferrer" class="tile">
                         <div class="tile-plate">
-                            <img src="./assets/images/millennium-towers.png" width="520" height="302" loading="lazy" decoding="async" alt="TOWERS MILLENNIUM by RAMLAH - ابراج ميلينيوم من رملة"
+                            <img src="../assets/images/millennium-towers.png" width="520" height="302" loading="lazy" decoding="async" alt="ابراج ميلينيوم من رملة - TOWERS MILLENNIUM by RAMLAH"
                                  onerror="this.onerror=null; this.src='https://logo.clearbit.com/ramlah.co'; this.onerror=function(){ this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>Millennium Tower</span>'; }">
                         </div>
-                        <h4 class="tile-name">Millennium Tower</h4>
-                        <div class="tile-cat">Ramlah urban developments</div>
-                        <div class="tile-foot"><span>Client</span><span aria-hidden="true">Visit ↗</span></div>
+                        <h4 class="tile-name">أبراج ميلينيوم</h4>
+                        <div class="tile-cat">تطوير حضري — رملة</div>
+                        <div class="tile-foot"><span>عميل</span><span aria-hidden="true">زيارة ↗</span></div>
                     </a>
 
                     <a href="https://modoniq.com/ar/future-city/" target="_blank" rel="noopener noreferrer" class="tile">
                         <div class="tile-plate">
-                            <img src="./assets/images/future-city.png" width="140" height="54" loading="lazy" decoding="async" alt="Modon Future City - مدن"
+                            <img src="../assets/images/future-city.png" width="140" height="54" loading="lazy" decoding="async" alt="مدن - Modon Future City"
                                  onerror="this.onerror=null; this.src='https://logo.clearbit.com/modoniq.com'; this.onerror=function(){ this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>Future City</span>'; }">
                         </div>
-                        <h4 class="tile-name">Future City</h4>
-                        <div class="tile-cat">Modon developments</div>
-                        <div class="tile-foot"><span>Client</span><span aria-hidden="true">Visit ↗</span></div>
+                        <h4 class="tile-name">مدينة المستقبل</h4>
+                        <div class="tile-cat">تطوير — مدن</div>
+                        <div class="tile-foot"><span>عميل</span><span aria-hidden="true">زيارة ↗</span></div>
                     </a>
                 </div>
             </div>
 
             <div class="reveal">
-                <h3 class="mono group-label">Partners &amp; suppliers</h3>
+                <h3 class="mono group-label">الشركاء والمورّدون</h3>
                 <div class="grid-cards">
 
                     <div class="tile">
                         <div class="tile-plate">
-                            <img src="./assets/images/sika.png" width="374" height="378" loading="lazy" decoding="async" alt="Sika"
+                            <img src="../assets/images/sika.png" width="374" height="378" loading="lazy" decoding="async" alt="Sika"
                                  onerror="this.onerror=null; this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>Sika</span>';">
                         </div>
-                        <h4 class="tile-name">Sika</h4>
-                        <div class="tile-cat">Construction chemicals</div>
-                        <div class="tile-foot"><span>Supplier</span><span>Building Trust</span></div>
+                        <h4 class="tile-name">سيكا <span class="ltr">(Sika)</span></h4>
+                        <div class="tile-cat">كيماويات البناء</div>
+                        <div class="tile-foot"><span>مورّد</span><span class="ltr">Building Trust</span></div>
                     </div>
 
                     <div class="tile">
                         <div class="tile-plate">
-                            <img src="./assets/images/fosroc.png" width="520" height="144" loading="lazy" decoding="async" alt="Fosroc Saint-Gobain"
+                            <img src="../assets/images/fosroc.png" width="520" height="144" loading="lazy" decoding="async" alt="Fosroc Saint-Gobain"
                                  onerror="this.onerror=null; this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>Fosroc</span>';">
                         </div>
-                        <h4 class="tile-name">Fosroc</h4>
-                        <div class="tile-cat">Constructive solutions</div>
-                        <div class="tile-foot"><span>Supplier</span><span>Saint-Gobain</span></div>
+                        <h4 class="tile-name">فوسروك <span class="ltr">(Fosroc)</span></h4>
+                        <div class="tile-cat">حلول إنشائية</div>
+                        <div class="tile-foot"><span>مورّد</span><span class="ltr">Saint-Gobain</span></div>
                     </div>
 
                     <div class="tile">
                         <div class="tile-plate">
-                            <img src="./assets/images/dcp.png" width="420" height="516" loading="lazy" decoding="async" alt="DCP - Don Construction Products"
+                            <img src="../assets/images/dcp.png" width="420" height="516" loading="lazy" decoding="async" alt="DCP - Don Construction Products"
                                  onerror="this.onerror=null; this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>DCP</span>';">
                         </div>
-                        <h4 class="tile-name">DCP</h4>
-                        <div class="tile-cat">Don Construction Products</div>
-                        <div class="tile-foot"><span>Supplier</span><span>Specialty chemicals</span></div>
+                        <h4 class="tile-name"><span class="ltr">DCP</span></h4>
+                        <div class="tile-cat"><span class="ltr">Don Construction Products</span></div>
+                        <div class="tile-foot"><span>مورّد</span><span>كيماويات متخصصة</span></div>
                     </div>
 
                     <div class="tile">
                         <div class="tile-plate">
-                            <img src="./assets/images/zamzam-land.png" width="420" height="462" loading="lazy" decoding="async" alt="Zamzam Land"
+                            <img src="../assets/images/zamzam-land.png" width="420" height="462" loading="lazy" decoding="async" alt="Zamzam Land"
                                  onerror="this.onerror=null; this.parentElement.innerHTML='<span class=&quot;logo-fallback-badge&quot;>Zamzam Land</span>';">
                         </div>
-                        <h4 class="tile-name">Zamzam Land</h4>
-                        <div class="tile-cat">Development partner</div>
-                        <div class="tile-foot"><span>Partner</span><span>Joint project</span></div>
+                        <h4 class="tile-name">زمزم لاند</h4>
+                        <div class="tile-cat">شريك تطوير</div>
+                        <div class="tile-foot"><span>شريك</span><span>مشروع مشترك</span></div>
                     </div>
 
                 </div>
@@ -1167,10 +1194,10 @@
     <section class="section section--ruled" id="academy">
         <div class="container">
             <div class="academy reveal">
-                <p class="mono eyebrow" style="justify-content:center">NEXO Academy</p>
-                <h2>Learn it where it gets built</h2>
-                <p>Workshops in BIM, structural engineering, and construction management — taught by the engineers running our sites, on the software the industry actually uses.</p>
-                <a href="#contact" class="btn btn--gold">Enrol or ask a question <span class="arw" aria-hidden="true">→</span></a>
+                <p class="mono eyebrow" style="justify-content:center">أكاديمية نكسو</p>
+                <h2>تعلَّم حيث يُبنى</h2>
+                <p>ورش في الـ <span class="ltr">BIM</span> والهندسة الإنشائية وإدارة المشاريع — يقدّمها المهندسون الذين يديرون مواقعنا، وعلى البرمجيات التي يعمل بها القطاع فعلاً.</p>
+                <a href="#contact" class="btn btn--gold">سجِّل أو اطرح سؤالاً <span class="arw" aria-hidden="true">←</span></a>
             </div>
         </div>
     </section>
@@ -1180,22 +1207,22 @@
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-copy reveal">
-                    <p class="mono eyebrow">Get in touch</p>
-                    <h2>Start a project with us</h2>
-                    <p>Tender documents, an engineering question, or a place on the next workshop — reach the Baghdad office directly.</p>
+                    <p class="mono eyebrow">تواصل معنا</p>
+                    <h2>ابدأ مشروعك معنا</h2>
+                    <p>وثائق مناقصة، أو سؤال هندسي، أو مقعد في الورشة القادمة — تواصل مع مكتب بغداد مباشرة.</p>
 
                     <dl class="contact-table">
                         <div class="spec-row">
-                            <dt>Office</dt>
-                            <dd>Baghdad, Iraq</dd>
+                            <dt>المكتب</dt>
+                            <dd>بغداد، العراق</dd>
                         </div>
                         <div class="spec-row">
-                            <dt>Email</dt>
-                            <dd><a href="mailto:info@nexo-iq.com">info@nexo-iq.com</a></dd>
+                            <dt>البريد الإلكتروني</dt>
+                            <dd><a class="ltr" href="mailto:info@nexo-iq.com">info@nexo-iq.com</a></dd>
                         </div>
                         <div class="spec-row">
-                            <dt>Phone</dt>
-                            <dd>+964 7XX XXX XXXX <span class="note">Placeholder — replace with the real number.</span></dd>
+                            <dt>الهاتف</dt>
+                            <dd><span class="ltr">+964 7XX XXX XXXX</span> <span class="note">رقم مؤقت — يُستبدل بالرقم الفعلي.</span></dd>
                         </div>
                     </dl>
                 </div>
@@ -1203,22 +1230,22 @@
                 <div class="reveal">
                     <form class="form" id="contactForm" action="#" method="POST" novalidate>
                         <div class="field">
-                            <label for="cf-name">Name</label>
+                            <label for="cf-name">الاسم</label>
                             <input type="text" id="cf-name" name="name" autocomplete="name" required>
                         </div>
                         <div class="field">
-                            <label for="cf-email">Email</label>
+                            <label for="cf-email">البريد الإلكتروني</label>
                             <input type="email" id="cf-email" name="email" autocomplete="email" required>
                         </div>
                         <div class="field">
-                            <label for="cf-subject">Subject</label>
+                            <label for="cf-subject">الموضوع</label>
                             <input type="text" id="cf-subject" name="subject">
                         </div>
                         <div class="field">
-                            <label for="cf-message">Message</label>
+                            <label for="cf-message">الرسالة</label>
                             <textarea id="cf-message" name="message" rows="5" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn--gold">Send message <span class="arw" aria-hidden="true">→</span></button>
+                        <button type="submit" class="btn btn--gold">إرسال الرسالة <span class="arw" aria-hidden="true">←</span></button>
                         <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
                     </form>
                 </div>
@@ -1233,29 +1260,29 @@
         <div class="container">
             <div class="title-block">
                 <div class="tb-cell">
-                    <img src="./assets/images/nexo-logo.png" width="440" height="310" loading="lazy" decoding="async" alt="NEXO Engineering &amp; Contracting - شركة نكسو للهندسة والمقاولات" onerror="this.onerror=null; this.src='https://placehold.co/164x40/10131A/D4AF37?text=NEXO';">
+                    <img src="../assets/images/nexo-logo.png" width="440" height="310" loading="lazy" decoding="async" alt="شركة نكسو للهندسة والمقاولات - NEXO Engineering &amp; Contracting" onerror="this.onerror=null; this.src='https://placehold.co/164x40/10131A/D4AF37?text=NEXO';">
                 </div>
                 <div class="tb-cell">
-                    <span class="tb-key">Office</span>
-                    <span class="tb-val">Baghdad, IQ</span>
+                    <span class="tb-key">المكتب</span>
+                    <span class="tb-val">بغداد، العراق</span>
                 </div>
                 <div class="tb-cell">
-                    <span class="tb-key">Divisions</span>
-                    <span class="tb-val">A / C / T</span>
+                    <span class="tb-key">الأقسام</span>
+                    <span class="tb-val ltr">A / C / T</span>
                 </div>
                 <div class="tb-cell">
-                    <span class="tb-key">Practice</span>
-                    <span class="tb-val">Engineering &amp; Contracting</span>
+                    <span class="tb-key">التخصص</span>
+                    <span class="tb-val">هندسة ومقاولات</span>
                 </div>
             </div>
             <div class="footer-foot">
-                <nav aria-label="Footer">
-                    <a href="#about">About</a>
-                    <a href="#divisions">Divisions</a>
-                    <a href="#network">Clients</a>
-                    <a href="#contact">Contact</a>
+                <nav aria-label="تذييل">
+                    <a href="#about">من نحن</a>
+                    <a href="#divisions">الأقسام</a>
+                    <a href="#network">عملاؤنا</a>
+                    <a href="#contact">التواصل</a>
                 </nav>
-                <p>&copy; 2026 NEXO Engineering &amp; Contracting Co.</p>
+                <p class="copy">&copy; 2026 شركة نكسو للهندسة والمقاولات.</p>
             </div>
         </div>
     </footer>
@@ -1270,7 +1297,7 @@
         function setNav(open) {
             navLinks.classList.toggle('is-open', open);
             navToggle.setAttribute('aria-expanded', String(open));
-            navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            navToggle.setAttribute('aria-label', open ? 'إغلاق القائمة' : 'فتح القائمة');
         }
 
         navToggle.addEventListener('click', () => setNav(navToggle.getAttribute('aria-expanded') !== 'true'));
@@ -1326,107 +1353,28 @@
         form.addEventListener('submit', e => {
             e.preventDefault();
             if (!form.checkValidity()) {
-                status.textContent = 'Add your name, email, and a message to send.';
+                status.textContent = 'أضف اسمك وبريدك الإلكتروني ونص الرسالة لإتمام الإرسال.';
                 form.reportValidity();
                 return;
             }
-            status.textContent = 'Message ready — connect a form endpoint to deliver it.';
+            status.textContent = 'الرسالة جاهزة — اربط نقطة استقبال النموذج لتسليمها.';
         });
     </script>
 
-    <!-- Structured data. Claims only what the page can back up: no address beyond the
-         city, no phone, no founding date, no ratings. Add them here as they become real. -->
+    <!-- Structured data. The Arabic page describes itself only, and points at the
+         Organization and WebSite nodes the English page already defines — redeclaring
+         them with translated values would put two conflicting descriptions on one @id. -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": ["Organization", "GeneralContractor"],
-          "@id": "https://nexo-iq.com/#organization",
-          "name": "NEXO Engineering & Contracting",
-          "alternateName": ["NEXO", "شركة نكسو للهندسة والمقاولات"],
-          "legalName": "NEXO Engineering & Contracting Co.",
-          "description": "Next-Generation Engineering eXcellence Organization — architectural and structural design, general contracting, and technical training, based in Baghdad, Iraq.",
-          "url": "https://nexo-iq.com/",
-          "email": "info@nexo-iq.com",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://nexo-iq.com/assets/images/nexo-logo.png",
-            "width": 440,
-            "height": 310
-          },
-          "image": "https://nexo-iq.com/assets/images/og-cover.png",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Baghdad",
-            "addressCountry": "IQ"
-          },
-          "areaServed": {
-            "@type": "Country",
-            "name": "Iraq"
-          },
-          "knowsAbout": [
-            "Architectural design",
-            "Structural engineering",
-            "Building information modeling",
-            "General contracting",
-            "Construction chemicals",
-            "Site supervision and HSE"
-          ],
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Divisions",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Architectural & Structural Design",
-                  "description": "Concept packages and detailed calculations to international code: spatial planning, 3D visualisation, structural calculations, BIM modelling, civil layout optimisation, and facade engineering.",
-                  "serviceType": "Architectural and structural design",
-                  "provider": { "@id": "https://nexo-iq.com/#organization" },
-                  "areaServed": { "@type": "Country", "name": "Iraq" }
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "General Contracting & Construction",
-                  "description": "Turnkey execution for commercial, petroleum, hospitality, and urban work: high-rise structural construction, industrial infrastructure, MEP integration, and structural rehabilitation.",
-                  "serviceType": "General contracting",
-                  "provider": { "@id": "https://nexo-iq.com/#organization" },
-                  "areaServed": { "@type": "Country", "name": "Iraq" }
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Training & Capacity Academy",
-                  "description": "Technical workshops for engineers: BIM with Revit, ETABS, AutoCAD and Primavera P6, site supervision and HSE standards, concrete testing, and chemical application.",
-                  "serviceType": "Engineering training",
-                  "provider": { "@id": "https://nexo-iq.com/#organization" },
-                  "areaServed": { "@type": "Country", "name": "Iraq" }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://nexo-iq.com/#website",
-          "url": "https://nexo-iq.com/",
-          "name": "NEXO Engineering & Contracting",
-          "inLanguage": "en",
-          "publisher": { "@id": "https://nexo-iq.com/#organization" }
-        },
-        {
           "@type": "WebPage",
-          "@id": "https://nexo-iq.com/#webpage",
-          "url": "https://nexo-iq.com/",
-          "name": "NEXO | Engineering & Contracting Company in Baghdad, Iraq",
-          "description": "NEXO Engineering & Contracting delivers architectural and structural design, general contracting, and BIM training across Iraq. Based in Baghdad.",
+          "@id": "https://nexo-iq.com/ar/#webpage",
+          "url": "https://nexo-iq.com/ar/",
+          "name": "نكسو | شركة هندسة ومقاولات في بغداد، العراق",
+          "description": "شركة نكسو للهندسة والمقاولات تقدّم التصميم المعماري والإنشائي، والمقاولات العامة، والتدريب على الـ BIM في عموم العراق. مقرّها بغداد.",
+          "inLanguage": "ar-IQ",
           "isPartOf": { "@id": "https://nexo-iq.com/#website" },
           "about": { "@id": "https://nexo-iq.com/#organization" },
           "primaryImageOfPage": "https://nexo-iq.com/assets/images/og-cover.png"
