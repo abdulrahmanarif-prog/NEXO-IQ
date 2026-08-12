@@ -1,61 +1,93 @@
 <div align="center">
-  <img src="./assets/images/nexo-logo.png" alt="NEXO Engineering & Contracting" width="220">
-  <h1>NEXO — Next-Generation Engineering eXcellence Organization</h1>
+  <img src="./assets/brand/nexo-lockup-en.png" alt="NEXO Engineering &amp; Contracting" width="220">
+  <h1>NEXO Engineering &amp; Contracting</h1>
   <p><strong>شركة نكسو للهندسة والمقاولات</strong><br>Engineering, contracting, and technical training — Baghdad, Iraq</p>
 </div>
 
 ---
 
-The official single-page website for NEXO Engineering & Contracting. It is a static site with no build step: one HTML file with inline CSS, plus an images folder.
+The official website for NEXO Engineering & Contracting: a bilingual static site with
+no build step, no package manager, and no test suite. Two HTML files plus `assets/`
+are the entire deliverable.
 
 ## Running locally
 
-Open `index.html` in a browser, or serve the project root so relative asset paths resolve exactly as they do in production:
+Serve the project root — this is the only mode that matches production, because the
+root-absolute references (`/favicon.ico`, `/site.webmanifest`, `/assets/icons/`) and
+the clean `/ar/` URL do not resolve over `file://`.
 
 ```bash
 python3 -m http.server 8000
-# then visit http://localhost:8000
+# http://localhost:8000/     English
+# http://localhost:8000/ar/  Arabic
 ```
 
 ## Project structure
 
 ```
-index.html          # entire page — inline CSS, markup, and the mobile-nav script
-assets/images/      # all imagery
+index.html          # English (LTR): inline CSS, markup, script, JSON-LD
+ar/index.html       # Arabic (RTL): same structure, own stylesheet
+content.en.md       # every English string, in page order — copy source of truth
+content.ar.md       # every Arabic string, in page order — copy source of truth
+design.md           # Digital Identity Guidelines v2.0 — the brand authority
+assets/brand/       # the mark and the two lockups (generated)
+assets/images/      # photography and partner logos
+assets/icons/       # favicons and PWA icons (generated)
+brand-source/       # approved masters the generated assets are built from
+tools/              # the brand asset generator
 CLAUDE.md           # notes for AI coding assistants
 ```
 
-## Page sections
+Neither page imports the other's CSS; each carries a complete `<style>` block, so
+**a change to shared structure has to be made twice**. That duplication is the
+deliberate cost of having no build step.
 
-| Anchor | Section |
-| --- | --- |
-| — | Hero |
-| `#about` | About NEXO |
-| `#services` | Core operational divisions |
-| `#portfolio` | Clients & industry partners |
-| `#academy` | Training & capacity academy |
-| `#contact` | Contact form and details |
+## Editing
 
-## Divisions
+**Copy** is not authored in the HTML. Edit `content.en.md` / `content.ar.md` first,
+then mirror the change into the markup by hand. Those files also record the
+per-language copy rules.
 
-- **Architectural & Structural Design** — spatial planning, 3D visualization, structural calculations, BIM modeling, facade and interior engineering.
-- **General Contracting & Construction** — high-rise structures, petroleum and industrial infrastructure, MEP integration, structural rehabilitation.
-- **Training & Capacity Academy** — Revit, ETABS, AutoCAD, Primavera P6, site supervision and HSE, concrete testing, certification masterclasses.
+**Colour and type** flow through CSS custom properties on `:root` at the top of each
+`<style>` block — `--ink`, `--gold` (`#C9A24E`), `--rule`, `--silver`, and the three
+font roles. Change values there rather than at call sites. Only two breakpoints
+exist: 992px and 768px. `design.md` is the authority for every value; where it
+conflicts with the code, the document wins.
 
-## Editing guide
+**Images** go in `assets/images/` with kebab-case names and an extension matching the
+real format. Every `<img>` carries an inline `onerror` fallback chain so the page
+never shows a broken image — follow that pattern for anything new, and set both
+`width` and `height` to the file's real pixel dimensions.
 
-**Colors and styling.** The theme is driven entirely by CSS custom properties on `:root` at the top of the `<style>` block — the matte charcoal, silver, and gold palette (`--gold-primary: #D4AF37`), shadows, and the shared transition easing. Change values there rather than at individual call sites. Layout responds at two breakpoints: 992px and 768px.
+**Bilingual `alt` text.** Company and partner names carry the other language's form
+in the `alt` attribute — Latin first on the English page, Arabic first on the Arabic
+one. Keep both when editing.
 
-**Images.** Add files to `assets/images/` using kebab-case names with an extension that matches the real file format. Every `<img>` includes an inline `onerror` fallback to a remote stand-in so the page never shows a broken image; follow that pattern for anything new.
+## Regenerating the brand assets
 
-**Bilingual content.** Company and partner names carry their Arabic form in the `alt` attribute. Keep both when editing.
+Every icon, favicon, lockup, and the social card is generated from the masters in
+`brand-source/`. Do not edit them by hand — change the master and re-run:
+
+```bash
+python3 tools/build-brand-assets.py   # requires Pillow
+```
+
+That rewrites `assets/brand/nexo-symbol.svg`, both lockups, the four PWA icons,
+`favicon.ico`, and `assets/images/og-cover.png`. The script is the single source of
+truth for all of them; the previous identity's generator was not kept, which is why
+its icons had to be rebuilt by hand.
 
 ## Pending work
 
-- Two images are referenced but not yet supplied — `assets/images/hero-facade.png` and `assets/images/operations-collage.png`. Both currently fall back to stock photography.
-- The division cards link to `architectural-design.html`, `general-contracting.html`, and `training-academy.html`, which have not been built yet.
-- The contact form is front-end only: it shows a confirmation dialog and does not submit anywhere.
-- The contact phone number is still a placeholder.
+- Two photographs are referenced but not yet supplied — `assets/images/hero-facade.jpg`
+  (masked into the hero mark) and `assets/images/about-site.jpg` (Fig. 02). Both fall
+  back to stock photography until the real files are dropped in at those paths.
+- The three divisions expand inline as accordions; there are no per-division pages.
+- `#contact` lists the office details and an email link. There is no contact form —
+  the previous one had no backend and collected nothing.
+- The contact phone number is still a placeholder, and is labelled as such on the page.
+- Webfonts still load from the Google Fonts CDN; `design.md` §4.4 asks for self-hosted
+  subsetted WOFF2.
 
 ## License
 

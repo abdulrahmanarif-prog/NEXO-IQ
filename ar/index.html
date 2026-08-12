@@ -21,7 +21,7 @@
     <meta property="og:image" content="https://nexo-iq.com/assets/images/og-cover.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="علامة نكسو — محوران ذهبيان متقاطعان — إلى جانب اسم الشركة.">
+    <meta property="og:image:alt" content="علامة نكسو — عضوان ذهبيان متقاطعان يفصلهما المفصل — إلى جانب اسم الشركة.">
     <meta property="og:locale" content="ar_IQ">
     <meta property="og:locale:alternate" content="en">
 
@@ -37,10 +37,10 @@
     <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
 
-    <!-- Google Fonts: Tajawal (display) · IBM Plex Sans Arabic (body) · IBM Plex Mono (Latin codes) -->
+    <!-- Google Fonts: Cairo (display) · IBM Plex Sans Arabic (body) · IBM Plex Mono (Latin codes) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         /* ==========================================
@@ -51,10 +51,15 @@
         :root {
             --ink: #0A0C10;
             --ink-raised: #10131A;
+            --ink-panel: #171B24;
+            /* --rule is decorative only. Any border the visitor must perceive to
+               operate the interface takes --rule-strong, which clears 3:1 on ink. */
             --rule: #232833;
-            --rule-gold: rgba(212, 175, 55, 0.32);
-            --gold: #D4AF37;
-            --gold-light: #F3E5AB;
+            --rule-strong: #545E70;
+            --rule-gold: rgba(201, 162, 78, 0.32);
+            --gold: #C9A24E;
+            --gold-light: #E4C77A;
+            --gold-glow: #F3E5AB;
             --gold-deep: #8A6F2E;
             --silver: #E3E7EE;
             --mute: #8A93A3;
@@ -63,8 +68,8 @@
             /* Arabic glyphs come from the Arabic faces; Latin runs inside the same
                string fall through to IBM Plex Mono, which keeps the drafting voice
                on codes like A—01, BIM, MEP, P6. */
-            --font-display: 'Tajawal', 'IBM Plex Sans Arabic', system-ui, sans-serif;
-            --font-body: 'IBM Plex Sans Arabic', 'Tajawal', system-ui, sans-serif;
+            --font-display: 'Cairo', 'Noto Kufi Arabic', 'Segoe UI', Tahoma, sans-serif;
+            --font-body: 'IBM Plex Sans Arabic', 'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
             --font-mono: 'IBM Plex Mono', 'IBM Plex Sans Arabic', ui-monospace, monospace;
 
             --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -115,7 +120,9 @@
             margin: 0;
             color: #FFFFFF;
             letter-spacing: normal; /* never negative on Arabic */
-            line-height: 1.35;      /* Arabic ascenders/descenders need the room */
+            /* Arabic headlines take 1.5 minimum: Cairo's ascenders and its dot
+               clusters below the baseline collide at the Latin page's 1.08. */
+            line-height: 1.5;
         }
 
         p { margin: 0; }
@@ -132,8 +139,8 @@
         }
 
         :focus-visible {
-            outline: 2px solid var(--gold);
-            outline-offset: 3px;
+            outline: 2px solid var(--gold-glow);
+            outline-offset: 2px;
             border-radius: 2px;
         }
 
@@ -185,7 +192,10 @@
             font-weight: 600;
             letter-spacing: var(--track);
             padding: 0.95rem 1.75rem;
-            border: 1px solid var(--rule);
+            /* 3.7: a border the visitor must perceive to operate the control is
+               functional, not decorative, so it takes --rule-strong. --rule is 1.3:1
+               on ink, which left the ghost button with no visible edge at all. */
+            border: 1px solid var(--rule-strong);
             background: none;
             color: var(--silver);
             cursor: pointer;
@@ -193,7 +203,7 @@
                         border-color 0.3s var(--ease), transform 0.3s var(--ease);
         }
 
-        .btn:hover { border-color: var(--rule-gold); color: #FFFFFF; background: rgba(212, 175, 55, 0.06); }
+        .btn:hover { border-color: var(--rule-gold); color: #FFFFFF; background: rgba(201, 162, 78, 0.06); }
 
         .btn--gold {
             background: var(--gold);
@@ -223,8 +233,10 @@
             transition: background-color 0.4s var(--ease), border-color 0.4s var(--ease);
         }
 
+        /* 3.2 puts sticky headers on Ink Panel, the second elevation. Kept
+           translucent so the drafting grid still reads through it. */
         header.is-scrolled {
-            background: rgba(10, 12, 16, 0.94);
+            background: rgba(23, 27, 36, 0.94);
             border-bottom-color: var(--rule);
         }
 
@@ -236,11 +248,17 @@
             gap: 1rem;
         }
 
-        .brand img { height: 44px; width: auto; }
+        /* 2.3 sets the full-lockup floor at 140px wide. The artwork is ~3.7:1,
+           so 50px tall lands at ~186px -- the previous 40px footer mark was
+           under the floor. Both dimensions are set explicitly: an <img> with
+           width:auto and no height lets the HTML height attribute through. */
+        .brand img { height: 50px; width: auto; }
 
         .nav-links { display: flex; align-items: center; gap: 1.9rem; }
 
-        .nav-links a {
+        /* :not(.btn) — this rule is 0,1,1 and .btn--gold is only 0,1,0, so without
+           the exclusion the header CTA renders mute grey on gold, about 1.3:1. */
+        .nav-links a:not(.btn) {
             font-family: var(--font-mono);
             font-size: 0.8rem;
             font-weight: 500;
@@ -251,7 +269,7 @@
             transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
         }
 
-        .nav-links a:hover { color: #FFFFFF; border-bottom-color: var(--gold); }
+        .nav-links a:not(.btn):hover { color: #FFFFFF; border-bottom-color: var(--gold); }
         .nav-links .btn { border-bottom-width: 1px; }
         .nav-links .btn:hover { color: #0A0C10; }
 
@@ -312,15 +330,20 @@
 
         .hero h1 {
             font-size: clamp(2.05rem, 6.8vw, 4.2rem);
-            font-weight: 800;
+            /* 700, not 800: Cairo ships 500/600/700/900, and asking for a weight
+               it does not have makes the browser synthesise one. */
+            font-weight: 700;
             letter-spacing: normal;
-            line-height: 1.22;
+            /* 1.5 is the Arabic headline floor. Below it Cairo's ascenders and the
+               dots under ي / ب collide with the line-mask crop. */
+            line-height: 1.5;
         }
 
         .hero h1 em { font-style: normal; color: var(--gold); }
 
-        /* The mask crops the line as it rises; Arabic descenders need the slack. */
-        .line-mask { display: block; overflow: hidden; padding-bottom: 0.12em; }
+        /* The mask crops the line as it rises; Arabic descenders need the slack.
+           Cairo sits lower than the face it replaced, so this is 0.2em not 0.12em. */
+        .line-mask { display: block; overflow: hidden; padding-bottom: 0.2em; }
         .line-mask > span { display: block; }
 
         .hero-lede {
@@ -380,15 +403,20 @@
         .axis-label { font-family: var(--font-body); font-size: 15px; letter-spacing: 0; fill: var(--mute); }
         .axis-hair { stroke: var(--rule); stroke-width: 1; fill: none; }
 
+        /* 554 = the overrun centreline length of one member in the 480 viewBox.
+           150 is measured, not guessed: the arms are far wider at their tips than
+           at the waist, and the widest vertex sits 195 units off the axis in the
+           mark's own 1000 space. Anything narrower shaves the end-cuts off.
+           The hidden state lives under .js-ready so that with JS off the mark
+           renders complete rather than never being drawn at all. */
         .axis-stroke {
             stroke: #fff;
-            stroke-width: 88;
+            stroke-width: 150;
             fill: none;
-            stroke-dasharray: 545;
-            stroke-dashoffset: 545;
+            stroke-dasharray: 554;
         }
 
-        .js-ready .axis-stroke { animation: draw 1.35s var(--ease) forwards; }
+        .js-ready .axis-stroke { stroke-dashoffset: 554; animation: draw 1.35s var(--ease) forwards; }
         .js-ready .axis-stroke:nth-child(2) { animation-delay: 0.18s; }
         @keyframes draw { to { stroke-dashoffset: 0; } }
 
@@ -413,7 +441,10 @@
         }
 
         .frame { border: 1px solid var(--rule); padding: 0.5rem; background: var(--ink-raised); }
-        .frame img { width: 100%; height: auto; }
+        /* The site photograph is supplied separately. Locking the ratio here
+           means any crop drops in without shifting the About grid, and
+           object-fit keeps it from stretching. */
+        .frame img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
 
         .about-copy h2 { font-size: clamp(1.6rem, 2.8vw, 2.25rem); font-weight: 700; }
         .about-copy h2 .ltr { display: block; font-size: 0.72em; color: var(--mute); font-weight: 500; margin-bottom: 0.35rem; text-align: right; }
@@ -625,7 +656,7 @@
             border: 1px solid var(--rule-gold);
             padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
             background:
-                radial-gradient(ellipse 70% 120% at 50% 0%, rgba(212, 175, 55, 0.07) 0%, transparent 70%),
+                radial-gradient(ellipse 70% 120% at 50% 0%, rgba(201, 162, 78, 0.07) 0%, transparent 70%),
                 var(--ink-raised);
             text-align: center;
         }
@@ -636,53 +667,22 @@
         /* ==========================================
            CONTACT
            ========================================== */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 0.95fr 1.05fr;
-            gap: clamp(2.5rem, 5vw, 4.5rem);
-            align-items: start;
-        }
+        /* One column, measure-capped. There is no form beside the details any
+           more, so a two-column grid would leave a visibly empty half. */
+        .contact-grid { display: grid; }
+        .contact-copy { max-width: 620px; }
 
         .contact-copy h2 { font-size: clamp(1.75rem, 3vw, 2.4rem); font-weight: 700; }
         .contact-copy > p { color: var(--mute); margin-top: 1.15rem; }
 
-        .contact-table { margin-top: 2.25rem; border-top: 1px solid var(--rule); }
+        .contact-table { margin-top: 2.25rem; border-top: 1px solid var(--rule-strong); }
 
-        .contact-table .spec-row { grid-template-columns: 130px 1fr; padding-block: 1.15rem; }
+        /* Functional rules: these separate data the visitor has to read across. */
+        .contact-table .spec-row { grid-template-columns: 130px 1fr; padding-block: 1.15rem; border-bottom-color: var(--rule-strong); }
         .contact-table dd a:hover { color: var(--gold); }
         .contact-table .note { display: block; font-size: 0.78rem; color: var(--mute); }
 
-        .form { display: grid; gap: 1.25rem; }
-
-        .field { display: grid; gap: 0.5rem; }
-
-        .field label {
-            font-family: var(--font-mono);
-            font-size: 0.76rem;
-            font-weight: 500;
-            letter-spacing: var(--track);
-            color: var(--mute);
-        }
-
-        .field input, .field textarea {
-            width: 100%;
-            padding: 0.9rem 1rem;
-            background: var(--ink-raised);
-            border: 1px solid var(--rule);
-            color: #FFFFFF;
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            transition: border-color 0.3s var(--ease), background-color 0.3s var(--ease);
-        }
-
-        /* An address is typed left-to-right but still reads from the RTL edge */
-        .field input[type="email"] { direction: ltr; text-align: right; }
-
-        .field textarea { resize: vertical; min-height: 120px; }
-        .field input:focus, .field textarea:focus { outline: none; border-color: var(--gold); background: #0D1016; }
-        .field input:focus-visible, .field textarea:focus-visible { outline: none; }
-
-        .form-status { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: var(--track); color: var(--gold); min-height: 1.2em; }
+        .contact-cta { margin-top: 2.25rem; }
 
         /* ==========================================
            FOOTER — title block
@@ -699,7 +699,7 @@
            reads right-to-left without the first cell growing a stray hairline. */
         .tb-cell { padding: 1.35rem 1.4rem; border-inline-start: 1px solid var(--rule); }
         .tb-cell:first-child { border-inline-start: none; display: flex; align-items: center; }
-        .tb-cell img { height: 40px; width: auto; }
+        .tb-cell img { height: 50px; width: auto; }
 
         .tb-key {
             display: block;
@@ -751,7 +751,7 @@
            RESPONSIVE
            ========================================== */
         @media (max-width: 992px) {
-            .hero-grid, .about-grid, .contact-grid { grid-template-columns: minmax(0, 1fr); }
+            .hero-grid, .about-grid { grid-template-columns: minmax(0, 1fr); }
             /* justify-self, not margin-inline: the element carries an inline margin:0 */
             .axis-figure { max-width: 460px; justify-self: center; }
             .dv-panel-inner { grid-template-columns: minmax(0, 1fr); }
@@ -764,7 +764,7 @@
             :root { --header-h: 68px; }
 
             .nav-toggle { display: flex; }
-            .brand img { height: 34px; }
+            .brand img { height: 40px; }
 
             .nav-links {
                 position: fixed;
@@ -776,7 +776,9 @@
                 max-height: calc(100dvh - var(--header-h));
                 overflow-y: auto;
                 overscroll-behavior: contain;
-                background: var(--ink);
+                /* 3.2: the drawer floats over the page, so it is second elevation,
+                   not the page surface it covers. */
+                background: var(--ink-panel);
                 border-bottom: 1px solid var(--rule);
                 padding: 1rem var(--gutter) 2rem;
                 transform: translateY(-12px);
@@ -845,9 +847,6 @@
 
             .btn { width: 100%; }
             .academy .btn { width: auto; max-width: 100%; }
-
-            /* 16px floor stops iOS zooming the page on focus */
-            .field input, .field textarea { font-size: 1rem; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -868,7 +867,7 @@
     <header id="siteHeader">
         <div class="container nav-bar">
             <a href="#" class="brand" aria-label="شركة نكسو للهندسة والمقاولات — الرئيسية">
-                <img src="../assets/images/nexo-logo.png" width="440" height="310" alt="شركة نكسو للهندسة والمقاولات - NEXO Engineering &amp; Contracting" onerror="this.onerror=null; this.src='https://placehold.co/180x44/10131A/D4AF37?text=NEXO';">
+                <img src="../assets/brand/nexo-lockup-ar.png" width="516" height="138" alt="شركة نكسو للهندسة والمقاولات - NEXO Engineering &amp; Contracting" onerror="this.onerror=null; this.src='https://placehold.co/186x50/10131A/C9A24E?text=NEXO';">
             </a>
             <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="فتح القائمة"><span></span></button>
             <nav class="nav-links" id="navLinks">
@@ -912,32 +911,43 @@
                 <figure class="axis-figure" style="margin:0">
                     <svg viewBox="0 0 480 480" role="img" aria-label="علامة نكسو مرسومة كمحورين إنشائيين متقاطعين: التصميم والتنفيذ يلتقيان عند عقدة واحدة.">
                         <defs>
-                            <linearGradient id="goldFill" x1="0" y1="0" x2="1" y2="1">
-                                <stop offset="0%" stop-color="#F3E5AB"/>
-                                <stop offset="52%" stop-color="#D4AF37"/>
-                                <stop offset="100%" stop-color="#8A6F2E"/>
-                            </linearGradient>
+                            <!-- The wipe that makes the mark draw itself. It is nested
+                                 INSIDE axisMask rather than used as the mask itself,
+                                 because the mask is now the real symbol silhouette and
+                                 a stroke-dash animation only applies to a stroke. The
+                                 lines overrun the members at both ends so the angled
+                                 end-cuts are covered to the corner. -->
+                            <mask id="drawWipe">
+                                <line class="axis-stroke" x1="66.1" y1="35" x2="413.9" y2="465"/>
+                                <line class="axis-stroke" x1="413.9" y1="35" x2="66.1" y2="465"/>
+                            </mask>
                             <mask id="axisMask">
-                                <line class="axis-stroke" x1="70" y1="60" x2="410" y2="440"/>
-                                <line class="axis-stroke" x1="410" y1="60" x2="70" y2="440"/>
+                                <g mask="url(#drawWipe)">
+                                    <!-- assets/brand/nexo-symbol.svg, uniformly scaled into
+                                         a 360 square. The symbol is never mirrored in RTL. -->
+                                    <path fill="#fff" transform="translate(60,70) scale(0.36)"
+                                          d="M 0.00 0.00 L 190.94 0.00 L 478.35 288.39 L 478.35 356.30 L 444.88 431.10 L 520.67 355.31 L 520.67 288.39 L 808.07 0.00 L 1000.00 0.00 L 999.02 191.93 L 592.52 597.44 L 718.50 526.57 L 999.02 808.07 L 1000.00 1000.00 L 809.06 1000.00 L 520.67 711.61 L 520.67 644.69 L 554.13 568.90 L 478.35 644.69 L 478.35 710.63 L 189.96 1000.00 L 0.00 1000.00 L 0.00 808.07 L 405.51 402.56 L 281.50 473.43 L 0.00 191.93 Z"/>
+                                </g>
                             </mask>
                         </defs>
 
                         <!-- construction lines -->
-                        <rect class="axis-hair" x="70" y="60" width="340" height="380"/>
+                        <rect class="axis-hair" x="70" y="80" width="340" height="340"/>
                         <line class="axis-hair" x1="0" y1="250" x2="480" y2="250"/>
                         <line class="axis-hair" x1="240" y1="20" x2="240" y2="470"/>
 
                         <g mask="url(#axisMask)">
-                            <rect x="60" y="50" width="360" height="400" fill="url(#goldFill)"/>
-                            <image href="../assets/images/hero-facade.png" x="60" y="50" width="360" height="400"
-                                   preserveAspectRatio="xMidYMid slice" opacity="0.82"
+                            <!-- Flat gold, never a gradient. It is only ever seen if the
+                                 photograph fails, which is what the onerror falls back to. -->
+                            <rect x="60" y="70" width="360" height="360" fill="#C9A24E"/>
+                            <image href="../assets/images/hero-facade.jpg" x="60" y="70" width="360" height="360"
+                                   preserveAspectRatio="xMidYMid slice"
                                    onerror="this.onerror=null; this.setAttribute('href','https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;w=900&amp;q=80');"/>
                         </g>
 
-                        <circle cx="240" cy="250" r="6" fill="#0A0C10" stroke="#D4AF37" stroke-width="1.5"/>
-                        <text class="axis-label" x="410" y="42" text-anchor="end">تصميم</text>
-                        <text class="axis-label" x="70" y="42">تنفيذ</text>
+                        <circle cx="240" cy="250" r="6" fill="#0A0C10" stroke="#C9A24E" stroke-width="1.5"/>
+                        <text class="axis-label" x="410" y="52" text-anchor="end">تصميم</text>
+                        <text class="axis-label" x="70" y="52">تنفيذ</text>
                     </svg>
                     <figcaption class="fig-caption">شكل <span class="ltr">01</span> — محوران، عقدة واحدة</figcaption>
                 </figure>
@@ -951,9 +961,9 @@
             <div class="about-grid">
                 <figure class="reveal" style="margin:0">
                     <div class="frame">
-                        <img src="../assets/images/about.png" width="1100" height="776" loading="lazy" decoding="async" alt="نكسو — مؤسسة التميّز الهندسي للجيل القادم (Next-Generation Engineering eXcellence Organization)" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&amp;fit=crop&amp;w=800&amp;q=80';">
+                        <img src="../assets/images/about-site.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="أحد مشاريع نكسو قيد الإنشاء في بغداد — هيكل خرساني مسلّح وحديد إنشائي في الموقع." onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&amp;fit=crop&amp;w=1200&amp;q=80';">
                     </div>
-                    <figcaption class="fig-caption">شكل <span class="ltr">02</span> — العلامة، موسَّعة</figcaption>
+                    <figcaption class="fig-caption">شكل <span class="ltr">02</span> — في الموقع، بغداد</figcaption>
                 </figure>
 
                 <div class="about-copy reveal">
@@ -1225,29 +1235,8 @@
                             <dd><span class="ltr">+964 7XX XXX XXXX</span> <span class="note">رقم مؤقت — يُستبدل بالرقم الفعلي.</span></dd>
                         </div>
                     </dl>
-                </div>
 
-                <div class="reveal">
-                    <form class="form" id="contactForm" action="#" method="POST" novalidate>
-                        <div class="field">
-                            <label for="cf-name">الاسم</label>
-                            <input type="text" id="cf-name" name="name" autocomplete="name" required>
-                        </div>
-                        <div class="field">
-                            <label for="cf-email">البريد الإلكتروني</label>
-                            <input type="email" id="cf-email" name="email" autocomplete="email" required>
-                        </div>
-                        <div class="field">
-                            <label for="cf-subject">الموضوع</label>
-                            <input type="text" id="cf-subject" name="subject">
-                        </div>
-                        <div class="field">
-                            <label for="cf-message">الرسالة</label>
-                            <textarea id="cf-message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn--gold">إرسال الرسالة <span class="arw" aria-hidden="true">←</span></button>
-                        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-                    </form>
+                    <a href="mailto:info@nexo-iq.com" class="btn btn--gold contact-cta">راسل المكتب <span class="arw" aria-hidden="true">←</span></a>
                 </div>
             </div>
         </div>
@@ -1260,7 +1249,7 @@
         <div class="container">
             <div class="title-block">
                 <div class="tb-cell">
-                    <img src="../assets/images/nexo-logo.png" width="440" height="310" loading="lazy" decoding="async" alt="شركة نكسو للهندسة والمقاولات - NEXO Engineering &amp; Contracting" onerror="this.onerror=null; this.src='https://placehold.co/164x40/10131A/D4AF37?text=NEXO';">
+                    <img src="../assets/brand/nexo-lockup-ar.png" width="516" height="138" loading="lazy" decoding="async" alt="شركة نكسو للهندسة والمقاولات - NEXO Engineering &amp; Contracting" onerror="this.onerror=null; this.src='https://placehold.co/186x50/10131A/C9A24E?text=NEXO';">
                 </div>
                 <div class="tb-cell">
                     <span class="tb-key">المكتب</span>
@@ -1347,18 +1336,6 @@
             reveals.forEach(el => el.classList.add('in-view'));
         }
 
-        // Contact form — no backend yet, so confirm in place rather than navigating away
-        const form = document.getElementById('contactForm');
-        const status = document.getElementById('formStatus');
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            if (!form.checkValidity()) {
-                status.textContent = 'أضف اسمك وبريدك الإلكتروني ونص الرسالة لإتمام الإرسال.';
-                form.reportValidity();
-                return;
-            }
-            status.textContent = 'الرسالة جاهزة — اربط نقطة استقبال النموذج لتسليمها.';
-        });
     </script>
 
     <!-- Structured data. The Arabic page describes itself only, and points at the

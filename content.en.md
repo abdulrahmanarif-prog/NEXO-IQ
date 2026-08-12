@@ -62,8 +62,8 @@ Source of truth for every English string on `index.html`, in page order. Edit he
 ## About — `#about`
 
 **Figure**
-- Image alt: NEXO — Next-Generation Engineering eXcellence Organization
-- Caption: Fig. 02 — The mark, expanded
+- Image alt: A NEXO project under construction in Baghdad — reinforced concrete frame and structural steel on site.
+- Caption: Fig. 02 — On site, Baghdad
 
 **Eyebrow:** Who we are
 
@@ -164,10 +164,7 @@ Source of truth for every English string on `index.html`, in page order. Edit he
 | Email | info@nexo-iq.com |
 | Phone | +964 7XX XXX XXXX — *placeholder, labelled as such on the page* |
 
-**Form labels:** Name · Email · Subject · Message
-**Submit:** Send message →
-**Status — incomplete:** Add your name, email, and a message to send.
-**Status — success:** Message ready — connect a form endpoint to deliver it.
+**CTA:** Email the office → *(mailto link; there is no contact form — the previous one had no backend and collected nothing)*
 
 ---
 
