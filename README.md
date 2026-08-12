@@ -97,7 +97,6 @@ its icons had to be rebuilt by hand.
 - The three divisions expand inline as accordions; there are no per-division pages.
 - `#contact` lists the office details and an email link. There is no contact form —
   the previous one had no backend and collected nothing.
-- The contact phone number is still a placeholder, and is labelled as such on the page.
 
 ## License
 

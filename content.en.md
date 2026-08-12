@@ -162,7 +162,7 @@ Source of truth for every English string on `index.html`, in page order. Edit he
 | --- | --- |
 | Office | Baghdad, Iraq |
 | Email | info@nexo-iq.com |
-| Phone | +964 7XX XXX XXXX — *placeholder, labelled as such on the page* |
+| Phone | +964 771 819 6242 — *`tel:` link; also in the JSON-LD `telephone` field* |
 
 **CTA:** Email the office → *(mailto link; there is no contact form — the previous one had no backend and collected nothing)*
 
