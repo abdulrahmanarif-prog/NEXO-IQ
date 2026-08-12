@@ -31,6 +31,7 @@ content.en.md       # every English string, in page order — copy source of tru
 content.ar.md       # every Arabic string, in page order — copy source of truth
 design.md           # Digital Identity Guidelines v2.0 — the brand authority
 assets/brand/       # the mark and the two lockups (generated)
+assets/fonts/       # self-hosted WOFF2 (generated)
 assets/images/      # photography and partner logos
 assets/icons/       # favicons and PWA icons (generated)
 brand-source/       # approved masters the generated assets are built from
@@ -72,6 +73,17 @@ Every icon, favicon, lockup, and the social card is generated from the masters i
 python3 tools/build-brand-assets.py   # requires Pillow
 ```
 
+The webfonts are self-hosted for the same reason — served from Google, the Arabic
+page rendered unstyled for seconds on first load. Re-fetch them with:
+
+```bash
+python3 tools/fetch-fonts.py          # writes assets/fonts/ + prints the @font-face CSS
+```
+
+Do not reintroduce the Google Fonts `<link>`: it is render-blocking, on a
+third-party origin, and puts two connection setups in series ahead of the first
+font byte.
+
 That rewrites `assets/brand/nexo-symbol.svg`, both lockups, the four PWA icons,
 `favicon.ico`, and `assets/images/og-cover.png`. The script is the single source of
 truth for all of them; the previous identity's generator was not kept, which is why
@@ -86,8 +98,6 @@ its icons had to be rebuilt by hand.
 - `#contact` lists the office details and an email link. There is no contact form —
   the previous one had no backend and collected nothing.
 - The contact phone number is still a placeholder, and is labelled as such on the page.
-- Webfonts still load from the Google Fonts CDN; `design.md` §4.4 asks for self-hosted
-  subsetted WOFF2.
 
 ## License
 
