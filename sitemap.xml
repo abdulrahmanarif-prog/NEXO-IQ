@@ -6,7 +6,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://nexo-iq.com/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexo-iq.com/ar/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexo-iq.com/"/>
-    <lastmod>2026-08-12</lastmod>
+    <lastmod>2026-08-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -15,8 +15,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://nexo-iq.com/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://nexo-iq.com/ar/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexo-iq.com/"/>
-    <lastmod>2026-08-12</lastmod>
+    <lastmod>2026-08-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <!-- The company profile PDF. No hreflang set: it exists in English only,
+       so it has no alternate to point at. -->
+  <url>
+    <loc>https://nexo-iq.com/assets/docs/nexo-company-profile.pdf</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>

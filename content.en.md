@@ -25,7 +25,7 @@ Source of truth for every English string on `index.html`, in page order. Edit he
 **Brand link label:** NEXO Engineering & Contracting — home
 **Menu toggle label:** Open menu / Close menu
 
-**Nav:** About · Divisions · Clients · Academy · **Get in touch** (gold button)
+**Nav:** About · Divisions · Clients · Academy · Profile · **Get in touch** (gold button)
 
 ---
 
@@ -151,6 +151,40 @@ Source of truth for every English string on `index.html`, in page order. Edit he
 
 ---
 
+## Company profile — `#profile`
+
+**Eyebrow:** Company profile
+**H2:** Take the practice with you
+**Body:**
+> The full profile — divisions, capabilities, and how a NEXO project runs from first drawing to handover — as a single document you can forward, print, or attach to a tender.
+
+**Figure caption:** Fig. 03 — Company Profile, cover
+
+| Term | Value |
+| --- | --- |
+| Revision | Rev 1.1 — Edition 2026 |
+| Pages | 17 |
+| Format | A4 PDF |
+| Size | 3.5 MB |
+
+*There is no "Document: Company Profile" row — the eyebrow and the H2 above it
+already say so twice.*
+
+**Button:** Read the profile (PDF, 3.5 MB) →
+
+*"Read", not "Download": the link carries no `download` attribute, so it opens in
+the browser's PDF viewer rather than forcing a 3.5 MB save to disk on a visitor
+who has not decided they want it. The viewer still offers Save. The size stays in
+the label either way.*
+
+*The file is served from `/assets/docs/nexo-company-profile.pdf`. The revision is
+carried in the copy, never in the filename — the path has to stay stable so links
+already sent out keep resolving after the next rebuild. Update the three
+revision strings together: this table, the Arabic one, and the JSON-LD
+`DigitalDocument` node on the English page.*
+
+---
+
 ## Contact — `#contact`
 
 **Eyebrow:** Get in touch
@@ -177,7 +211,7 @@ Source of truth for every English string on `index.html`, in page order. Edit he
 | Divisions | A / C / T |
 | Practice | Engineering & Contracting |
 
-**Footer nav:** About · Divisions · Clients · Contact
+**Footer nav:** About · Divisions · Clients · Profile · Contact
 **Copyright:** © 2026 NEXO Engineering & Contracting Co.
 
 ---

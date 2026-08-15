@@ -314,7 +314,11 @@
            width:auto and no height lets the HTML height attribute through. */
         .brand img { height: 50px; width: auto; }
 
-        .nav-links { display: flex; align-items: center; gap: 2.1rem; }
+        /* Fluid gap, not a third breakpoint: with six items plus the CTA and the
+           language switch, a fixed 2.1rem crowded the bar just above 992px and
+           wrapped "Get in touch" onto two lines. */
+        .nav-links { display: flex; align-items: center; gap: clamp(1.15rem, 2.2vw, 2.1rem); }
+        .nav-links .btn { white-space: nowrap; }
 
         /* :not(.btn) — this rule is 0,1,1 and .btn--gold is only 0,1,0, so without
            the exclusion the header CTA renders mute grey on gold, about 1.3:1. */
@@ -721,6 +725,32 @@
         .academy p { color: var(--mute); max-width: 62ch; margin: 1.15rem auto 2.25rem; font-size: 1.05rem; }
 
         /* ==========================================
+           COMPANY PROFILE
+           ========================================== */
+        /* Copy first, cover second — so the stacked order on small screens puts
+           the heading and the download button above a very tall A4 page. */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+            gap: clamp(2.5rem, 5vw, 4.5rem);
+            align-items: start;
+        }
+
+        /* The cover is a rendered A4 page, so it keeps A4's ratio instead of the
+           3/2 the About figure locks — object-fit: cover would otherwise crop the
+           lockup off the top and the division codes off the bottom. */
+        .profile-cover img { aspect-ratio: 210 / 297; }
+
+        .profile-copy h2 { font-size: clamp(1.75rem, 3vw, 2.4rem); font-weight: 700; }
+        .profile-copy > p { color: var(--mute); margin-top: 1.15rem; font-size: 1.05rem; }
+
+        /* Facts about the file, in the same spec voice as the About table. */
+        .profile-specs { margin-top: 2.25rem; border-top: 1px solid var(--rule); }
+        .profile-specs .spec-row { grid-template-columns: minmax(0, 128px) minmax(0, 1fr); padding-block: 1.05rem; }
+
+        .profile-cta { margin-top: 2.25rem; }
+
+        /* ==========================================
            CONTACT
            ========================================== */
         /* One column, measure-capped. There is no form beside the details any
@@ -804,7 +834,9 @@
            RESPONSIVE
            ========================================== */
         @media (max-width: 992px) {
-            .hero-grid, .about-grid { grid-template-columns: minmax(0, 1fr); }
+            .hero-grid, .about-grid, .profile-grid { grid-template-columns: minmax(0, 1fr); }
+            /* A full-width A4 page is absurdly tall on one column. */
+            .profile-cover-fig { max-width: 340px; justify-self: center; }
             /* justify-self, not margin-inline: the element carries an inline margin:0 */
             .axis-figure { max-width: 460px; justify-self: center; }
             .dv-panel-inner { grid-template-columns: minmax(0, 1fr); }
@@ -933,6 +965,7 @@
                 <a href="#divisions">Divisions</a>
                 <a href="#network">Clients</a>
                 <a href="#academy">Academy</a>
+                <a href="#profile">Profile</a>
                 <a href="#contact" class="btn btn--gold">Get in touch</a>
                 <!-- ./ar/index.html, not ./ar/ — file:// has no directory index, and the
                      explicit filename resolves identically over HTTP. -->
@@ -1269,6 +1302,52 @@
         </div>
     </section>
 
+    <!-- COMPANY PROFILE -->
+    <section class="section section--ruled" id="profile">
+        <div class="container">
+            <div class="profile-grid">
+                <div class="profile-copy reveal">
+                    <p class="mono eyebrow">Company profile</p>
+                    <h2>Take the practice with you</h2>
+                    <p>The full profile — divisions, capabilities, and how a NEXO project runs from first drawing to handover — as a single document you can forward, print, or attach to a tender.</p>
+
+                    <dl class="spec-list profile-specs">
+                        <div class="spec-row">
+                            <dt>Revision</dt>
+                            <dd>Rev 1.1 — Edition 2026</dd>
+                        </div>
+                        <div class="spec-row">
+                            <dt>Pages</dt>
+                            <dd>17</dd>
+                        </div>
+                        <div class="spec-row">
+                            <dt>Format</dt>
+                            <dd>A4 PDF</dd>
+                        </div>
+                        <div class="spec-row">
+                            <dt>Size</dt>
+                            <dd>3.5 MB</dd>
+                        </div>
+                    </dl>
+
+                    <!-- No `download` attribute: forcing a 3.5 MB save-to-disk on a
+                         visitor who has not decided they want the document is hostile on
+                         mobile data — it lands in /Downloads with no chance to skim page
+                         one and abandon. Without it the browser's own PDF viewer opens,
+                         renders progressively, and still offers Save in its toolbar. -->
+                    <a href="./assets/docs/nexo-company-profile.pdf" class="btn btn--gold profile-cta" type="application/pdf" target="_blank" rel="noopener">Read the profile (PDF, 3.5 MB) <span class="arw" aria-hidden="true">→</span></a>
+                </div>
+
+                <figure class="profile-cover-fig reveal" style="margin:0">
+                    <div class="frame profile-cover">
+                        <img src="./assets/images/profile-cover.jpg" width="840" height="1189" loading="lazy" decoding="async" alt="Cover of the NEXO Engineering &amp; Contracting company profile — the gold X mark over a construction photograph, with the headline Vision meets structural execution." onerror="this.onerror=null; this.src='https://placehold.co/840x1189/10131A/C9A24E?text=NEXO';">
+                    </div>
+                    <figcaption class="fig-caption">Fig. 03 — Company Profile, cover</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
     <!-- CONTACT -->
     <section class="section section--ruled" id="contact">
         <div class="container">
@@ -1326,6 +1405,7 @@
                     <a href="#about">About</a>
                     <a href="#divisions">Divisions</a>
                     <a href="#network">Clients</a>
+                    <a href="#profile">Profile</a>
                     <a href="#contact">Contact</a>
                 </nav>
                 <p>&copy; 2026 NEXO Engineering &amp; Contracting Co.</p>
@@ -1435,6 +1515,7 @@
             "Construction chemicals",
             "Site supervision and HSE"
           ],
+          "subjectOf": { "@id": "https://nexo-iq.com/#company-profile" },
           "hasOfferCatalog": {
             "@type": "OfferCatalog",
             "name": "Divisions",
@@ -1492,6 +1573,23 @@
           "isPartOf": { "@id": "https://nexo-iq.com/#website" },
           "about": { "@id": "https://nexo-iq.com/#organization" },
           "primaryImageOfPage": "https://nexo-iq.com/assets/images/og-cover.png"
+        },
+        {
+          "@type": "DigitalDocument",
+          "@id": "https://nexo-iq.com/#company-profile",
+          "name": "NEXO Engineering & Contracting — Company Profile",
+          "description": "The full NEXO company profile: divisions, capabilities, and how a project runs from first drawing to handover. 17 pages, A4.",
+          "url": "https://nexo-iq.com/assets/docs/nexo-company-profile.pdf",
+          "contentUrl": "https://nexo-iq.com/assets/docs/nexo-company-profile.pdf",
+          "encodingFormat": "application/pdf",
+          "contentSize": "3.5 MB",
+          "inLanguage": "en",
+          "version": "1.1",
+          "datePublished": "2026-08-15",
+          "thumbnailUrl": "https://nexo-iq.com/assets/images/profile-cover.jpg",
+          "about": { "@id": "https://nexo-iq.com/#organization" },
+          "author": { "@id": "https://nexo-iq.com/#organization" },
+          "publisher": { "@id": "https://nexo-iq.com/#organization" }
         }
       ]
     }
